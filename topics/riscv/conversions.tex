@@ -1,0 +1,66 @@
+\begin{blocksection}
+\question Convert the different RISC-V commands into their hex form or convert the hex form into RISC-V. The instructions are in order of when they would be executed.
+
+\begin{parts}
+\part
+\begin{verbatim}
+0x005004B3
+\end{verbatim}
+\begin{solution}[0.7in]
+\begin{verbatim}
+add s1, x0, t0
+\end{verbatim}
+\end{solution}
+
+\part
+\begin{verbatim}
+sll s9, x9, t0
+\end{verbatim}
+\begin{solution}[0.7in]
+\begin{verbatim}
+0x00549CB3
+\end{verbatim}
+\end{solution}
+
+\part
+\begin{verbatim}
+0x03CE2283
+\end{verbatim}
+\begin{solution}[0.7in]
+\begin{verbatim}
+lw t0, 60(t3)
+\end{verbatim}
+\end{solution}
+
+\part
+\begin{verbatim}
+jalr a0, x11, 8
+\end{verbatim}
+\begin{solution}[0.7in]
+\begin{verbatim}
+0x00858567
+\end{verbatim}
+\end{solution}
+
+\part
+\begin{verbatim}
+label: ori t1, t2, 5
+\end{verbatim}
+\begin{solution}[0.7in]
+\begin{verbatim}
+0x0053E313
+\end{verbatim}
+\end{solution}
+
+\part
+\begin{verbatim}
+lui a7, 0xCF61C
+\end{verbatim}
+\begin{solution}[0.7in]
+\begin{verbatim}
+0xCF61C8B7
+\end{verbatim}
+\end{solution}
+
+\end{parts}
+\end{blocksection}
