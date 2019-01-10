@@ -1,0 +1,44 @@
+\begin{blocksection}
+\question
+Now assume \lstinline$a0$ contains the address of the head of a linked list.  Fill in the function 
+below to reverse a linked list. Assume ‘reverse’ follows calling conventions. ‘reverse’ doesn’t return anything. You may not need all lines. 
+
+\begin{verbatim}
+1.  reverse: ______________
+2.  ______________
+3.  ______________
+4.  ______________
+5.  add s0 a0 x0 
+6.  xor s2 s2 s2 #s2 corresponds to the pointer ‘prev’ 
+7.  loop: ___ s0 x0 exit
+8.  ______________
+9.  ______________
+10. add s2 s0 x0 
+11. add s0 s1 x0 
+12. j loop 
+13. exit: ______________
+14. ______________
+15. ______________
+16. addi sp sp 12
+17. j ra
+\end{verbatim}
+
+\begin{solution}[4in]
+\begin{verbatim}
+1.  reverse: addi sp sp -12
+2.  sw s0 0(sp) 
+3.  sw s1 4(sp) 
+4.  sw s2 8(sp) 
+
+8.  lw s1 4(s0)
+9.  sw s2 4(s0)
+
+13. exit:lw s0 0(sp)
+14. lw s1 4(sp)
+15. lw s2 8(sp)
+\end{verbatim}
+
+Lines 1-4 and 13-15 is just following calling conventions for RISC-V, since \lstinline$s0$-\lstinline$s11$ by convention, must be preserved when someone calls ‘reverse’. We notice that \lstinline$s0$, \lstinline$s1$, and \lstinline$s2$ are all being modified.
+
+\end{solution}
+\end{blocksection}

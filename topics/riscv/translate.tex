@@ -1,7 +1,5 @@
 \begin{blocksection}
 \question
-Translate the following RISCV code into C code.
-
 Assume we have two arrays input and result. They are initialized as follows:
 
 \begin{verbatim}
@@ -12,7 +10,7 @@ for (int i = 0; i < 8; i++) {
 }
 \end{verbatim}
 
-You are given the following RISC-V code. Assume register x10 holds the address of input and register x12 holds the address of result. 
+You are given the following RISC-V code. Assume register \lstinline$x10$ holds the address of input and register \lstinline$x12$ holds the address of result. 
 
 \begin{verbatim}
     add x8, x0, x0
@@ -33,18 +31,9 @@ Done:
     ………….
 \end{verbatim}
 
-\begin{verbatim}
-// sizeof(int) == 4
-\end{verbatim}
+Please translate this assembly code into C code. Assume that \lstinline$sizeof(int) = 4$.
 
-
-
-
-
-
-
-
-\begin{solution}
+\begin{solution}[4in]
 \begin{verbatim}
 int sum = 0;
 for (int i = 0; i < 8; i++) {
@@ -52,13 +41,5 @@ for (int i = 0; i < 8; i++) {
     result[i] = sum;
 }
 \end{verbatim}
-\end{solution}
-
-What is the end array stored starting at register x12?
-
-\begin{solution}
-$[0, 1, 3, 6, 10, 15, 21, 28]$
-
-Meta: This is a challenging question for students since they are all new to RISC-V. Make sure to walk through and write out each single RISC-V instruction functionality first. Since the lecture will not cover the detailed name for each register, it will be good just going along with x0 - x31. Drawing all the detailed memory diagram will be helpful for this question since it involves a lot of load and store instructions. 
 \end{solution}
 \end{blocksection}
