@@ -1,0 +1,3 @@
+../published/disc/mentor04.pdf: src/../topics/riscv/substrings2.tex src/../topics/riscv/bltu.tex src/../topics/riscv/opcode.tex src/../topics/caches/cacherules.tex src/../topics/riscv/substrings.tex
+
+../published/disc/mentor04_sol.pdf: src/../topics/riscv/substrings2.tex src/../topics/riscv/bltu.tex src/../topics/riscv/opcode.tex src/../topics/caches/cacherules.tex src/../topics/riscv/substrings.tex

@@ -23,54 +23,5 @@ int is_substr(char* s1, char* s2) {
 }
 \end{verbatim}
 
-Fill in the following RISC-V code based on the given C code:
-
-\begin{verbatim}
-1. is _substr:
-2. 	mv s1, a0
-3. 	mv s2, a1
-4. 	jal ra, strlen
-5. 	mv s3, a0
-6. 	mv a0, s2
-7. 	jal ra, strlen
-8. 	sub s3, s3, a0
-9. Outer_Loop:
-10. ______, ______, ______, False
-11. add t0, x0, x0
-12. Inner_Loop:
-13. add t1, t0, s3
-14. add t1, s1, t1
-15. lbu t1, 0(t1)
-16. ____________
-17. ____________
-18. ______, t1, ______, Update_Offset
-19. addi t0, t0, 1
-20. add t2, t0, s2
-21. ____________
-22. beq t2, ______, ______,
-23. jal x0 Inner_Loop
-24. Update_Offset: addi s3, s3, -1
-25. ____________
-26. False: xor a0, a0, ______
-27. jal x0, End
-28. True: addi a0, x0, 1
-29. End: ______.
-\end{verbatim}
-
-\begin{solution}
-\begin{verbatim}
-10. blt s3, x0, False
-
-16. add t2 s2 t0
-17. lbu t2 0(t2)
-18. bne t1, t2, Update Offset
-
-21. lbu t2 0(t2)
-22. beq t2, x0, True
-
-25. jal x0 Outer_Loop
-26. xor a0, a0, a0
-\end{verbatim}
-\end{solution}
 
 \end{blocksection}
