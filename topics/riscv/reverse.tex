@@ -3,23 +3,23 @@
 Assume we have the following linked list node struct:
 \begin{verbatim}
 struct node{
-	int val;
-	struct node * next;
+    int val;
+    struct node * next;
 };
 \end{verbatim}
 
 Also, recall the function to reverse a linked list iteratively, given a pointer to the head of the linked list. 
 \begin{verbatim}
 void reverse(struct node * head){
-	struct node * prev = NULL; 
-	struct node * next;
-	struct node * curr = head;
-	while(curr != NULL){
-		next = curr->next; 
-		curr->next = prev;
-		prev = curr;
-		curr = next; 
-	}
+    struct node * prev = NULL; 
+    struct node * next;
+    struct node * curr = head;
+    while(curr != NULL){
+        next = curr->next; 
+        curr->next = prev;
+        prev = curr;
+        curr = next; 
+    }
 }
 \end{verbatim}
 
@@ -46,7 +46,7 @@ below to reverse a linked list. Assume ‘reverse’ follows calling conventions
 17. j ra
 \end{verbatim}
 
-\begin{solution}
+\begin{solution}[0.9in]
 \begin{verbatim}
 1.  reverse: addi sp sp -12
 2.  sw s0 0(sp) 
@@ -71,15 +71,15 @@ Lines 1-4 and 13-15 is just following calling conventions for RISC-V, since s0-s
 
 \begin{verbatim}
 void reverse(struct node * head){
-	struct node * prev = NULL; 
-	struct node * next;
-	struct node * curr = head;
-	while(curr != NULL){
-		next = curr->next 
-		curr->next = prev
-		prev = curr
-		curr = next;
-	}
+    struct node * prev = NULL; 
+    struct node * next;
+    struct node * curr = head;
+    while(curr != NULL){
+        next = curr->next 
+        curr->next = prev
+        prev = curr
+        curr = next;
+    }
 }
 \end{verbatim}
 
