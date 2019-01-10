@@ -9,6 +9,11 @@ The style is provided by `commonheader.sty`.
 
 ## Deployed Handouts
 
+* [Mentoring 3](https://csmberkeley.github.io/csm-61c/mentor03.pdf)
+  ([Solution](https://csmberkeley.github.io/csm-61c/mentor03_sol.pdf))
+* [Mentoring 4](https://csmberkeley.github.io/csm-61c/mentor04.pdf)
+  ([Solution](https://csmberkeley.github.io/csm-61c/mentor04_sol.pdf))
+
 ## Making Handouts
 
 To make an individual worksheet, run the following command in the repository's
