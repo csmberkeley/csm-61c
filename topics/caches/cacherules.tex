@@ -1,0 +1,75 @@
+\begin{blocksection}
+\question
+You are given a RISCV machine with a single level of 2KiB direct-mapped cache with 512B cache blocks. It has 1MiB of physical address space.
+
+The function \lstinline$foo()$ is ran on the system with a cold cache and as the only process: 
+
+\begin{verbatim}
+#define ARRAY_LEN 4096 
+#define STEP_SIZE 64
+// A starts at 0x10000 
+// B starts at 0x20000 
+void foo (int* A, int* B) {
+    int total = 0; 
+    for ( int i = 0; i < ARRAY_LEN; i += STEP_SIZE ) 
+        {
+            total += A[ i ]; 
+            total -= B[ i ]; 
+        } 
+}
+\end{verbatim}
+
+\begin{parts}
+\part
+Calculate the number of Tag, Index, and Offset bits for this cache.
+
+\begin{solution}[0.7in]
+We are given that each cache block has $2^9$ bytes. We also know that our physical address is $20$ bits because there are $2^{20}$  possible memory locations and $20$ bits is sufficient to replace each one. We also know that our cache size is $2^{11}$ bytes. Let’s first calculate how many cache blocks are in our cache. There is $\frac{2^{11}}{2^9}$, so there are $2^2 = 4$ cache blocks. We know that our cache is direct-mapped, so each cache has a unique index, thus we must use $2$ bits to represent our index. We also know that for each index, we have only one cache block and each cache block can hold $512$B, which means our offset must be $9$ bits, since $9$ bits can represent $512$ different offsets. To find the number of TAG bits, we simply subtract from our total number of bits, 20, with $9 + 2 = 11$ bits, to get $9$ bits.
+\begin{verbatim}
+T: 9 I: 2 O: 9
+\end{verbatim}
+\end{solution}
+
+\part
+Calculate the hit percentage for this cache after running foo.
+
+\begin{solution}[0.7in]
+For each iteration of our loop we read and write memory twice. Our step size is $2^8$. For each access to memory, our cache loads in the next $512$B or the next $128$ ints of array A and B. We start with a compulsory miss reading \lstinline$A[i]$, which loads \lstinline$A[i], A[i+1]... A[i+127]$. When we try to access \lstinline$B[i]$, notice that we will try to read the same index and offset of A[i], but our cache will notice that our TAG is different, thus it will evict \lstinline$A[i], A[i+1]... A[i+127]$ from our cache and load \lstinline$B[i], B[i+1]... B[i+127]$. We will get a conflict miss. The pattern is as follows for each iteration:
+\begin{verbatim}
+A: M
+B: M
+\end{verbatim}
+We get a cache hit rate of $0\%$.
+\end{solution}
+
+\part
+The cache is now cleared and the code is run again. This time, \lstinline$A$ and \lstinline$B$ are pointing to the same array, which starts at \lstinline$0x10000$. Calculate the new hit percentage.
+
+\begin{solution}[0.7in]
+We have the same parameters as before. The only difference is since \lstinline$A$ and \lstinline$B$ are the same array, when we access array \lstinline$B$, we will get a cache hit because we read \lstinline$A[i]$ on the previous line and thus already load have \lstinline$B[i]$ loaded.
+Pattern of each iteration:
+\begin{verbatim}
+A: M H
+B: H H
+\end{verbatim}
+We get a cache hit rate of $75\%$. 
+\end{solution}
+
+\part
+Assume \lstinline$A$ and \lstinline$B$ starts once again at \lstinline$0x10000$ and \lstinline$0x20000$. What is the new hit percentage if we ran foo on a fully associative cache, with all other parameters staying the same?
+
+\begin{solution}[0.7in]
+This is similar to question 1, but instead we work with a fully associative cache. Remember that the issue of having a direct mapped cache was that \lstinline$A$ and \lstinline$B$ would be evicting each other since they share the same cache block. Now that we a fully associative cache, \lstinline$A$ and \lstinline$B$ won’t evict each other. When \lstinline$A[i]$ is accessed and \lstinline$A[i], A[i+1]... A[i+127]$ is loaded in our cache block, when accessing \lstinline$B[i]$, the cache will load \lstinline$B[i]$, \lstinline$B[i+1].. B[i+127]$ since we have more space for more cache blocks in our index (since this is a fully associative cache, the cache only have one index as all data is mapped to one index). In the next iteration when we access \lstinline$A[i+64]$ and \lstinline$B[i+64]$, we will have those loaded in our cache block from the previous access.
+Pattern: 
+\begin{verbatim}
+i = 0:   M (compulsory miss from A) M (compulsory miss from B)
+i = 64:  H (on A)                   H (on B)
+...
+i = 128: M                          M
+\end{verbatim}
+Given that our step size is $64$, we will receive a hit rate of $50\%$.
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}
