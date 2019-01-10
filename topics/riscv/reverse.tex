@@ -1,0 +1,89 @@
+\begin{blocksection}
+\question
+Assume we have the following linked list node struct:
+\begin{verbatim}
+struct node{
+	int val;
+	struct node * next;
+};
+\end{verbatim}
+
+Also, recall the function to reverse a linked list iteratively, given a pointer to the head of the linked list. 
+\begin{verbatim}
+void reverse(struct node * head){
+	struct node * prev = NULL; 
+	struct node * next;
+	struct node * curr = head;
+	while(curr != NULL){
+		next = curr->next; 
+		curr->next = prev;
+		prev = curr;
+		curr = next; 
+	}
+}
+\end{verbatim}
+
+Now assume a0 contains the address of the head of a linked list.  Fill in the function 
+below to reverse a linked list. Assume ‘reverse’ follows calling conventions. ‘reverse’ doesn’t return anything. You may not need all lines. 
+
+\begin{verbatim}
+1.  reverse: ______________
+2.  ______________
+3.  ______________
+4.  ______________
+5.  add s0 a0 x0 
+6.  xor s2 s2 s2 #s2 corresponds to the pointer ‘prev’ 
+7.  loop: ___ s0 x0 exit
+8.  ______________
+9.  ______________
+10. add s2 s0 x0 
+11. add s0 s1 x0 
+12. j loop 
+13. exit: ______________
+14. ______________
+15. ______________
+16. addi sp sp 12
+17. j ra
+\end{verbatim}
+
+\begin{solution}
+\begin{verbatim}
+1.  reverse: addi sp sp -12
+2.  sw s0 0(sp) 
+3.  sw s1 4(sp) 
+4.  sw s2 8(sp) 
+5.  add s0 a0 x0 
+6.  xor s2 s2 s2 #s2 corresponds to the pointer ‘prev’ 
+7.  loop: beq s0 x0 exit
+8.  lw s1 4(s0)
+9.  sw s2 4(s0)
+10. add s2 s0 x0 
+11. add s0 s1 x0 
+12. j loop 
+13. exit:lw s0 0(sp)
+14. lw s1 4(sp)
+15. lw s2 8(sp)
+16. addi sp sp 12
+17. j ra
+\end{verbatim}
+
+Lines 1-4 and 13-15 is just following calling conventions for RISC-V, since s0-s11 by convention, must be preserved when someone calls ‘reverse’. We notice that s0, s1, and s2 are all being modified. It is helpful to take a look at the C version of reversing a LL. 
+
+\begin{verbatim}
+void reverse(struct node * head){
+	struct node * prev = NULL; 
+	struct node * next;
+	struct node * curr = head;
+	while(curr != NULL){
+		next = curr->next 
+		curr->next = prev
+		prev = curr
+		curr = next;
+	}
+}
+\end{verbatim}
+
+Let s0 be the current node, s1 the next node, and s2 be our prev node. Line 5 ensures the address of head is stored in s0. Line 6 ensures s2 is null. In the C code, we overwrite the value of our ‘next’ pointer, so assigning a value to s1 is pointless. Line 7 is our condition for the while loop. We want the while loop to continue as long as our ‘curr’ pointer isn’t null, thus we must check if s0 = x0. Line 8 directly corresponds to the C code: next = curr -> next. Loading 4(s0) will get us the pointer to the next node in ‘curr’ and we assign its address to s1, our ‘next’ pointer. Line 9 directly corresponds to the C code: curr->next = prev. s2 is the address to ‘prev’ and we want to store this value to curr->next, or in the address s0 offset by 4.  (We are not counting lines that are blank when referring to line numbers).
+
+\end{solution}
+\end{blocksection}
