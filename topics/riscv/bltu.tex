@@ -1,0 +1,28 @@
+\begin{blocksection}
+\question
+You are given the following RISC-V code:
+
+\begin{verbatim}
+Loop:   andi t2 t1 1
+        srli t3 t1 1
+        bltu t1 a0 Loop
+        jalr s0 s1 MAX_POS_IMM
+\end{verbatim}
+
+\begin{parts}
+\part
+What is the value of the byte offset that would be stored in the immediate field of the bltu instruction?
+
+\begin{solution}
+-8
+\end{solution}
+
+\part
+What is the binary encoding of the bltu instruction? Please use hexadecimal to represent your answer. 
+
+\begin{solution}
+0xFEA36CE3
+\end{solution}
+
+\end{parts}
+\end{blocksection}

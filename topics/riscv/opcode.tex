@@ -1,0 +1,32 @@
+\begin{blockquestion}
+\question
+As a curious 61C student, you question why there are so many possible \lstinline$opcode$s, but only 47 instructions. Thus, your propose a revision to the standard 32-bit RISC-V instruction formats where each instruction has a unique \lstinline$opcode$ (which still is 7 bits). You believe this justifies taking out the \lstinline$funct3$ field from the \lstinline$R$, \lstinline$I$, \lstinline$S$, and \lstinline$SB$ instructions, allowing you to allocate bits to other instruction fields except the \lstinline$opcode$ field. 
+
+\begin{parts}
+\part
+What is the largest number of registers that can now be supported in hardware?
+
+\begin{solution}
+64
+\end{solution}
+
+\part
+With the new register size, how far can a \lstinline$jal$ instruction jump to (in halfwords)?
+
+\begin{solution}
+$[-2^{18}, 2^{18-1} ]$
+\end{solution}
+
+\part
+Assume register \lstinline$s0 = 0x1000 0000$, \lstinline$s1 = 0x4000 0000$, \lstinline$PC = 0xA000 0000$. Let’s analyze the instruction \lstlinline$jalr s0, s1, MAX_POS_IMM$ where \lstlinline$MAX_POS_IMM\lstlinline$ is the maximum possible positive immediate for \lstlinline$jalr$. Using the register sizes defined above, what are the values in registers \lstlinline$s0$, \lstlinline$s1$, and \lstlinline$pc$ after the instruction executes?
+
+\begin{solution}
+\begin{verbatim}
+s0 = 0xA000 0004
+s1 = 0x4000 0000
+pc = 0x4000 0FFF
+\end{verbatim}
+\end{solution}
+\end{parts}
+
+\end{blockquestion}
