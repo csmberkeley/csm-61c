@@ -1,0 +1,19 @@
+\begin{blocksection}
+\question
+A machine has an 8 way set associative cache with 512 B of data. The size of each block is 16 B and there are 8 MiB of main memory. How large are the tag, index, and offset fields for an address on this machine using this cache?
+
+\begin{solution}
+Tag: ​17 Index: ​2 Offset: ​4
+
+Detailed solution:
+$8$ MiB ($2^23$ B) main memory => $23$ bit memory address
+cache size = $512$ B = $2^9$ B
+block size = $16$ B = $2^4$ B
+number of blocks = cache size / block size = $\frac{2^9}{2^4}$ = $2^5$
+number of sets = number of blocks / associativity = $\frac{2^5}{8} = 2^2 = 4$
+$I$ = $\log_2$(num of sets) = $\log_2 4 = 2$
+$O$ = $\log_2$(block size) = $\log_2 2^4 = 4$
+$T$ = number of total address bits $- I - O = 23 - 2 - 4 = 17$
+\end{solution}
+
+\end{blocksection}
