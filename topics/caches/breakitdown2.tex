@@ -1,6 +1,6 @@
 \begin{blockquestion}
 \question
-For each sequence of memory accesses below, determine whether each memory access is a hit, compulsory miss, conflict miss, or capacity miss. You are given that each cache is 4 KiB in size and has 256 B blocks, and that the reads occurred in order.
+For each sequence of memory accesses below, determine whether each memory access is a hit, compulsory miss, conflict miss, or capacity miss. Assume each cache has 4 KiB of memory split into 256 B blocks, and that the reads occurred in order.
 
 \begin{parts}
 \part
@@ -23,7 +23,7 @@ Reads:
 \begin{solution}
 \lstinline$0xABCD$: Compulsory Miss
 \lstinline$0xBBCD$: Compulsory Miss
-META: This isn't a conflict miss. You've got 4-ways per set, so loading an item which maps to the same set as 0xABCD doesn't conflict.
+META: Students might be confused why the second miss is not a conflict miss. Because the cache is 4-way set associative, loading an item which maps to the same set as 0xABCD doesn't conflict with the previous memory block.
 \end{solution}
 
 \part
