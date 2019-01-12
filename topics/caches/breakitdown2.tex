@@ -1,0 +1,42 @@
+\begin{blockquestion}
+\question
+For each sequence of memory accesses below, determine whether each memory access is a hit, compulsory miss, conflict miss, or capacity miss. You are given that each cache is 4 KiB in size and has 256 B blocks, and that the reads occurred in order.
+
+\begin{parts}
+\part
+Cache Type: Direct-Mapped:
+Reads:
+\lstinline$0xABCD$
+\lstinline$0xABEF$
+
+\begin{solution}
+\lstinline$0xABCD$: Compulsory Miss
+\lstinline$0xABEF$: Hit
+\end{solution}
+
+\part
+Cache Type: 4-way Set-Associative:
+Reads:
+\lstinline$0xABCD$
+\lstinline$0xBBCD$
+
+\begin{solution}
+\lstinline$0xABCD$: Compulsory Miss
+\lstinline$0xBBCD$: Compulsory Miss
+META: This isn't a conflict miss. You've got 4-ways per set, so loading an item which maps to the same set as 0xABCD doesn't conflict.
+\end{solution}
+
+\part
+Cache Type: Fully Associative
+Reads:
+\lstinline$0xAABB$
+\lstinline$0xBBCC$
+
+\begin{solution}
+\lstinline$0xAABB$: Compulsory Miss
+\lstinline$0xBBCC$: Compulsory Miss
+\end{solution}
+
+
+\end{parts}
+\end{blockquestion}
