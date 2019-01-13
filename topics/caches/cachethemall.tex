@@ -2,22 +2,18 @@
 \question
 Please fill out the corresponding cells in the table below on caches.
 
-\begin{table}[]
 \begin{tabular}{llll}
  & Compulsory & Conflict & Capacity \\
 Cause & & & \\
 Solution & & &
 \end{tabular}
-\end{table}
 
 \begin{solution}
-\begin{table}[]
 \begin{tabular}{llll}
  & Compulsory & Conflict & Capacity \\
 Cause & First time entered in cache & Two addresses map to same block & Not enough space in cache \\
 Solution & No solution. Darn. & Increase associativity & Increase size of cache
 \end{tabular}
-\end{table}
 
 Meta: There is no “one size fits all” cache. Each miss (aside from compulsory) can be solved differently, but it’s all a matter a trade-offs. We can increase associativity to fix conflict misses, but this adds hardware to make sure we’re reading from the right set. Hardware is often costly due to size/spec restraints, and with the end of Moore’s Law, we need to be strategic about which transistors are going where. We can increase the size of our cache to fix capacity misses, but as the cache gets larger, lookups become slower and our cache approaches the same limitations in speed as main memory. Optimizing the cache is usually a 2-level problem: 1) we want the cache to be big enough to hold as much useful data as possible, but small enough to maintain the speed of fast accesses, and 2) we want our code to be knowledgeable of the cache to reduce misses in general.
 

@@ -18,42 +18,4 @@ uint16_t sum (uint16_t *arr) {
 						
 This produces a hit rate (HR) of $\frac{7}{8}$ for the L1 cache and $\frac{3}{4}$ for the L2 cache. Given that ​\lstinline$arr$​ is a block aligned address and ​\lstinline$sizeof (uint16_t) == 2​$:
 
-\begin{parts}
-\part
-What is the blocksize of the L1 cache ​\textbf{in bytes}​ that produces its hit rate?
-
-\begin{solution}
-L1_blocksize: ​16 B
-
-A hit rate of $\frac{7}{8}$ for L1 means the miss/hit pattern is, for every $8$ consecutive memory accesses (\lstinline$arr[i]$), we miss on the first and hit on the next $7$ accesses. This means on the first miss, L1 fetches a block from L2 into L1 that contains the element we’re currently accessing PLUS the next 7 elements in the array. Since each element is a \lstinline$uint16_t$, which is $2$ B, the block size for L1 is $8 \times 2 = 16$ B.
-\end{solution}
-
-\part
-Use the variable ​$Y$​ to represent the answer to part (a). What is the blocksize of the L2 cache ​\textbf{in bytes}​ that produces its hit rate? Express your answer as a function of ​$Y​$ and NOT as a single number.
-
-\begin{solution}
-L2_blocksize: ​$4 \times Y = 64$ B
-
-A hit rate of $\frac{3}{4}$ for L2 means the miss/hit pattern is, for every $4$ misses at L1 level, L2 misses on the first L1 miss and hits on the next $3$ L1 misses. So what happens is on the first L1 miss (and L2 also misses), L2 fetches a whole block from main memory, and that block is $4$ times the size of a L1 block. This ensures that for the next $3$ L1 misses, L2 already has the block that L1 is asking for.
-\end{solution}
-
-Recall that the L1 HR is $\frac{7}{8}$ and the L2 HR is $\frac{3}{4}$. If the L1 Cache has a hit time of $2$ cycles, the L2 cache has a hit time of $8$ cycles, and main memory has a hit time of $96$ cycles:
-
-\part
-How many total cycles are spent accessing memory on this piece of code? Express your answer in the form ​$C \times 2i$​ ​, where ​$C$​ is an integer not divisible by $2$.
-
-\begin{solution}
-Total cycles: ​$2048 \times (2 + \frac{1}{8} \times (8 + \frac{1}{4} \times 96)) = 2^{11} \times (2 + \frac{8}{8} + \frac{96}{32}) = 2^{11} * 6 = 3 \times 2^{12} = 12,288$
-\end{solution}
-
-\part
-If we change the L1 cache from being direct mapped to being fully associative with LRU, how does its hit rate change on the same code? Does it increase, decrease, not change at all, or is it impossible to tell?
-
-\begin{solution}
-No Change
-
-The basic idea is that we never look back at a block once we've gone passed it after its fetched from memory. So a cache of any associativity would not help.
-\end{solution}
-
-\end{parts}
 \end{blocksection}

@@ -1,0 +1,11 @@
+\begin{blocksection}
+\question
+What is the blocksize of the L1 cache ​\textbf{in bytes}​ that produces its hit rate?
+
+\begin{solution}[0.7in]
+L1 blocksize: ​16 B
+
+A hit rate of $\frac{7}{8}$ for L1 means the miss/hit pattern is, for every $8$ consecutive memory accesses (\lstinline$arr[i]$), we miss on the first and hit on the next $7$ accesses. This means on the first miss, L1 fetches a block from L2 into L1 that contains the element we’re currently accessing PLUS the next 7 elements in the array. Since each element is a \lstinline$uint16_t$, which is $2$ B, the block size for L1 is $8 \times 2 = 16$ B.
+\end{solution}
+
+\end{blocksection}

@@ -1,0 +1,12 @@
+\begin{blocksection}
+\question
+Use the variable ​$Y$​ to represent the answer to part (a). What is the blocksize of the L2 cache ​\textbf{in bytes}​ that produces its hit rate? Express your answer as a function of ​$Y​$ and NOT as a single number.
+
+\begin{solution}[0.7in]
+L2 blocksize: ​$4 \times Y = 64$ B
+
+A hit rate of $\frac{3}{4}$ for L2 means the miss/hit pattern is, for every $4$ misses at L1 level, L2 misses on the first L1 miss and hits on the next $3$ L1 misses. So what happens is on the first L1 miss (and L2 also misses), L2 fetches a whole block from main memory, and that block is $4$ times the size of a L1 block. This ensures that for the next $3$ L1 misses, L2 already has the block that L1 is asking for.
+\end{solution}
+
+Recall that the L1 HR is $\frac{7}{8}$ and the L2 HR is $\frac{3}{4}$. If the L1 Cache has a hit time of $2$ cycles, the L2 cache has a hit time of $8$ cycles, and main memory has a hit time of $96$ cycles:
+\end{blocksection}
