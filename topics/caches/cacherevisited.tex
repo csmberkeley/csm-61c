@@ -1,0 +1,39 @@
+\begin{blocksection}
+\question
+Assume we have a single L1 data cache having the following characteristics: 
+- 4 KiB cache size 
+- 16 byte blocks 
+- Direct Mapped
+
+Assume the following piece of code is run in a 32-bit address space with \lstinline$sizeof(int) = 4$:
+
+\begin{verbatim}
+#define SIZE 8192   // 2^13
+
+int ARRAY[SIZE]; 
+int main() {
+	ARRAY[0] = ARRAY[4] + ARRAY[8]; // This happens before Loop 1
+	for (int i = 0; i < SIZE - 16; i += 4) {      // Loop 1
+		ARRAY[i] += ARRAY[i + 4] + ARRAY[i + 8] + ARRAY[i + 12];
+	}
+	for (int i = SIZE - 1; i >= 0; i -= 32) {     // Loop 2
+		ARRAY[i] += 10;
+	}
+}
+\end{verbatim}
+
+What is the T:I:O breakdown?
+
+\begin{solution}
+Tag: 20, Index: 8, Offset: 4
+\end{solution}
+
+\question
+Assume that we start with a cold cache from the start of main(), what data does the cache contain after the first line (the line before Loop 1) is executed? What is the hit rate for this line?
+
+\begin{solution}
+After this line, the cache contains 3 valid blocks, the first block containing elements at index 0 through 3, the second containing elements at index 4 through 7, and the third containing elements at index 8 through 11.
+The hit rate is 0. Since we start with a cold cache and each cache block can hold 4 integers, all three memory accesses result in compulsory misses. 
+\end{solution}
+
+\end{blocksection}
