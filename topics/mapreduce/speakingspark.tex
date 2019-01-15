@@ -1,0 +1,47 @@
+\begin{blocksection}
+\question
+In this question let’s write Spark to find the mode of a list of values and how often it occurs. As a refresher, the mode is the number that appears most often. If there is a tie, select any of the options. Fill in the blanks for the Python code below.​ Use the following Spark Python functions when necessary: map​, flatmap​, reduce​, reduceByKey​. 
+
+\begin{verbatim}
+#Sample input:  [1​, 2, 1​, 2, 3, 4, 5, 6, 4, 2, 1,​ 3, 3, 1​, 1​, 2, 2, 1​]
+#Sample output: (1, 6) => 1 is the mode, and it occurs 6 times
+
+def output_data (val):
+    return __________
+
+def compute_count (a, b):
+    return __________
+
+def find_max_occurrence (a, b):
+    if a[1] > b[1]: 
+        return a 
+    return b
+
+#values = list (numbers) 
+modeData = sc.parallelize (values)
+			 .__________(____________________)
+			 .__________(____________________)
+\end{verbatim}
+
+\begin{solution}
+\begin{verbatim}
+def output_data (val):
+    return (val, 1)
+
+def compute_count (a, b):
+    return a + b
+
+modeData.map(output_data)
+         .reduceByKey(compute_count)
+         .reduce(find_max_occurrence)
+\end{verbatim}
+ 
+Detailed solution:
+\lstinline$output_data$ maps each element in the list to 1 as the count, so that later we can aggregate by key. We use the map function instead of flapMap, because each input is mapped to exactly one output.
+
+\lstinline$compute_count$ is where we count the occurrences for each element in the list. We call reduceByKey, because we want to preserve the key.
+
+\lstinline$find_max_occurrence$ helps us compare the counts for each element and find the one with the most occurences. We call reduce so that we get one single value.
+\end{solution}
+
+\end{blocksection}
