@@ -13,6 +13,8 @@ The style is provided by `commonheader.sty`.
   ([Solution](https://csmberkeley.github.io/csm-61c/mentor03_sol.pdf))
 * [Mentoring 4](https://csmberkeley.github.io/csm-61c/mentor04.pdf)
   ([Solution](https://csmberkeley.github.io/csm-61c/mentor04_sol.pdf))
+* [Mentoring 5](https://csmberkeley.github.io/csm-61c/mentor05.pdf)
+  ([Solution](https://csmberkeley.github.io/csm-61c/mentor05_sol.pdf))
 
 ## Making Handouts
 
