@@ -1,0 +1,34 @@
+\begin{blocksection}
+\question
+Let's convert the linked list to an array. Fill in the missing code.
+
+\begin{verbatim}
+int* to_array(sll_node *sll, int size) {
+    int i = 0;
+    int *arr = _________________;
+    while (sll) {
+        arr[i] = ___________;
+        sll = ___________;
+        _______;
+    }
+    return arr;
+}
+\end{verbatim}
+
+\begin{solution}
+\begin{verbatim}
+int* to_array(sll_node *sll, int size) {
+    int i = 0;
+    int *arr = malloc(size * sizeof(int));
+    while (sll) {
+        arr[i] = sll->value;
+        sll = sll->next;
+        i++;
+    }
+    return arr;
+}
+\end{verbatim}
+
+Converting the linked list to an array requires traversing the linked list. But first, you must allocate enough space to store \lstinline$size$ number of integers. Then, you can go ahead and iterate over the linked list. Assign to the array each corresponding linked list value. Move the pointer of the linked list and increment the array counter after each assignment.
+\end{solution}
+\end{blocksection}

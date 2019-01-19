@@ -1,0 +1,17 @@
+\begin{blocksection}
+\question
+Fill out the declaration of a singly linked linked-list node below.
+
+\begin{verbatim}
+typedef struct node {
+    int value;
+    ____________ next; // pointer to the next element 
+} sll_node;
+\end{verbatim}
+
+\begin{solution}
+\lstinline$struct node* next;$
+
+Remember the pointer to the next node in a linked list is one pointing to another node, so the type of next is a pointer to the same type as the first linked list node.
+\end{solution}
+\end{blocksection}

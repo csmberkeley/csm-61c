@@ -1,0 +1,39 @@
+\begin{blocksection}
+Finally, complete the function \lstinline$delete_even()$ that will delete every second element of the list. For example, given the lists below:
+
+\begin{verbatim}
+Before: Node 1 → Node 2 → Node 3 → Node 4 
+After: Node 1 → Node 3
+\end{verbatim}
+
+Calling \lstinline$delete_even()$ on the list labeled "Before" will change it into the list labeled "After". All list nodes were created via dynamic memory allocation.
+
+\begin{verbatim}
+void delete_even(sll_node *s11) {
+    sll_node *temp; 
+    if (!sll || !sll->next) {
+        return;
+    }
+    temp = ________; 
+    sll->next = ________;
+    free(________); 
+    delete_even(________);
+}
+\end{verbatim}
+
+\begin{solution}
+\begin{verbatim}
+void delete_even(sll_node *s11) {
+    sll_node *temp; 
+    if (!sll || !sll->next) {
+        return;
+    }
+    temp = sll->next; 
+    sll->next = temp->next (or sll->next->next);
+    free(temp); 
+    delete_even(sll->next);
+}
+\end{verbatim}
+\end{solution}
+
+\end{blocksection}
