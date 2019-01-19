@@ -1,0 +1,3 @@
+../published/disc/mentor01.pdf: src/../topics/numberrepresentation/unique.tex src/../topics/c/linkedlists3.tex src/../topics/numberrepresentation/range.tex src/../topics/c/location.tex src/../topics/c/linkedlists2.tex src/../topics/c/linkedlists1.tex src/../topics/c/rankings.tex
+
+../published/disc/mentor01_sol.pdf: src/../topics/numberrepresentation/unique.tex src/../topics/c/linkedlists3.tex src/../topics/numberrepresentation/range.tex src/../topics/c/location.tex src/../topics/c/linkedlists2.tex src/../topics/c/linkedlists1.tex src/../topics/c/rankings.tex
