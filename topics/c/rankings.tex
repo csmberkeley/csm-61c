@@ -1,0 +1,36 @@
+\begin{blocksection}
+\question
+Consider the C code here, and assume the malloc call succeeds. Rank the following values from 1 to 5, with 1 being the least, right before bar returns.  Use the memory layout from class;  Treat all addresses as unsigned #s. 
+
+\begin{verbatim}
+#include <stdlib.h> 
+
+int FIVE = 5;
+
+int bar(int x) {
+    return x * x;
+}
+
+int main(int argc, char *argv[]) { 	
+    int *foo = malloc(sizeof(int)); 	
+    if (foo) free(foo); 	
+    bar(10); //  snapshot just before it returns 	
+    return 0; 
+}
+\end{verbatim}
+
+\lstinline$\&foo$:\quad ____
+\lstinline$FIVE$:\quad ____
+\lstinline$&FIVE$:\quad ____
+\lstinline$&x$:\quad ____
+
+\begin{solution}
+\&foo:\quad 5
+FIVE:\quad 1
+\&FIVE:\quad 2
+\&x:\quad 4
+
+Going in order numerically, \lstinline$FIVE$ itself contains the value “5”, \lstinline$&FIVE$ contains the address of \lstinline$FIVE$ and since it is a global variable, it is stored statically, which means that it will be stored in the data segment (this address will be larger than 5, since the reserved space beneath the text segment is also greater than 5). Since \lstinline$foo$ is a pointer, it contains the address of whatever it was assigned to, which in this case, is \lstinline$malloc(sizeof(int))$. As a result, \lstinline$foo$ is stored on the heap, so it is above the data segment and so the value it contains will be larger than the address of \lstinline$FIVE$, since the heap is above the data segment. \lstinline$&foo$ itself lives in on the stack, since the space that it takes to store the pointer to the data that foo holds is allocated on the stack. This is above the heap. \lstinline$x$ is a local variable, so it also gets allocated on the stack so its address is also greater than the value stored in \lstinline$foo$; the reason \lstinline$&x$ is smaller than \lstinline$&foo$ is simply because the stack grows downwards, and during the execution of the program, the space for \lstinline$foo$ is allocated before the space for \lstinline$x$, so foo lives in higher memory than \lstinline$x$.
+\end{solution}
+
+\end{blocksection}
