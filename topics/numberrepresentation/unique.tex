@@ -1,0 +1,44 @@
+\begin{blocksection}
+\question
+How many unique integers can be represented in each case?
+
+\begin{parts}
+\part
+Unsigned:
+
+\begin{solution}[0.5in]
+$2^n$
+\end{solution}
+
+\part
+Two's Complement:
+
+\begin{solution}[0.5in]
+$2^n$
+\end{solution}
+
+\part
+One's Complement:
+
+\begin{solution}[0.5in]
+$2^n - 1$
+\end{solution}
+
+\part
+Bias (with bias $b$):
+
+\begin{solution}[0.5in]
+$2^n$
+\end{solution}
+
+\end{parts}
+
+\begin{solution}
+For both unsigned and two’s complement, each bit string corresponds to a different integer, so we have $2^n$ unique integers.
+ 
+Ones’ complement is an exception: we have two zeroes. $2^n$ treats these two zeroes separately, but really the two are indistinguishable. Therefore we need to subtract one possibility to get $2^n - 1$.
+ 
+Bias is just a shifted version of unsigned and so it can represent the same number of integers.
+\end{solution}
+
+\end{blocksection}
