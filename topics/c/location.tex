@@ -1,0 +1,56 @@
+\begin{blocksection}
+\question
+Consider the following C program:
+
+\begin{verbatim}
+int a = 5;
+int main()
+{
+    int b = 0;
+    char* s1 = “cs61c”;
+    char s2[] = “cs61c”;
+    char* c = malloc(sizeof(char) * 100);
+    return 0;
+};
+\end{verbatim}
+
+For each of the following values, state the location in the memory layout where they are stored. Answer with code, static, heap, or stack.
+
+\begin{parts}
+\part
+\lstinline$s1$
+\begin{solution}[0.3in]
+stack
+\end{solution}
+
+\part
+\lstinline$s2$
+\begin{solution}[0.3in]
+stack
+\end{solution}
+
+\part
+\lstinline$s1[0]$
+\begin{solution}[0.3in]
+static
+\end{solution}
+
+\part
+\lstinline$s2[0]$
+\begin{solution}[0.3in]
+static
+\end{solution}
+
+\part
+\lstinline$c[0]$
+\begin{solution}[0.3in]
+heap
+\end{solution}
+
+\part
+\lstinline$a$
+\begin{solution}[0.3in]
+static
+\end{solution}
+\end{parts}
+\end{blocksection}
