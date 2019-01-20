@@ -1,0 +1,79 @@
+\begin{blocksection}
+\question
+Write the equivalent C statements in RISC-V. Assume the following:
+
+\begin{itemize}
+\item The variable ‘x’ resides in register ‘x1’
+\item The variable ‘y’ resides in register ‘x2’
+\item The variable ‘z’ resides in register ‘x3’
+\item You are free to use the register ‘x4’ to hold temporary values
+\end{itemize}
+
+\begin{parts}
+\part
+\begin{verbatim}
+z = x + y
+\end{verbatim}
+
+\begin{solution}[0.5in]
+\begin{verbatim}
+add x3, x1, x2
+\end{verbatim}
+\end{solution}
+
+\part
+\begin{verbatim}
+x = x + 1
+\end{verbatim}
+
+\begin{solution}[0.5in]
+\begin{verbatim}
+add x1, x1, 1
+\end{verbatim}
+\end{solution}
+
+\part
+\begin{verbatim}
+y = y - 1
+\end{verbatim}
+
+\begin{solution}[0.5in]
+\begin{verbatim}
+addi x2, x2, -1
+\end{verbatim}
+\end{solution}
+
+\part
+\begin{verbatim}
+x = x + 0
+\end{verbatim}
+
+\begin{solution}[0.5in]
+\begin{verbatim}
+add x1, x1, x0  OR  addi x1, x1, 0
+\end{verbatim}
+\end{solution}
+
+\part
+\begin{verbatim}
+x = y - z + x - 4
+\end{verbatim}
+
+\begin{solution}[1in]
+\begin{verbatim}
+add x4, x1, x0  OR  addi x4, x1, 0
+sub x1, x2, x3
+add x1, x1, x4
+addi x1, x1, -4
+
+OR
+
+sub x4, x2, x3
+add x1, x4, x1
+addi x1, x1, -4
+
+\end{verbatim}
+\end{solution}
+
+\end{parts}
+\end{blocksection}
