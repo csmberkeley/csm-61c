@@ -1,0 +1,50 @@
+\begin{blocksection}
+\question Translate the following code from RISC-V to C. Assume that register x9 stores the address of an integer array, ptr, whose length is 30.
+
+\begin{verbatim}
+addi x6 x0 1
+addi x10 x0 30
+L1: bge x6 x10 Next 
+andi x7 x6 1 
+slli x8 x6 2 
+add x8 x8 x9 
+sw x7 0(x8) 
+addi x6 x6 1 
+j L1
+Next:
+\end{verbatim}
+
+\begin{solution}[0.5in]
+\begin{verbatim}
+for (int i = 1; i < 30; i++) { 
+    ptr[ i ] = i & 1; 
+}
+\end{verbatim}
+\end{solution}
+
+\question Translate the following code from C to RISC-V. Again, assume that register x9 stores the address of an integer array, ptr, whose length is 30.
+
+\begin{verbatim}
+int total = 0;
+for (int i = 0; i < 30; i++) { 
+    total += ptr[ i ]; 
+}
+\end{verbatim}
+
+\begin{solution}[1.5in]
+\begin{verbatim}
+add x6 x0 x0
+add x7 x0 x0
+addi x10 x0 30
+slli x11 x10 2
+L2: bge x6 x11 End 
+add x8 x9 x6 
+lw x8 0(x8) 
+add x7 x7 x8 
+addi x6 x6 4 
+j L2
+End:
+\end{verbatim}
+\end{solution}
+
+\end{blocksection}
