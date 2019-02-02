@@ -1,3 +1,3 @@
-../published/disc/mentor04.pdf: src/../topics/riscv/substrings2.tex src/../topics/riscv/bltu.tex src/../topics/riscv/opcode.tex src/../topics/caches/cacherules.tex src/../topics/riscv/substrings.tex
+../published/disc/mentor04.pdf: src/../topics/c/rankings.tex src/../topics/numberrepresentation/range.tex src/../topics/c/linkedlists2.tex src/../topics/riscv/bltu.tex src/../topics/riscv/hardtranslate.tex src/../topics/riscv/opcode.tex src/../topics/numberrepresentation/unique.tex src/../topics/c/location.tex src/../topics/c/linkedlists3.tex src/../topics/c/linkedlists1.tex
 
-../published/disc/mentor04_sol.pdf: src/../topics/riscv/substrings2.tex src/../topics/riscv/bltu.tex src/../topics/riscv/opcode.tex src/../topics/caches/cacherules.tex src/../topics/riscv/substrings.tex
+../published/disc/mentor04_sol.pdf: src/../topics/c/rankings.tex src/../topics/numberrepresentation/range.tex src/../topics/c/linkedlists2.tex src/../topics/riscv/bltu.tex src/../topics/riscv/hardtranslate.tex src/../topics/riscv/opcode.tex src/../topics/numberrepresentation/unique.tex src/../topics/c/location.tex src/../topics/c/linkedlists3.tex src/../topics/c/linkedlists1.tex
