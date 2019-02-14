@@ -1,0 +1,31 @@
+\begin{blocksection}
+\question
+Let’s consider the design of the FSM with more formality.
+
+\begin{parts}
+\item
+If a 0 is input into the FSM, what should the FSM output?
+\begin{solution}[0.3in]
+The FSM should always output 0. We only care about outputting 1 when the input is 1.
+\end{solution}
+
+\item
+If a 1 is input into the FSM, what does the FSM need to remember to make the correct decision?
+\begin{solution}[0.3in]
+The FSM needs to remember how many 1’s were input before the current 1. More concretely, it needs to know whether no 1’s, one 1, or two 1’s were previously inputted.
+\end{solution}
+
+How many unique states does the FSM need?
+\item
+\begin{solution}
+Building off of part b), we need 4 states in total for the following purposes:
+\begin{itemize}
+\item Start/Reset: A starting point for the machine as well as a reset if we ever see 0
+\item One 1: We’ve seen one 1 so far.
+\item Two 1’s: We’ve seen two 1’s so far. This needs to be distinguishable from only seeing one 1.
+\item Three 1’s: We’ve seen three 1’s so far. This needs to be distinguishable from the other states
+\end{itemize}
+Meta: Note that three consecutive 1’s is indistinguishable from seeing four, five, six, etc. consecutive 1’s.
+\end{solution}
+\end{parts}
+\end{blocksection}
