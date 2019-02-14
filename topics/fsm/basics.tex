@@ -1,0 +1,63 @@
+\begin{blocksection}
+Suppose we want to design a FSM that takes a single bit (1/0) as input, and outputs a single bit (1/0). We want the FSM to output true (1) only if it has seen three consecutive 1’s as its input. Let’s design it!
+
+\question
+Given the following input streams, fill in what the FSM should output at each time step:
+\begin{parts}
+
+\item
+\begin{tabular}{ |l|l|l|l|l| } 
+ \hline
+ In & 0 & 1 & 0 & 1 \\
+ \hline
+ Out & & & & \\
+\end{tabular}
+
+\begin{solution}
+\begin{tabular}{ |l|l|l|l|l| } 
+ \hline
+ In & 0 & 1 & 0 & 1 \\
+ \hline
+ Out & 0 & 0 & 0 & 0 \\
+\end{tabular}
+The FSM has only seen individual 1’s (non-consecutive), so it should output only zeros.
+\end{solution}
+\item
+
+\begin{tabular}{ |l|l|l|l|l| } 
+ \hline
+ In & 1 & 1 & 0 & 0 \\
+ \hline
+ Out & & & & \\
+\end{tabular}
+
+\begin{solution}
+\begin{tabular}{ |l|l|l|l|l| } 
+ \hline
+ In & 1 & 1 & 0 & 0 \\
+ \hline
+ Out & 0 & 0 & 0 & 0 \\
+\end{tabular}
+The FSM has only seen two consecutive 1’s, but not three. It should still output only zeros.
+\end{solution}
+
+\item
+\begin{tabular}{ |l|l|l|l|l| } 
+ \hline
+ In & 0 & 1 & 1 & 1 \\
+ \hline
+ Out & & & & \\
+\end{tabular}
+
+\begin{solution}
+\begin{tabular}{ |l|l|l|l|l| } 
+ \hline
+ In & 0 & 1 & 1 & 1 \\
+ \hline
+ Out & 0 & 0 & 0 & 1 \\
+\end{tabular}
+The FSM has finally seen three consecutive 1’s, but it should only output 1 (true) after it has seen the third 1.
+\end{solution}
+\end{parts}
+
+\end{blocksection}
