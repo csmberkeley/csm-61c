@@ -11,6 +11,7 @@ Given the following input streams, fill in what the FSM should output at each ti
  In & 0 & 1 & 0 & 1 \\
  \hline
  Out & & & & \\
+ \hline
 \end{tabular}
 
 \begin{solution}
@@ -19,6 +20,7 @@ Given the following input streams, fill in what the FSM should output at each ti
  In & 0 & 1 & 0 & 1 \\
  \hline
  Out & 0 & 0 & 0 & 0 \\
+ \hline
 \end{tabular}
 The FSM has only seen individual 1’s (non-consecutive), so it should output only zeros.
 \end{solution}
@@ -29,6 +31,7 @@ The FSM has only seen individual 1’s (non-consecutive), so it should output on
  In & 1 & 1 & 0 & 0 \\
  \hline
  Out & & & & \\
+ \hline
 \end{tabular}
 
 \begin{solution}
@@ -37,6 +40,7 @@ The FSM has only seen individual 1’s (non-consecutive), so it should output on
  In & 1 & 1 & 0 & 0 \\
  \hline
  Out & 0 & 0 & 0 & 0 \\
+ \hline
 \end{tabular}
 The FSM has only seen two consecutive 1’s, but not three. It should still output only zeros.
 \end{solution}
@@ -47,6 +51,7 @@ The FSM has only seen two consecutive 1’s, but not three. It should still outp
  In & 0 & 1 & 1 & 1 \\
  \hline
  Out & & & & \\
+ \hline
 \end{tabular}
 
 \begin{solution}
@@ -55,6 +60,7 @@ The FSM has only seen two consecutive 1’s, but not three. It should still outp
  In & 0 & 1 & 1 & 1 \\
  \hline
  Out & 0 & 0 & 0 & 1 \\
+ \hline
 \end{tabular}
 The FSM has finally seen three consecutive 1’s, but it should only output 1 (true) after it has seen the third 1.
 \end{solution}
