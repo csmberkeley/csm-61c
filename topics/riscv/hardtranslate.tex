@@ -12,10 +12,9 @@ for (int i = 0; i < 8; i++) {
 You are given the following RISC-V code. Assume register x10 holds the address of input and register x12 holds the address of result.
 
 \begin{verbatim}
-    add x8, x0, x0
-    addi x5, x0, 8
-    addi x11, x0, 0
-    addi x12, x0, 0
+    add x8, x0, 0
+    addi x5, x0, 0
+    addi x11, 0, 8
 Loop:
     beq x5, x11, Done
     lw x6, 0(x10)
