@@ -1,0 +1,25 @@
+\begin{blocksection}
+
+\question
+Generate the control signals for movz. The values should be 0, 1, or X (don’t care) terms. You must use don’t care terms where possible.
+
+\begin{tabular}{ |l|l|l|l|l|l|l|l|l|l| } 
+ \hline
+ MOVZ & PCSel & ImmSel & RegWEn & BrUn & BSel & ASel & ALUSel & MemRW & WBSel \\ [10pt]
+ \hline
+ 1 & & & & & & & & & \\ [10pt]
+ \hline
+\end{tabular}
+
+    
+\begin{solution}[0.5in]
+ \begin{tabular}{ |l|l|l|l|l|l|l|l|l|l| } 
+ \hline
+ MOVZ & PCSel & ImmSel & RegWEn & BrUn & BSel & ASel & ALUSel & MemRW & WBSel \\ [10pt]
+ \hline
+ 1 & 0 & X & 0 & X & 0 & 0 & OR, ADD, or SUB & 0 & X \\ [10pt]
+ \hline
+\end{tabular}
+\end{solution}
+
+\end{blocksection}

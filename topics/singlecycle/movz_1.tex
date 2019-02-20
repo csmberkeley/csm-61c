@@ -1,0 +1,42 @@
+\begin{blocksection}
+Consider adding the following instruction to RISC-V 
+(disregard any existing/similar definition on the green sheet):
+
+\begin{tabular}{ |l|l| } 
+ \hline
+ \textbf{Instruction} & \textbf{Operation} \\ 
+ \hline
+ \texttt{movz rd, rs1, rs2} & \texttt{if (R[rs1] == 0) R[rd]<-R[rs2]}  \\ 
+ \hline
+ \texttt{movnz rd, rs1, rs2} & \texttt{if (R[rs1] != 0) R[rd]<-R[rs2]} \\ 
+ \hline
+\end{tabular}
+
+
+\question
+Translate the following C code using movz and movnz. Do not use branches.
+
+\textbf{C Code} \\
+\texttt{
+// a -> s0, b-> s1, c-> s2 \\
+int a = b < c ? b : c;
+}
+\newline
+\newline
+
+\textbf{RISC-V Code} \\
+\texttt{slt t0, s1, s2}
+\newline
+\newline
+$\rule{5cm}{0.15mm}$
+\newline
+\newline
+$\rule{5cm}{0.15mm}$
+
+    
+\begin{solution}[0.5in]
+ movnz s0, t0, s1
+ movz s0, t0, s2
+\end{solution}
+
+\end{blocksection}

@@ -1,0 +1,44 @@
+\begin{blocksection}
+\question
+We want to expand our instruction set from the base RISC-­V ISA (RV32I) to support some new instructions. You can find the canonical single-cycle datapath above. For the proposed instruction below, choose ONE of the options below.
+
+\begin{enumerate}
+    \item Can be implemented without changing datapath wiring, only changes in control signals are needed. (i.e. change existing control signals to recognize the new instruction)
+    \item Can be implemented, but needs changes in datapath wiring, only additional wiring, logical gates and muxes are needed.
+    \item Can be implemented, but needs change in datapath wiring, and additional arithmetic units are needed (e.g. comparators, adders, shifters etc.).
+    \ item Cannot be implemented.
+\end{enumerate}
+
+(Note that the options from 1 to 3 gradually add complexity; thus, selecting 2 implies that 1 is not sufficient. You should select the option that changes the datapath the least (e.g. do not select 3 if 2 is sufficient). You can assume that necessary changes in the control signals will be made if the datapath wiring is changed.)
+
+\begin{parts}
+
+\item Allowing software to deal with 2’s complement is very prone to error. Instead, we want to implement the negate instruction, neg rd, rs1, which puts -R[rs1] in R[rd].
+
+\begin{solution}[0.5in]
+A. This is a tricky question! Notice neg doesn’t use all available bits, so we could make \texttt{neg rd, rs1} into a special R-type instruction \texttt{neg rd, x0, rs1} such that the instruction does \texttt{R[rd] = x0 - R[rs1]}. Notice that subtraction is supported by our default datapath. So, we only need to add the new control signal neg which will produce the same ALUsel, Asel, Bsel, … signals a sub does.
+\end{solution}
+\newline
+\newline
+\newline
+\newline
+\newline
+\newline
+\newline
+\newline
+\item Sometimes, it is necessary to allow a program to self­-destruct. Implement segfault rs1, offset(rs2). This instruction compares the value in R[rs1] and the value in MEM[R[rs2]+offset]. If the two values are equal, write 0 into the PC; otherwise treat this instruction as a NOP.
+
+\begin{solution}[0.5in]
+ C. Need to 1) Add a comparator after memory unit and wire the output to PCSel. 2) Add a zero wired to mux before PC. 3) Change corresponding PCSel signal width.
+\end{solution}
+\newline
+\newline
+\newline
+\newline
+\newline
+\newline
+\newline
+\newline
+\end{parts}
+
+\end{blocksection}

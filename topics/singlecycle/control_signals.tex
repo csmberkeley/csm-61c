@@ -1,0 +1,44 @@
+\begin{blocksection}
+\question
+Fill out the control signals for the following instructions (put an X if the signal does not matter).  For ImmSel, write the corresponding instruction type.
+
+\begin{tabular}{ |l|l|l|l|l|l|l|l|l|l|l| } 
+ \hline
+ Instr & BrEq & PCSel & ImmSel & BrUn & ASel & BSel & ALUSel & MemRW & RegWEn & WBSel \\ 
+ \hline
+ add & X & 0 & X & X & 0 & 0 & Add & 0 & 1 & 1 \\ 
+ \hline
+ lw & & & & & & & & & & \\ 
+ \hline 
+ bge & & & & & & & & & & \\ 
+ \hline
+ sw & & & & & & & & & & \\ 
+ \hline 
+ auipc & & & & & & & & & & \\ 
+ \hline
+ jal & & & & & & & & & & \\ 
+ \hline
+\end{tabular}
+
+\begin{solution}[0.5in]
+ \begin{tabular}{ |l|l|l|l|l|l|l|l|l|l|l| } 
+ \hline
+ Instr & BrEq & PCSel & ImmSel & BrUn & ASel & BSel & ALUSel & MemRW & RegWEn & WBSel \\ 
+ \hline
+ add & X & 0 & X & X & 0 & 0 & Add & 0 & 1 & 1 \\
+ \hline
+ lw & X & 0 & I & X & 0 & 1 & Add & 0 & 1 & 0 \\ 
+ \hline 
+ bge & 0 & 1 & SB & 0 & 1 & 1 & Add & 0 & 0 & X \\ 
+ \hline
+ sw & X & 0 & S & X & 0 & 1 & Add & 1 & 0 & X \\ 
+ \hline 
+ auipc & X & 0 & U & X & 1 & 1 & Add & 0 & 1 & 1\\ 
+ \hline
+ jal & X & 1 & UJ & X & 1 & 1 & Add & 0 & 1 & 2 \\ 
+ \hline
+\end{tabular}
+
+\end{solution}
+
+\end{blocksection}
