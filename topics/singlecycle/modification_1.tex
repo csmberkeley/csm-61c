@@ -18,27 +18,12 @@ We want to expand our instruction set from the base RISC-­V ISA (RV32I) to supp
 \begin{solution}[0.5in]
 A. This is a tricky question! Notice neg doesn’t use all available bits, so we could make \texttt{neg rd, rs1} into a special R-type instruction \texttt{neg rd, x0, rs1} such that the instruction does \texttt{R[rd] = x0 - R[rs1]}. Notice that subtraction is supported by our default datapath. So, we only need to add the new control signal neg which will produce the same ALUsel, Asel, Bsel, … signals a sub does.
 \end{solution}
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
+
 \item Sometimes, it is necessary to allow a program to self­-destruct. Implement segfault rs1, offset(rs2). This instruction compares the value in R[rs1] and the value in MEM[R[rs2]+offset]. If the two values are equal, write 0 into the PC; otherwise treat this instruction as a NOP.
 
 \begin{solution}[0.5in]
  C. Need to 1) Add a comparator after memory unit and wire the output to PCSel. 2) Add a zero wired to mux before PC. 3) Change corresponding PCSel signal width.
 \end{solution}
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
 \end{parts}
 
 \end{blocksection}

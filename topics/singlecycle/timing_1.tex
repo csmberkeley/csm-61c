@@ -1,42 +1,56 @@
 \begin{blocksection}
 The delays of a circuit elements are given as follows:
 
-
-\begin{tabular}{ |l|l|l|l|l|l|l|l|l| } 
- \hline
- Clk-to-Q & RegFile Read & Mux & ALU & MEM Read & MEM Write & Branch Comp & Imm Gen & RegFile Setup \\ 
- \hline
- 5ns & 20ns & 5ns & 100ns & 150ns & 200ns & 50ns & 25ns & 4ns \\ 
- \hline
+\begin{tabular}{ |l|l|l|l|l| } 
+	\hline
+	Clk-to-Q & RegFile Read & Mux & ALU & MEM Read \\ 
+	\hline
+	5ns & 20ns & 5ns & 100ns & 150ns \\ 
+	\hline
 \end{tabular}
 
+\begin{tabular}{ |l|l|l|l| } 
+	\hline
+	MEM Write & Branch Comp & Imm Gen & RegFile Setup \\ 
+	\hline
+	200ns & 50ns & 25ns & 4ns \\ 
+	\hline
+\end{tabular}
 
 \question
 Ignoring the length of a clock cycle, how long does it take to execute the instruction:
 
 \begin{parts}
-\item lui t0, 0x1234
-\begin{solution}[0.5in]
-\[ t_{clk-to-q(PC)} + t_{MEMRead} + t_{ImmGen} + t_{Mux} + t_{ALU} + t_{Mux} + t_{RegFileSetup} = 5 + 150 + 25 + 5 + 100 + 5 + 5 = 295ns\]
-\end{solution}
 
-\newline
-\newline
-\newline
-\item jal ra, 0b1100
-\begin{solution}[0.5in]
-\[ t_{clk-to-q(PC)} + t_{MEMRead} + max(t_{RegFileRead}, t_{ImmGen}) + t_{Mux} + t_{ALU} + max((t_{Mux(WBSel)} + t_{RegFileSetup}), (t_{Mux(PCSel)} + t_{RegFileSetup(PC)})) = 5 + 150 + 25 + 5 + 100 + 5 + 5 = 295ns \]
-\end{solution}
-\newline
-\newline
-\newline
-\item beq x0, x5, 0b1100
-\begin{solution}[0.5in]
-\[ t_{clk-to-q(PC)} + t_{MEMRead} + max(t_{RegFileRead}, t_{ImmGen}) + t_{BranchComp} + t_{Mux} + t_{ALU} + t_{Mux(PCSel)} + t_{RegFileSetup(PC)} = 5 + 150 + 25 + 50 + 5 + 100 + 5 + 5 = 345ns \]
-\end{solution}
-\newline
-\newline
-\newline
+	\item
+	\lstinline$lui t0, 0x1234$
+	\begin{solution}[0.3in]
+		\begin{align*}
+		t_{\text{clk-to-q(PC)}} + t_{\text{MEMRead}} + t_{\text{ImmGen}} + t_{\text{Mux}} + t_{\text{ALU}} + t_{\text{Mux}} + t_{\text{RegFileSetup}} &=\\
+		5 + 150 + 25 + 5 + 100 + 5 + 5 &= 295\text{ns}
+		\end{align*}
+	\end{solution}
+
+	\item
+	\lstinline$jal ra, 0b1100$
+	\begin{solution}[0.3in]
+		\begin{align*}
+		t_{clk-to-q(PC)} + t_{MEMRead} + max(t_{RegFileRead}, t_{ImmGen}) +\\
+		 t_{Mux} + t_{ALU} + max((t_{Mux(WBSel)} + t_{RegFileSetup}), (t_{Mux(PCSel)} + t_{RegFileSetup(PC)})) &=\\
+		5 + 150 + 25 + 5 + 100 + 5 + 5 &= 295\text{ns}
+		\end{align*}
+	\end{solution}
+
+
+	\item
+	\lstinline$beq x0, x5, 0b1100$
+	\begin{solution}[0.5in]
+		\begin{align*}
+		t_{clk-to-q(PC)} + t_{MEMRead} + max(t_{RegFileRead}, t_{ImmGen}) + t_{BranchComp} +\\
+		 t_{Mux} + t_{ALU} + t_{Mux(PCSel)} + t_{RegFileSetup(PC)} &=\\
+		5 + 150 + 25 + 50 + 5 + 100 + 5 + 5 &= 345ns
+		\end{align*}
+	\end{solution}
+
 \end{parts}
-
 \end{blocksection}
