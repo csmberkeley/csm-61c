@@ -27,7 +27,7 @@ Ignoring the length of a clock cycle, how long does it take to execute the instr
 	\begin{solution}[0.3in]
 		\begin{align*}
 		t_{\text{clk-to-q(PC)}} + t_{\text{MEMRead}} + t_{\text{ImmGen}} + t_{\text{Mux}} + t_{\text{ALU}} + t_{\text{Mux}} + t_{\text{RegFileSetup}} &=\\
-		5 + 150 + 25 + 5 + 100 + 5 + 5 &= 295\text{ns}
+		5 + 150 + 25 + 5 + 100 + 5 + 4 &= 294\text{ns}
 		\end{align*}
 	\end{solution}
 
@@ -37,7 +37,7 @@ Ignoring the length of a clock cycle, how long does it take to execute the instr
 		\begin{align*}
 		t_{clk-to-q(PC)} + t_{MEMRead} + max(t_{RegFileRead}, t_{ImmGen}) +\\
 		 t_{Mux} + t_{ALU} + max((t_{Mux(WBSel)} + t_{RegFileSetup}), (t_{Mux(PCSel)} + t_{RegFileSetup(PC)})) &=\\
-		5 + 150 + 25 + 5 + 100 + 5 + 5 &= 295\text{ns}
+		5 + 150 + 25 + 5 + 100 + 5 + 4 &= 294\text{ns}
 		\end{align*}
 	\end{solution}
 
@@ -46,9 +46,9 @@ Ignoring the length of a clock cycle, how long does it take to execute the instr
 	\lstinline$beq x0, x5, 0b1100$
 	\begin{solution}[0.5in]
 		\begin{align*}
-		t_{clk-to-q(PC)} + t_{MEMRead} + max(t_{RegFileRead}, t_{ImmGen}) + t_{BranchComp} +\\
+		t_{clk-to-q(PC)} + t_{MEMRead} + max(t_{RegFileRead} + t_{BranchComp}, t_{ImmGen}) +\\
 		 t_{Mux} + t_{ALU} + t_{Mux(PCSel)} + t_{RegFileSetup(PC)} &=\\
-		5 + 150 + 25 + 50 + 5 + 100 + 5 + 5 &= 345ns
+		5 + 150 + 70 + 5 + 100 + 5 + 4 &= 339ns
 		\end{align*}
 	\end{solution}
 
