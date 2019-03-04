@@ -7,10 +7,11 @@ What is the length of the critical path in the CPU? Which instruction exercises 
 
 \begin{solution}[0.5in]
 sw = clk-to-q + memread + max(regfileread, immgen) + mux + alu + memwrite \\
-= 5+150+25+5+100+200 = 485ns
-Path goes from PC>IMEM>RegFile+ImmGen>Amux+Bmux>DMem
+$= 5+150+25+5+100+200 = 485\text{ns}$\\
 
-Even though the load word path uses the most pieces of the processor, since memory write is so much longer than memory read, the sw instruction actually takes the longest time (445 for lw vs 485 for sw).  It first reads from the instruction memory (clk-to-q + memread 1) and then uses both the register file read and immgen at the same time, hence why we take the max there.  Then both paths use a mux at the same time which is why only 1 is there and then the alu combines the reg value with the immediate.  Then the value to store is then written to memory.  For lw, the only difference is it reads at the end, muxes, and then writes to the reg block, taking 150+5+5=160ns instead of 200ns.
+Path goes from PC $\rightarrow$ IMEM $\rightarrow$ RegFile $+$ ImmGen $\rightarrow$ Amux $+$ Bmux $\rightarrow$ DMem
+
+Even though the load word path uses the most pieces of the processor, since memory write is so much longer than memory read, the \texttt{sw} instruction actually takes the longest time (445 for \texttt{lw} vs 485 for \texttt{sw}).  It first reads from the instruction memory (\texttt{clk-to-q} + \texttt{memread}) and then uses both the \texttt{regfileread} and \texttt{immgen} at the same time, hence why we take the max there.  Then both paths use a \texttt{mux} at the same time which is why only 1 is there and then the \texttt{ALU} combines the \texttt{reg} value with the \texttt{imm}.  Then the value to store is then written to memory.  For \texttt{lw}, the only difference is it reads at the end, muxes, and then writes to the \texttt{reg} block, taking $150+5+5=160\text{ns}$ instead of 200ns.
 
 \end{solution}
 

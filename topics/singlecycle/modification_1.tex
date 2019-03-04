@@ -13,16 +13,16 @@ We want to expand our instruction set from the base RISC-­V ISA (RV32I) to supp
 
 \begin{parts}
 
-\item Allowing software to deal with 2’s complement is very prone to error. Instead, we want to implement the negate instruction, neg rd, rs1, which puts -R[rs1] in R[rd].
+\item Allowing software to deal with 2’s complement is very prone to error. Instead, we want to implement the negate instruction, \texttt{neg rd rs1}, which puts \texttt{-R[rs1]} in \texttt{R[rd]}.
 
 \begin{solution}[0.5in]
-A. This is a tricky question! Notice neg doesn’t use all available bits, so we could make \texttt{neg rd, rs1} into a special R-type instruction \texttt{neg rd, x0, rs1} such that the instruction does \texttt{R[rd] = x0 - R[rs1]}. Notice that subtraction is supported by our default datapath. So, we only need to add the new control signal neg which will produce the same ALUsel, Asel, Bsel, … signals a sub does.
+A. This is a tricky question! Notice \texttt{neg} doesn’t use all available bits, so we could make \texttt{neg rd, rs1} into a special R-type instruction \texttt{neg rd, x0, rs1} such that the instruction does \texttt{R[rd] = x0 - R[rs1]}. Notice that subtraction is supported by our default datapath. So, we only need to add the new control signal neg which will produce the same \texttt{ALUsel}, \texttt{Asel}, \texttt{Bsel}, … signals a \texttt{sub} does.
 \end{solution}
 
-\item Sometimes, it is necessary to allow a program to self­-destruct. Implement segfault rs1, offset(rs2). This instruction compares the value in R[rs1] and the value in MEM[R[rs2]+offset]. If the two values are equal, write 0 into the PC; otherwise treat this instruction as a NOP.
+\item Sometimes, it is necessary to allow a program to self­-destruct. Implement \texttt{segfault rs1, offset(rs2)}. This instruction compares the value in \texttt{R[rs1]} and the value in \texttt{MEM[R[rs2]+offset]}. If the two values are equal, write \texttt{0} into the \texttt{PC}; otherwise treat this instruction as a \texttt{NOP}.
 
 \begin{solution}[0.5in]
- C. Need to 1) Add a comparator after memory unit and wire the output to PCSel. 2) Add a zero wired to mux before PC. 3) Change corresponding PCSel signal width.
+ C. Need to 1) Add a comparator after memory unit and wire the output to \texttt{PCSel}. 2) Add a zero wired to \texttt{mux} before \texttt{PC}. 3) Change corresponding \texttt{PCSel} signal width.
 \end{solution}
 \end{parts}
 
