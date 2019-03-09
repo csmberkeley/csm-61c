@@ -13,21 +13,21 @@ Assume you have a RISC-V processor that has the following execution times:
 \begin{parts}
 \item In an unpipelined processor, what is the maximum clock rate possible?
 
-\begin{solution}
+\begin{solution}[0.5in]
 The critical path through the circuit is the entire datapath (all 5 stages).
 100 + 150 + 300 + 400 + 250 = 1200 ps \rightarrow 1/1200 s \rightarrow 833 MHz
 \end{solution}
 
 \item In a pipelined processor, what is the maximum clock rate possible?
 
-\begin{solution}
+\begin{solution}[0.5in]
 The critical path through the circuit is the longest of the stages: Memory
 1/400 ps \rightarrow 0.4 GHz
 \end{solution}
 
 \item Suppose we add some hardware that shortens the ALU processing time to 250 ns. Does this change the maximum clock rate in an unpipelined processor? In a pipelined processor?
 
-\begin{solution}
+\begin{solution}[0.5in]
 In the unpipelined case, the clock rate will be greater because we’ve shortened the critical path. However, in the unpipelined case, the clock rate will not change because the Memory stage is still critical path.
 \end{solution}
 
