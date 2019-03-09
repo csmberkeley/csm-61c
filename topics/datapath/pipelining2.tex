@@ -1,0 +1,46 @@
+\begin{blocksection}
+\question Fill in the timing diagram for the following code snippet assuming a pipelined processor (the first row has been filled in for you):
+
+\begin{tabular}{ |l|l|l|l|l|l|l|l|l|l| } 
+ \hline
+ Time & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+ \hline
+ sw & & & & & & & & & \\
+ \hline
+ addi & & & & & & & & & \\
+ \hline
+ add & & & & & & & & & \\
+ \hline
+ lw & & & & & & & & & \\
+ \hline
+\end{tabular}
+
+\begin{solution}
+\begin{tabular}{ |l|l|l|l|l|l|l|l|l|l| } 
+ \hline
+ Time & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+ \hline
+ sw & IF & ID & EX & MEM & WB & & & & \\
+ \hline
+ addi & & IF & ID & EX & MEM & WB & & & \\
+ \hline
+ add & & & IF & ID & EX & MEM & WB & & \\
+ \hline
+ lw & & & & IF & ID & EX & MEM & WB & \\
+ \hline
+\end{tabular}
+\end{solution}
+
+\begin{verbatim}
+sw	  s1, 0(s0)
+addi  t0, t1, 8
+add   s2, s0, s1
+lw	  t2, 0(t3)
+\end{verbatim}
+
+How many cycles did the pipelined processor take? How many would an unpipelined processor take?
+
+\begin{solution}
+The pipelined version took a total of 8 clock cycles, whereas an unpipelined processor would have taken 20 equal clock cycles.
+\end{solution}
+\end{blocksection}

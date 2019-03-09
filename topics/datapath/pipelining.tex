@@ -2,6 +2,14 @@
 \question
 Assume you have a RISC-V processor that has the following execution times:
 
+\begin{tabular}{ |l|l|l|l|l| } 
+ \hline
+ IF & ID & EX & MEM & WB \\
+ \hline
+ 100 ps & 150 ps & 300 ps & 400 ps & 250 ps \\
+ \hline
+\end{tabular}
+
 \begin{parts}
 \item In an unpipelined processor, what is the maximum clock rate possible?
 
@@ -24,20 +32,4 @@ In the unpipelined case, the clock rate will be greater because we’ve shortene
 \end{solution}
 
 \end{parts}
-
-\question Fill in the timing diagram for the following code snippet assuming a pipelined processor (the first row has been filled in for you):
-
-\begin{verbatim}
-sw	  s1, 0(s0)
-addi  t0, t1, 8
-add   s2, s0, s1
-lw	  t2, 0(t3)
-\end{verbatim}
-
-How many cycles did the pipelined processor take? How many would an unpipelined processor take?
-
-\begin{solution}
-The pipelined version took a total of 8 clock cycles, whereas an unpipelined processor would have taken 20 equal clock cycles.
-\end{solution}
-
 \end{blocksection}
