@@ -1,41 +1,32 @@
 \documentclass[11pt]{exam}
+\usepackage{graphicx}
 \usepackage{../commonheader}
+\graphicspath{ {../images/} }
 
 \discnumber{8}
-\title{Intro to Caching}
+\title{Control and Pipelines}
 \date{March 10, 2019}
 
 \begin{document}
 \maketitle
 
-\section{Gotta Cache 'Em All}
+\section{Sequential vs. Pipelined}
 \begin{questions}
-\subimport{../topics/caches/}{cachethemall.tex}
+\subimport{../topics/datapath/}{pipelining.tex}
+\subimport{../topics/datapath/}{pipelining2.tex}
 \end{questions}
 \newpage
 
-\section{Break It Down Now Y'All}
+\section{More Pipelines (Spring 2016 MT2 Q4)}
 \begin{questions}
-\subimport{../topics/caches/}{breakitdown1.tex}
-\subimport{../topics/caches/}{breakitdown2.tex}
+\subimport{../topics/datapath/}{pipelining_hard.tex}
+\subimport{../topics/datapath/}{pipelining_hard2.tex}
 \end{questions}
 \newpage
 
-\section{Multilevel \$}
+\section{Pipelining Hazards}
 \begin{questions}
-\subimport{../topics/caches/}{multilevel1.tex}
-\subimport{../topics/caches/}{multilevel2.tex}
-\subimport{../topics/caches/}{multilevel3.tex}
-\subimport{../topics/caches/}{multilevel4.tex}
-\subimport{../topics/caches/}{multilevel5.tex}
-\subimport{../topics/caches/}{multilevel6.tex}
+\subimport{../topics/datapath/}{hazards.tex}
 \end{questions}
-\newpage
-
-\section{Floating Point Intro}
-\begin{questions}
-\subimport{../topics/floatingpoint/}{basics.tex}
-\end{questions}
-\newpage
 
 \end{document}
