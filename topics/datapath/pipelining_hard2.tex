@@ -1,0 +1,28 @@
+\begin{blocksection}
+\question How many cycles does this loop take to fully execute (from the first lw to the \texttt{End} label)?
+
+\begin{solution}
+$\frac{196}{4} \times 15$  cycles
+\end{solution}
+
+\question Now assume the pipeline has 1 delayed branch slot and standard forwarding hardware. Also, reordering of instructions is allowed to minimize stalls. Write out the reordered sequence of instructions that achieves a minimal number of stalls needed. 
+
+\begin{solution}
+\begin{verbatim}
+lw 	   t1 0(t2)
+srl    t1, t1, 16
+sw     t1, 0(t2)
+addi   t2, t2, -4
+sub    t4, t3, t2
+bne    t4, x0, Loop
+\end{verbatim}
+The branch delay slot cannot be used. 
+\end{solution}
+
+\question How many cycles does this loop take to fully execute (from the lw to the \texttt{End} label)?
+
+\begin{solution}
+$49 \times 8$ cycles
+\end{solution}
+
+\end{blocksection}

@@ -11,36 +11,14 @@ End: 	sll   x0, x0, x0
 \end{verbatim}
 Assume that originally \texttt{t3 = t2 - 196}.
 
-\begin{parts}
-\item Assume a standard 5 stage pipeline with no forwarding. Register file writes happen before reads, in the same clock cycle. Comparator logic begins at the end of the decode stage. We do not have a branch delay slot. Fill in the corresponding pipeline stages (F, D, E, M, W) at the appropriate times in the table below. 
+\question Assume a standard 5 stage pipeline with no forwarding. Register file writes happen before reads, in the same clock cycle. Comparator logic begins at the end of the decode stage. We do not have a branch delay slot. Fill in the corresponding pipeline stages (F, D, E, M, W) at the appropriate times in the table below. 
 
 If the instruction requires a stall, write the stage again in the table. For example, if an instruction starts at cycle 2 but needs two stalls for the execute stage, then you would write “F D E E E M W” for cycles 2 - 8. 
 
-\item How many cycles does this loop take to fully execute (from the first lw to the \texttt{End} label)?
+\includegraphics[width=\textwidth]{datapath/pipelining_hard}
 
 \begin{solution}
-$\frac{196}{4} \times 15$  cycles
+\includegraphics[width=\textwidth]{datapath/pipelining_hard_sol}
 \end{solution}
 
-\item Now assume the pipeline has 1 delayed branch slot and standard forwarding hardware. Also, reordering of instructions is allowed to minimize stalls. Write out the reordered sequence of instructions that achieves a minimal number of stalls needed. 
-
-\begin{solution}
-\begin{verbatim}
-lw 	   t1 0(t2)
-srl    t1, t1, 16
-sw     t1, 0(t2)
-addi   t2, t2, -4
-sub    t4, t3, t2
-bne    t4, x0, Loop
-\end{verbatim}
-The branch delay slot cannot be used. 
-\end{solution}
-
-\item How many cycles does this loop take to fully execute (from the lw to the \texttt{End} label)?
-
-\begin{solution}
-$49 \times 8$ cycles
-\end{solution}
-
-\end{parts}
 \end{blocksection}
