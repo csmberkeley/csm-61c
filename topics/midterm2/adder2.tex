@@ -1,0 +1,37 @@
+\begin{blocksection}
+\question
+Write Boolean formulas for \lstinline$s0$ and \lstinline$c1$ in terms of the inputs \lstinline$cin, a0, and b0$. You may use \lstinline$XOR$ as an operator in the Boolean formulas. Each formula should use as few operators as possible.
+\begin{solution}
+    \begin{verbatim}
+    s0 = a0 XOR b0 XOR cin
+    c1 = cin * (a0 XOR b0) + a0 * b0
+    \end{verbatim}
+\end{solution}
+
+
+\question
+What is the critical path delay of the circuit? Please include proper units in your answer.
+\begin{solution}
+    \begin{verbatim}
+    50ns = clk-to-q + 4 adders + setup time
+    \end{verbatim}
+\end{solution}
+
+
+\question
+What is the maximum clock frequency at which the circuit will function correctly? Please include proper units in your answer.
+\begin{solution}
+    \begin{verbatim}
+    20 MHz = 1/50 ns
+    \end{verbatim}
+\end{solution}
+
+
+\question
+What is the maximum hold time the output registers could have at which the circuit would still function correctly?
+\begin{solution}
+15 ns
+The result for s0 arrives in 15ns, so if it was greater, the hold time would be violated by the second set of inputs
+\end{solution}
+
+\end{blocksection}

@@ -1,0 +1,33 @@
+\begin{blocksection}
+\question
+Calculate the number of Tag, Index, and Offset bits for this cache.
+\begin{solution}
+    \begin{verbatim}
+    Tag: 9
+    Index: 2
+    Offset: 9
+    \end{verbatim}
+\end{solution}
+
+
+\question
+Calculate the hit percentage for this cache after running \lstinline$foo$.
+\begin{solution}
+0\%
+\end{solution}
+
+
+\question
+The cache is now cleared and the code is run again. This time, A and B are pointing to the same array, which starts at \lstinline$0x10000$. Calculate the new hit percentage.
+\begin{solution}
+75\%
+\end{solution}
+
+
+\question
+Assume A and B starts once again at \lstinline$0x10000$ and \lstinline$0x20000$. What is the new hit percentage if we ran foo on a fully associative cache, with all other parameters staying the same?
+\begin{solution}
+50\%
+\end{solution}
+
+\end{blocksection}
