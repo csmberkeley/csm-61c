@@ -1,34 +1,30 @@
 \begin{blocksection}
-\question
 Consider the following 16-bit representation for floating point numbers:
 \includegraphics[width=\textwidth]{midterm2/floatingpoint}
 
 Bits per field:
-\begin{itemize}
-    \item Sign: 1
-    \item Exponent: 6
-    \item Significand: 9
-\end{itemize}
+Sign: 1, Exponent: 6, Significand: 9
+
 Everything else follows the IEEE standard 754 for floating point, except in 16 bits.
 The bias is \textbf{31}.
 
 \question
 Convert -15.125 into floating point. Write your answer in hexadecimal.
-\begin{solution}
+\begin{solution}[0.5in]
 \lstinline$0xB5B8$
 \end{solution}
 
 
 \question
 What is the value of the largest odd number that can be represented by the above floating point representation?
-\begin{solution}
+\begin{solution}[0.5in]
 $2^{10} - 1$
 \end{solution}
 
 
 \question
 How many positive, real numbers can be represented?
-\begin{solution}
+\begin{solution}[0.5in]
 $2^{15} - 2^9 - 1$
 \end{solution}
 
