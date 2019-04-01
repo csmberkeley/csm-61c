@@ -5,36 +5,36 @@ For each sequence of memory accesses below, determine whether each memory access
 \begin{parts}
 \part
 Cache Type: Direct-Mapped:
-Reads:
-\lstinline$0xABCD$
-\lstinline$0xABEF$
+Reads:\\
+\lstinline$0xABCD$\\
+\lstinline$0xABEF$\\
 
 \begin{solution}[0.7in]
-\lstinline$0xABCD$: Compulsory Miss
-\lstinline$0xABEF$: Hit
+\lstinline$0xABCD$: Compulsory Miss\\
+\lstinline$0xABEF$: Hit\\
 \end{solution}
 
 \part
 Cache Type: 4-way Set-Associative:
 Reads:
-\lstinline$0xABCD$
+\lstinline$0xABCD$\\
 \lstinline$0xBBCD$
 
 \begin{solution}[0.7in]
-\lstinline$0xABCD$: Compulsory Miss
-\lstinline$0xBBCD$: Compulsory Miss
+\lstinline$0xABCD$: Compulsory Miss\\
+\lstinline$0xBBCD$: Compulsory Miss\\
 META: Students might be confused why the second miss is not a conflict miss. Because the cache is 4-way set associative, loading an item which maps to the same set as 0xABCD doesn't conflict with the previous memory block.
 \end{solution}
 
 \part
 Cache Type: Fully Associative
-Reads:
-\lstinline$0xAABB$
-\lstinline$0xBBCC$
+Reads:\\
+\lstinline$0xAABB$\\
+\lstinline$0xBBCC$\\
 
 \begin{solution}[0.7in]
-\lstinline$0xAABB$: Compulsory Miss
-\lstinline$0xBBCC$: Compulsory Miss
+\lstinline$0xAABB$: Compulsory Miss\\
+\lstinline$0xBBCC$: Compulsory Miss\\
 \end{solution}
 
 

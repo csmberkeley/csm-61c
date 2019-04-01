@@ -7,9 +7,9 @@ Calculate the number of bits used for the T/I/O for each cache specification bel
 4 KiB cache, 256 B block size, direct mapped
 
 \begin{solution}[0.5in]
-$4$ KiB = $2^2 \times 2^{10}$ B = $2^{12}$ B
-$256$ B = $2^8$ B -> $8$ bit offset
-$\frac{2^{12}}{2^8}$ = $2^4$ -> 4 bit index
+$4$ KiB = $2^2 \times 2^{10}$ B = $2^{12}$ B\\
+$256$ B = $2^8$ B $\rightarrow$ $8$ bit offset\\
+$\frac{2^{12}}{2^8}$ = $2^4$ $\rightarrow$ 4 bit index\\
 $16 - 8 - 4$ = 4 bit tag
 \end{solution}
 
@@ -17,9 +17,9 @@ $16 - 8 - 4$ = 4 bit tag
 4 KiB cache, 256 B block size, 4-way set associative
 
 \begin{solution}[0.5in]
-$4$ KiB = $2^2 x 2^{10}$ B = $2^{12}$ B / $2^2$ = $2^{10}$ B
-$256$ B = $2^8$ B -> 8 bit offset
-$\frac{2^{10}}{2^8} = 2^2$ -> 2 bit index
+$4$ KiB = $2^2 x 2^{10}$ B = $2^{12}$ B / $2^2$ = $2^{10}$ B\\
+$256$ B = $2^8$ B $\rightarrow$ 8 bit offset\\
+$\frac{2^{10}}{2^8} = 2^2$ $\rightarrow$ 2 bit index\\
 $16 - 8 - 2 = 6$ bit tag
 \end{solution}
 
@@ -27,8 +27,8 @@ $16 - 8 - 2 = 6$ bit tag
 4 KiB cache, 256 B block size, fully associative.
 
 \begin{solution}[0.5in]
-$256$ B = $2^8$ B -> 8 bit offset
-$16 - 8 = 8$ bit tag
+$256$ B = $2^8$ B $\rightarrow$ 8 bit offset\\
+$16 - 8 = 8$ bit tag\\
 No need for index
 \end{solution}
 

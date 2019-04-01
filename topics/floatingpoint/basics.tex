@@ -6,10 +6,10 @@
 How would $10.625$ be represented in floating point format?
 
 \begin{solution}[0.5in]
-$10.625 = 8 + 2 + \frac{1}{2} + frac{1}{8} → 1010.101_2$ in binary
-$1010.101_2 = 1.010101_2 x 2^3$ → Exp $- 127 = 3$
-Sign: $0$, Exponent: $130 = 10000010_2$, Significand: $010101_2$
-\lstinline$0100 0001 0010 1010 0000 0000 0000 0000 = 0x412A0000$
+$10.625 = 8 + 2 + \frac{1}{2} + frac{1}{8} → 1010.101_2$ in binary\\
+$1010.101_2 = 1.010101_2 x 2^3$ $\rightarrow$ Exp $- 127 = 3$\\
+Sign: $0$, Exponent: $130 = 10000010_2$, Significand: $010101_2$\\
+\lstinline$0100 0001 0010 1010 0000 0000 0000 0000 = 0x412A0000$\\
 
 \end{solution}
 
@@ -17,9 +17,9 @@ Sign: $0$, Exponent: $130 = 10000010_2$, Significand: $010101_2$
 What decimal number is encoded as \lstinline$0xC0A80000$?
 
 \begin{solution}[0.5in]
-\lstinline$0xC0A80000$ = $1100 0000 1010 1000 0000 0000 0000 0000_2$
-Sign: $1$, Exponent: $100 0000 1_2= 129$, Significand: $0101_2$
-$(-1) \times 1.0101_2 \times 2^{129 - 127} = -1.0101_2 \times 2^2 = -101.01_2 = -5.25$
+\lstinline$0xC0A80000$ = $1100 0000 1010 1000 0000 0000 0000 0000_2$\\
+Sign: $1$, Exponent: $100 0000 1_2= 129$, Significand: $0101_2$\\
+$(-1) \times 1.0101_2 \times 2^{129 - 127} = -1.0101_2 \times 2^2 = -101.01_2 = -5.25$\\
 \end{solution}
 
 \part
