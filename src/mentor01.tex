@@ -1,14 +1,16 @@
 \documentclass[11pt]{exam}
+\usepackage{graphicx}
 \usepackage{../commonheader}
+\graphicspath{ {../images/} }
 
 \discnumber{1}
 \title{Number Representation and C}
-\date{January 20, 2019}
+\date{September 16, 2019}
 
 \begin{document}
 \maketitle
 
-\section{Number Representation Warm-Up}
+\section{Number Representation}
 \begin{questions}
 \subimport{../topics/numberrepresentation/}{range.tex}
 \subimport{../topics/numberrepresentation/}{unique.tex}
@@ -27,5 +29,14 @@
 \subimport{../topics/c/}{linkedlists2.tex}
 \subimport{../topics/c/}{linkedlists3.tex}
 \end{questions}
+\newpage
+
+\section{Floating Point Intro}
+\textbf{*This section will not be on the quest.}
+\begin{questions}
+\subimport{../topics/floatingpoint/}{explanation.tex}
+\subimport{../topics/floatingpoint/}{basics.tex}
+\end{questions}
+\newpage
 
 \end{document}
