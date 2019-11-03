@@ -1,0 +1,26 @@
+\begin{blocksection}
+\question For the following questions, assume the following:
+\begin{itemize}
+\item 16-bit virtual addresses
+\item 4 KiB page size
+\item 16 KiB of physical memory with LRU page replacement policy
+\item Fully Associative TLB with 4 entries and an LRU replacement policy
+\end{itemize}
+
+\begin{parts}
+\part
+What is the maximum number of virtual pages per process?
+
+\begin{solution}[0.5in]
+4 KiB page size = 12 offset bigs -> 4 bits for VPN -> $2^4$ virtual pages = 16 virtual pages
+\end{solution}
+    
+\part
+How many bits wide is the page table base register?
+
+\begin{solution}[0.5in]
+The page table base register is in memory so it's the same length as the physical address. 16 KiB physical memory = $2^{14}$ B so we have 14 bits.
+\end{solution}
+
+\end{parts}
+\end{blocksection}

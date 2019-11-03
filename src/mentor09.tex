@@ -1,41 +1,40 @@
 \documentclass[11pt]{exam}
 \usepackage{../commonheader}
+\graphicspath{ {../images/} }
 
 \discnumber{9}
-\title{Intro to Caching}
-\date{March 17, 2019}
+\title{Virtual Memory}
+\date{November 11, 2019}
 
 \begin{document}
 \maketitle
 
-\section{Gotta Cache 'Em All}
+\section{VM Warm Up}
 \begin{questions}
-\subimport{../topics/caches/}{cachethemall.tex}
+\subimport{../topics/virtualmemory/}{vmwarmup.tex}
 \end{questions}
 \newpage
 
-\section{Break It Down Now Y'All}
+\section{Virtual Potpourri}
 \begin{questions}
-\subimport{../topics/caches/}{breakitdown1.tex}
-\subimport{../topics/caches/}{breakitdown2.tex}
+\subimport{../topics/virtualmemory/}{vmpotpourri1.tex}
+\subimport{../topics/virtualmemory/}{vmpotpourri2.tex}
 \end{questions}
 \newpage
 
-\section{Multilevel \$}
+\section{Context Switch!}
 \begin{questions}
-\subimport{../topics/caches/}{multilevel1.tex}
-\subimport{../topics/caches/}{multilevel2.tex}
-\subimport{../topics/caches/}{multilevel3.tex}
-\subimport{../topics/caches/}{multilevel4.tex}
-\subimport{../topics/caches/}{multilevel5.tex}
-\subimport{../topics/caches/}{multilevel6.tex}
+\subimport{../topics/virtualmemory/}{ctxswitch1.tex}
+\subimport{../topics/virtualmemory/}{ctxswitch2.tex}
+\subimport{../topics/virtualmemory/}{ctxswitch3.tex}
 \end{questions}
 \newpage
 
-\section{Floating Point Intro}
+\section{VM Copy}
 \begin{questions}
-\subimport{../topics/floatingpoint/}{basics.tex}
+\subimport{../topics/virtualmemory/}{vmcopy1.tex}
+\subimport{../topics/virtualmemory/}{vmcopy2.tex}
 \end{questions}
-\newpage
+
 
 \end{document}

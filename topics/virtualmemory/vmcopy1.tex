@@ -1,0 +1,44 @@
+\begin{blocksection}
+
+\question
+For the following questions, assume the following (IEC prefixes are on the green sheet):
+\begin{itemize}
+\item You can ignore any accesses to instruction memory (code)
+\item 16 EiB virtual address space per process
+\item 256 MiB page size
+\item 4 GiB of physical address space
+\item Fully Associative TLB with 5 entries and an LRU replacement policy
+\item All arrays of doubles are page-aligned (start on a page boundary) and do not overlap
+\item All arrays are of a size equivalent to some nonzero integer multiple of 256 MiB
+\item All structs are tightly packed (field are stored contiguously)
+\item All accesses to structs and arrays go out to caches/memory (there is no optimization by reusing values loaded into registers)
+\end{itemize}
+
+\begin{verbatim}
+void dblCpy(doubleFun* measurer, double* dblsToCpy) {
+    measurer->fun = 0;
+    for (uint32_t i = 0; i < ARRAY_SIZE; i += 4) {
+        measurer->dbl[i] += dblsToCpy[i];
+        measurer->fun += dblsToCpy[i];
+    }
+    measurer->fun /= ARRAY_SIZE;
+}
+\end{verbatim}
+
+\begin{parts}
+
+\part
+How many virtual page number bits are there and virtual address offset bits are there?
+\begin{solution}[0.3in]
+VPN: 36 Offset: 28
+\end{solution}
+
+\part
+How many physical page number bits are there and pysical address offset bits are there?
+\begin{solution}[0.3in]
+PPN: 4 Offset: 28
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}

@@ -1,0 +1,49 @@
+\begin{blocksection}
+\question 
+The system in question has 1MiB of physical memory, 32-bit virtual addresses, and 256 physical pages. The memory management system uses a fully associative TLB with 128 entries and an LRU replacement scheme. 
+
+\begin{parts}
+\part
+What is the size of the physical pages in bytes? 
+
+\begin{solution}[0.5in]
+1 MiB = $2^{20}$ B of physical memory and 256 = $2^{8}$ physical pages means that $2^{20}$ B / $2^8$ Pages = $2^{12}$ B / Page. Resulting in $2^{12}$ B or 4 KiB physical pages.
+\end{solution}
+
+\part
+What is the size of the virtual pages in bytes? 
+
+\begin{solution}[0.5in]
+The size of virtual pages is the same size as physical pages, since all pages are the same size in the same system. Thus $2^{12}$ B or 4 KiB physical pages.
+\end{solution}
+
+\part
+What is the maximum number of virtual pages a process can use? 
+
+\begin{solution}[0.5in]
+We have 4 KiB pages, resulting in $\log_2(2^{12}) = 12$ bits for page offset.\\
+\#VA bits = \#VPN bits + \#Page offset bits -> \#VPN bits = \#VA bits - \#Page offset bits\\
+\#VPN bits = 32 - 12 = 20, resulting in $2^{20}$ total virtual pages.
+\end{solution}
+
+\part What is the minimum number of bits required for the page table base address register? 
+
+\begin{solution}[0.5in]
+Recall that the page table is also stored in memory, so the page table base address register must also span a physical address, aka $\log_{2}(2^{20})$ bits or 20 bits.
+\end{solution}
+
+\part
+Answer True or False to the following questions: \\
+The page table is stored in main memory.\\
+Every virtual page is mapped to a physical page.\\
+The TLB is checked before the page table.\\
+The penalty for a page fault is about the same as the penalty for a cache miss.\\
+A linear page table takes up more memory as the process uses more memory.
+
+\begin{solution}[0.5in]
+T, F, T, F, F
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}

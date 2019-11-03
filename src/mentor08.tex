@@ -1,32 +1,35 @@
 \documentclass[11pt]{exam}
-\usepackage{graphicx}
 \usepackage{../commonheader}
-\graphicspath{ {../images/} }
 
 \discnumber{8}
-\title{Control and Pipelines}
-\date{March 10, 2019}
+\title{Intro to Caching}
+\date{November 4, 2019}
 
 \begin{document}
 \maketitle
 
-\section{Sequential vs. Pipelined}
+\section{Gotta Cache 'Em All}
 \begin{questions}
-\subimport{../topics/datapath/}{pipelining.tex}
-\subimport{../topics/datapath/}{pipelining2.tex}
+\subimport{../topics/caches/}{cachethemall.tex}
 \end{questions}
 \newpage
 
-\section{More Pipelines (Spring 2016 MT2 Q4)}
+\section{Break It Down Now Y'All}
 \begin{questions}
-\subimport{../topics/datapath/}{pipelining_hard.tex}
-\subimport{../topics/datapath/}{pipelining_hard2.tex}
+\subimport{../topics/caches/}{breakitdown1.tex}
+\subimport{../topics/caches/}{breakitdown2.tex}
 \end{questions}
 \newpage
 
-\section{Pipelining Hazards}
+\section{Multilevel \$}
 \begin{questions}
-\subimport{../topics/datapath/}{hazards.tex}
+\subimport{../topics/caches/}{multilevel1.tex}
+\subimport{../topics/caches/}{multilevel2.tex}
+\subimport{../topics/caches/}{multilevel3.tex}
+\subimport{../topics/caches/}{multilevel4.tex}
+\subimport{../topics/caches/}{multilevel5.tex}
+\subimport{../topics/caches/}{multilevel6.tex}
 \end{questions}
+\newpage
 
 \end{document}

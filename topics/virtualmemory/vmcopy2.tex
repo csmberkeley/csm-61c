@@ -1,0 +1,28 @@
+\begin{blocksection}
+\begin{parts}
+\part
+Assume the TLB has just been flushed. What TLB hit to miss ratio would be encountered if sizeof(double) * ARRAY\_SIZE = 256 MiB and we run the above code? 
+
+\begin{solution}[0.5in]
+$6(2^{23})$ TLB hit: 3 TLB misses \\
+\begin{itemize}
+\item Our loop has $2^{28}$ / ($2^3 * 2^2$) = $2^{23}$ iterations. For each iteration, there are 6 memory accesses. For the loop entirely, there are $6(2^{23})$ total memory accesses.
+\item Before the loop, there is one memory access. After the loop there are two memory accesses (read \& write measurer -> fun).
+\item Thus, there are $6(2^{23})  + 3$ total memory accesses. We require three pages, one for dblsToCpy and two for doubleFun all that miss initially when loading up. 
+Thus, our hit-miss ratio is $6(2^{23}): 3$.
+\end{itemize}
+\end{solution}
+
+\part
+In the best-case scenario, how many iterations can be executed with no TLB misses? Use IEC prefixes when reporting your answer. 
+
+\begin{solution}[0.5in]
+$2^{24}$ iterations = 16 MiB.
+In the best case scenario, all 5 slots in the TLB are full of valid info. We have 2 pages worth of measurer->dbl, 1 page for dbl->fun, and 2 pages for dblsToCpy. 
+This means that our arrays are $2^{29}$ B (2 pages) in length. We index by every 4 elements of 8-byte doubles each time to obtain $2^{29}$ / $2^2$ / $2^3$ = $2^{24}$ iterations.
+    
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}
