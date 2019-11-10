@@ -1,0 +1,59 @@
+\begin{blocksection}
+
+\question
+\begin{parts}
+\part
+Implement the following function using SIMD:
+
+\begin{verbatim}
+    // Sequential code
+    static int selective_sum_total (int n, int a*, int c) {
+        int sum = 0;
+        for (int i = 0; i < n; i += 1) {
+            if (a[i] > c) {
+                sum += a[i];
+            }
+        return sum;
+    }
+    
+    // SIMD code
+    static int selective_sum_vectorized (int n, int a*, int c) {
+        int result[4];
+        _m128i sum_v = _______________________________;
+        _m128i cond_v = _______________________________;
+        
+        for (int i = 0; i < ___; i += ___) { //Vectorized loop
+            _m128i curr_v = m128i_mm_loadu_si128(______________);
+            __m128i tmp = _mm_cmpgt_epi32(____________);
+            cond_v = _______________________________;
+            sum_v = _______________________________;
+        }
+        _mm_storeu_si128(________________________________________);
+    
+        for (int i = ___; i < ___; i += 1) { //Tail case
+            result[0] += _____________________________________;
+        }
+        return ____________________________________________________;
+\end{verbatim}
+
+\begin{solution} [0.5in]
+\begin{verbatim}
+    __m128i sum_v = _mm_set1_epi32(0);
+    __m128i cond_v = _mm_set1_epi32(c);
+    for (int i = 0; i < n/4*4; i += 4) { //Vectorized loop
+        __m128i curr_v = _mm_loadu_si128((__m128*)(a+i));
+        __m128i tmp = _mm_cmpgt_epi32(curr_v, cond_v);
+        tmp = _mm_and_si128(tmp, curr_v);
+        sum_v = _mm_add_epi32(sum_v, tmp);
+    }
+    _mm_storeu_si128((_m128*)result, sum_v);
+    for (int i = n/4*4; i < n; i += 1) { //Tail case
+        result[0] += (a[i] > c)? a[i] : 0;
+    }
+    return result[0] + result[1] + result[2] + result[3];
+\end{verbatim}
+\end{solution}
+
+\end{parts}
+    
+\end{blocksection}

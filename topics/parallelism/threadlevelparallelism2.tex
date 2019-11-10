@@ -1,0 +1,46 @@
+\begin{blocksection}
+
+\question
+Implement the following function using openMP:
+\begin{verbatim}
+// Sequential code
+static int selective_square_total (int n, int a*, int c) {
+    for (int i = 0; i < n; i += 1) {
+        if (a[i] > c) {
+            a[i] *= a[i];
+        }
+    return product;
+}   
+\end{verbatim}
+
+\begin{parts}
+\part
+\begin{verbatim}
+// openMP for code
+static int selective_square_parallelized (int n, int a*, int c) {
+    #pragma omp parallel {
+    #pragma omp for
+    for (int i = ___; i < ___; i += ___) {
+        if (_____ > _____) {
+            a[i] *= _____;
+        }
+    }
+    return product;
+}
+\end{verbatim}
+
+\begin{solution}[0.5in]
+\begin{verbatim}
+    for (int i =  0 ; i <  n ; i += 1) {
+        if ( a[i]  >   c  ) {
+            a[i] *=  a[i] ;
+        }
+    }
+\end{verbatim}
+This is a bit of a trick question: openMP takes care of the parallelism for us by using \#pragma omp parallel / \#pragma omp for.
+META: Students might get confused on whether they should chunk or alternate threads, because that’s usually what the lab covers and/or what lecture covers conceptually.
+\end{solution}
+
+\end{parts}
+    
+\end{blocksection}

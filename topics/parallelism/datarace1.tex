@@ -1,0 +1,42 @@
+\begin{blocksection}
+\question
+Suppose we have int *A that points to the head of an array of length len. 
+Determine which statement (A)-(E) correctly describes the code execution and provide a one or two sentence justification.
+
+\begin{parts}
+
+\part
+Consider the following code:
+\begin{verbatim}
+#pragma omp parallel for
+for (int x = 0; x < len; x++){
+    *A = x; 
+    A++;
+}
+\end{verbatim}
+Is the code: \\
+A) Always Incorrect \\
+B) Sometimes Incorrect \\ 
+C) Always Correct, Slower than Serial \\
+D) Always Correct, Speed relative to Serial depends on Caching Scheme \\
+E) Always Correct, Faster than Serial \\
+
+\begin{solution}[0.5in]
+B \\
+Justification:
+The for loop work is split across threads, but there is a data race to increment the pointer A. However, if the threads happen to complete work in disjoint time intervals and in-order, we may get the correct result. 
+
+Detailed justification:
+This implementation is dependent on the threads processing in order, as thread 0, containing the 0 value of x, must occur first for the 0th element of A to be assigned 0. If any other thread is executed first, A cannot correct itself, as A is never decremented.
+Thread ordering with OpenMP is not deterministic, and is certainly not guaranteed to be in order.
+
+Further, there can be data race issues. If multiple threads are executed such that they all execute the first line, *A = x; before the second line, A++;, they will clobber each other’s outputs by overwriting what the other threads wrote in the same position.
+
+On the slim chance (almost impossible, but possible nonetheless) that the threads are scheduled such that each access occurs sequentially, the output will be correct, so it is only “Sometimes Incorrect”.
+\end{solution}
+
+
+
+\end{parts}
+
+\end{blocksection}

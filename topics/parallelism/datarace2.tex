@@ -1,0 +1,31 @@
+\begin{blocksection}
+\begin{parts}
+\part
+\begin{verbatim}
+#pragma omp parallel 
+{ 
+    for (int x = 0; x < len; x++){ 
+        *(A+x) = x; 
+    } 
+}   
+\end{verbatim}
+
+Is the code: \\
+A) Always Incorrect \\
+B) Sometimes Incorrect \\ 
+C) Always Correct, Slower than Serial \\
+D) Always Correct, Speed relative to Serial depends on Caching Scheme \\
+E) Always Correct, Faster than Serial \\
+
+\begin{solution}[0.5in]
+C\\
+Justification: 
+Our code computes the correct result but will be slower than the serial equivalent due to duplication of work. 
+
+Detailed justification:
+This is the naive implementation of parallelism. Each thread does the entire job on its own, so there are no concurrency issues. 
+
+However, since the serial solution would be the same as our parallel solution, but with only 1 thread, since we can dedicate more resources to a single thread, this solution will be slower.
+\end{solution}
+\end{parts}
+\end{blocksection}
