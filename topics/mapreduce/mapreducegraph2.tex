@@ -1,0 +1,43 @@
+\begin{blocksection}
+\begin{verbatim}
+def flatMapFunc(person, friendIDs): 
+    return ____________________________________________
+
+def reduceFunc(_________________, _________________): 
+    return ____________________________________________
+
+def mapFunc(_________________, _________________): 
+    ___________________________________________________
+    return ____________________________________________
+
+# persons = list((person, list(friendIDs))
+secondDegree = sc.parallelize(persons)
+secondDegree.flatMap(lambda (k, v): flatMapFunc(k, v))
+        .reduceByKey(lambda (v, v): reduceFunc(v, v))
+        .map(lambda (k, v): mapFunc(k, v))
+return secondDegree
+\end{verbatim}
+
+\begin{solution}
+\begin{verbatim}
+def flatMapFunc(person, friendIDs): 
+    return  [(friend, set(friendIDs)) for friend in friendIDs]
+
+def reduceFunc(friendIDs_1, friendIDs_2): 
+    return  friendIDs_1.union(friendIDs_2)
+
+def mapFunc(person, friendSet): 
+    friendSet = friendSet.remove(person)
+    return  (person, friendSet)
+\end{verbatim}
+    
+Detailed solution:
+In the map phrase, we want to somehow associate a user with their second degree friends. The key here is to recognize that every friend in person A’s friendIDs is a second degree friend to every other friend in that list (linked through person A). Thus, we want a function that takes in a person and his/her friendIDs and outputs a list of tuples containing each friend and a set of the second degree friends. We call flapMap on this function because each input could be mapped to more than one output.\\
+In reduce, we simply combine (using union) all of the second degree friends lists which correspond to a specific user by calling reduceByKey. \\
+The last step is to remove the user itself from the list of second degree friend. We call map in this case because each input is mapped to exactly one output.\\
+Meta: \\
+It might be useful to draw the graph for a toy example for this problem! Represent the relationships visually so you can work through what each "friend"/ID means.
+\end{solution}
+
+
+\end{blocksection}

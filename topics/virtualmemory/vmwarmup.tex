@@ -22,7 +22,7 @@ What is the maximum number of virtual pages a process can use?
 
 \begin{solution}[0.5in]
 We have 4 KiB pages, resulting in $\log_2(2^{12}) = 12$ bits for page offset.\\
-\#VA bits = \#VPN bits + \#Page offset bits -> \#VPN bits = \#VA bits - \#Page offset bits\\
+\#VA bits = \#VPN bits + \#Page offset bits $\rightarrow$ \#VPN bits = \#VA bits - \#Page offset bits\\
 \#VPN bits = 32 - 12 = 20, resulting in $2^{20}$ total virtual pages.
 \end{solution}
 

@@ -21,7 +21,7 @@ void scale_n_copy (int32_t *base, int32_t *copy, uint32_t num_entries, int32_t s
 We want to calculate how many pages the N entries will span, which means that we have
 $\frac{N}{(2^{12} / 2^2)}$ since we have N integers and $\frac{2^{12}}{2^2}$ integers per page.
 This gives us $\frac{N}{2^{10}}$ pages, but we have two arrays, meaning we have $2 * \frac{N}{2^{10}}$ pages used, resulting in $\frac{N}{2^9}$ page faults. 
-HOWEVER, DO NOT FORGET THE CODE REQUIRES A PAGE AS WELL, resulting in $\frac{N}{2^9} + 1$ page faults.
+However, do not forget that code requires a page as well, resulting in $\frac{N}{2^9} + 1$ page faults.
 \end{solution}
 
 \part In the best-case scenario, how many iterations of the loop can occur before a TLB miss?
@@ -29,7 +29,7 @@ HOWEVER, DO NOT FORGET THE CODE REQUIRES A PAGE AS WELL, resulting in $\frac{N}{
 \begin{solution}[0.5in]
 We have 4 TLB entries, however one is reserved for the code. This leaves us with three pages left to use, but because the arrays are page aligned and 
 we iterate through both arrays simultaneously, we can have a maximum one page for each array (figure out why this makes sense, if we have 2 pages for one array, we are limited by the array that only has one page before we have to miss). 
-A page is $2^{12}$ B which means $2^{10}$ integers, meaning we can iterate through $2^10$ times since we have a page for each array.
+A page is $2^{12}$ B which means $2^{10}$ integers, meaning we can iterate through $2^{10}$ times since we have a page for each array.
 \end{solution}
 
 \end{parts}

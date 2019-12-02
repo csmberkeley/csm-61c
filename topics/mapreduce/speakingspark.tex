@@ -35,13 +35,7 @@ modeData.map(output_data)
          .reduceByKey(compute_count)
          .reduce(find_max_occurrence)
 \end{verbatim}
- 
-Detailed solution:
-\lstinline$output_data$ maps each element in the list to 1 as the count, so that later we can aggregate by key. We use the map function instead of flapMap, because each input is mapped to exactly one output.
 
-\lstinline$compute_count$ is where we count the occurrences for each element in the list. We call reduceByKey, because we want to preserve the key.
-
-\lstinline$find_max_occurrence$ helps us compare the counts for each element and find the one with the most occurences. We call reduce so that we get one single value.
 \end{solution}
 
 \end{blocksection}

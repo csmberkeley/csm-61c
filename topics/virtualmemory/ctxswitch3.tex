@@ -1,15 +1,23 @@
 \begin{blocksection}
+\question
 As opposed to the TLB architecture described above, let us consider a tagged TLB. In a tagged TLB, each entry additionally contains the Address Space ID (ASID), which uniquely identifies the virtual address space of each process. A tagged TLB entry is shown below.
 
 Tagged TLB Entry\\
-\includegraphics[width=\textwidth]{virtualmemory/taggedtlbentry}
+\includegraphics[width=\textwidth]{virtualmemory/tlbentry}
 
 On a lookup, we consider a hit to be if the (VPN, ASID) pair is present in the tagged TLB. This redesign allows us to keep entries in the TLB even if they are not a part of the process running on the CPU, so we do not have to flush the TLB when switching between processes. 
 
 Consider that we are using a tagged TLB and running the code in the manner described above.
 
 \begin{parts}
-\part What is the hit rate for the tagged TLB assuming it again starts out cold? You may make the same assumptions about the variables i, j, x and ignore the effects of fetching instructions.
+
+\part What is the hit rate for the tagged TLB for time 0-8 assuming it again starts out cold? You may make the same assumptions about the variables i, j, x and ignore the effects of fetching instructions.
+
+\begin{solution}[0.5in]
+75\%. This time, when we we switch processes at time step 5, we don't flush the TLB so the last 4 accesses are hits. Then, we get 2/4 on the first four accesses, then 4/4 on the last half.
+\end{solution}
+
+\part What is the hit rate for the tagged TLB for all iterations assuming it again starts out cold? You may make the same assumptions about the variables i, j, x and ignore the effects of fetching instructions.
 
 \begin{solution}[0.5in]
 15/16. We first access a[0] , which brings in page 0 of the array for process 0. 

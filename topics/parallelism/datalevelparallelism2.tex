@@ -7,7 +7,7 @@ Implement the following function using SIMD:
 
 \begin{verbatim}
     // Sequential code
-    static int selective_sum_total (int n, int a*, int c) {
+    static int selective_sum_total (int n, int *a, int c) {
         int sum = 0;
         for (int i = 0; i < n; i += 1) {
             if (a[i] > c) {
@@ -17,7 +17,7 @@ Implement the following function using SIMD:
     }
     
     // SIMD code
-    static int selective_sum_vectorized (int n, int a*, int c) {
+    static int selective_sum_vectorized (int n, int *a, int c) {
         int result[4];
         _m128i sum_v = _______________________________;
         _m128i cond_v = _______________________________;
@@ -25,7 +25,6 @@ Implement the following function using SIMD:
         for (int i = 0; i < ___; i += ___) { //Vectorized loop
             _m128i curr_v = m128i_mm_loadu_si128(______________);
             __m128i tmp = _mm_cmpgt_epi32(____________);
-            cond_v = _______________________________;
             sum_v = _______________________________;
         }
         _mm_storeu_si128(________________________________________);

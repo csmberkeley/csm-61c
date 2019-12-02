@@ -5,7 +5,7 @@
 \question
 The following code uses loop unrolling to improve performance:
 \begin{verbatim}
-static void sum_unrolled (int a*) {
+static void sum_unrolled (int *a) {
     int sum = 0;
     for (int i = 0; i < 16; i += 4) {
         sum += (a + i);
@@ -21,7 +21,7 @@ static void sum_unrolled (int a*) {
 \part
 Implement the following function with a single SIMD instruction:
 \begin{verbatim}
-static void sum_unrolled_SIMD (int a*) {
+static void sum_unrolled_SIMD (int *a) {
     int sum = 0;
     int result[4];
     __m128i result_v = _mm_set1_epi32(0);

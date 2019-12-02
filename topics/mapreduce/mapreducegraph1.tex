@@ -1,0 +1,11 @@
+\begin{blocksection}
+\question
+Imagine we’re looking at Facebook’s friendship graph, which we model as having a vertex for each user, and an undirected edge between friends. Facebook stores this graph as an adjacency list, with each vertex associated with the list of its neighbors, who are its friends. This representation can be viewed as a list of degree 1 friendships, since each user is associated with their direct friends. We’re interested in finding the list of degree 2 friendships, that is, an association between each user and the friends of their direct friends. \\
+\\
+You are given a list of associations of the form (user\_id, list(friend\_id)), where the user\_id is 1st degree friends with all the users in the list.\\
+\\
+Your output should be another list of associations of the same form, where the first item of the pair is a user\_id, and the second item is a list of that user’s 2nd degree friends. Note: a user is not their own 2nd degree friend, so the list of second degree friends must not include the user themselves.\\
+ \\
+Write pseudocode for the mapper and reducer to get the desired output from the input. Assume you have a set data structure. You can call set(list) to create a set, and use .remove(value), and .union(set) methods. \\
+
+\end{blocksection}

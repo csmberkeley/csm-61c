@@ -6,7 +6,7 @@
 Implement the following function using openMP:
 \begin{verbatim}
 // Sequential code
-static int selective_product_total (int n, int a*, int c) {
+static int selective_product_total (int n, int *a, int c) {
     for (int i = 0; i < n; i += 1) {
         a[i] = (a[i] > c)? 10 : 0;
 }
@@ -21,7 +21,7 @@ int omp\_get\_thread\_num $\leftarrow$ returns current thread ID number
 
 \begin{verbatim}
 // openMP code
-static int selective_product_parallelized (int n, int a*, int c) {
+static int selective_product_parallelized (int n, int *a, int c) {
     #pragma omp parallel {
     for (int i = 0; i < n; i += 1) {
         if ( _____________________________________________) {
@@ -34,7 +34,7 @@ static int selective_product_parallelized (int n, int a*, int c) {
 
 \begin{solution}[0.5in]
 \begin{verbatim}
-if ((i/omp_get_num_threads()) == omp_get_thread_num()) {
+if (( i / (n/omp_get_num_threads()) ) == omp_get_thread_num()) {
 \end{verbatim}
 \end{solution}
 \end{parts}

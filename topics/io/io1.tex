@@ -1,0 +1,39 @@
+\begin{blocksection}
+An important advantage of interrupts over polling is the ability of the processor to perform other tasks while waiting for communication from an I/O device. Suppose that a 1 GHz processor needs to read 1000 bytes of data from a particular I/O device. The I/O device supplies 1 byte of data every 0.02 ms. The time to process the data and store it in a buffer is negligible.
+
+\question 
+Assume a polling iteration takes 60 cycles. If the processor detects that a byte of data is ready through polling:
+\begin{parts}
+\part
+How many cycles does it take for the I/O device to supply 1 byte of data? 
+\begin{solution}[0.5in] 
+20000
+\end{solution}
+
+\part
+How many polling iterations does it take to read 1 byte of data? (round up to an integer)
+\begin{solution}[0.5in] 
+334
+\end{solution}
+
+\part
+How many cycles does it take to read the 1000 bytes of data?
+\begin{solution}[0.5in] 
+20,040,000
+\end{solution}
+\end{parts}
+
+\question
+If instead, the processor is interrupted when a byte is ready, and the processor spends the time between interrupts on another task, how many cycles of this other task can the processor complete while the I/O communication is taking place? The overhead for handling an interrupt is 2000 cycles. 
+
+\begin{solution}[0.5in]
+18,000,000
+\end{solution}
+
+\question
+The advantage of polling however arises when data rates become very large so that the interrupt overhead becomes substantial and at some point the system simply can’t keep up. What is the data arrival time (in ms) at which point an interrupt-driven I/O scheme on this computer can’t keep up with the data coming in? The overhead for handling an interrupt is 2000 cycles. 
+\begin{solution}[0.5in] 
+2000 / 1 GHz = 0.002ms
+\end{solution}
+
+\end{blocksection}
