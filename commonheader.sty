@@ -17,7 +17,7 @@
 %\def\discussionsolutions{}
 
 \ProvidesPackage{commonheader}
-
+\usepackage[utf8]{inputenc}
 \usepackage{algorithm}
 \usepackage{algorithmicx}
 \usepackage[noend]{algpseudocode}
@@ -36,6 +36,8 @@
 \usepackage{upquote}
 \usepackage{verbatim}
 \usepackage{wasysym}
+\usepackage{multicol}
+\usepackage{makecell}
 \usepackage{tikz,tikz-qtree,tikz-qtree-compat}
 % Draw trees
 \usepackage{wrapfig}
@@ -51,7 +53,7 @@
 
 % Course information
 \def\coursenumber{CSM 61C}
-\def\semester{Fall 2019}
+\def\semester{Spring 2020}
 % Provide discnum and disctitle
 \newcommand{\discnumber}[1]{\newcommand{\discnum}{#1}}
 \def\title#1{\gdef\@title{#1}\gdef\disctitle{#1}}
@@ -191,6 +193,9 @@ to\hsize{\hfil\box\@tempboxa\hfil}
 \fi
 
 % Mathematical commands
+\DeclareUnicodeCharacter{200B}{ }
+\DeclareUnicodeCharacter{2212}{-}
+\DeclareUnicodeCharacter{2217}{*}
 \newcommand{\surjects}{\twoheadrightarrow}
 \newcommand{\injects}{\hookrightarrow}
 \newcommand{\isom}{\simeq}

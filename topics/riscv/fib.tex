@@ -1,0 +1,53 @@
+\begin{blocksection}
+\question Fill in the following RISC-V function that recursively calculates the n-th fibonacci number.
+
+\begin{verbatim}
+1. fib:
+2.     addi t0 x0 2
+3.     blt __ t0 exit
+4.     addi __ __ -8 #prologue
+5.     sw __ 4(sp)
+6.     sw s0 0(sp)
+7.     addi __ __ -1
+8.     mv s0 a0
+9.     jal ra fib
+10.    mv t0 a0
+11.    mv a0 __
+12.    mv s0 t0
+13.    addi a0 a0 __
+14.    __________
+15.    add a0 a0 s0
+16.    lw __ 4(sp)
+17.    lw s0 0(sp)
+18.    addi __ __ 8
+19. exit: 
+20.    jr ra
+\end{verbatim}
+\end{blocksection}
+
+\begin{solution}[0.5in]
+\begin{verbatim}
+1. fib:
+2.     addi t0 x0 2
+3.     blt a0 t0 exit
+4.     addi sp sp -8
+5.     sw ra 4(sp)
+6.     sw s0 0(sp)
+7.     addi a0 a0 -1
+8.     mv s0 a0
+9.     jal ra fib
+10.    mv t0 a0
+11.    mv a0 s0
+12.    mv s0 t0
+13.    addi a0 a0 -1
+14.    jal ra fib
+15.    add a0 a0 s0
+16.    lw ra 4(sp)
+17.    lw s0 0(sp)
+18.    addi sp sp 8
+19. exit: 
+20.    jr ra
+
+\end{verbatim}
+\end{solution}
+
