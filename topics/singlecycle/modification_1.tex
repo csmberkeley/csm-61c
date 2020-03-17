@@ -6,7 +6,7 @@ We want to expand our instruction set from the base RISC-­V ISA (RV32I) to supp
     \item Can be implemented without changing datapath wiring, only changes in control signals are needed. (i.e. change existing control signals to recognize the new instruction)
     \item Can be implemented, but needs changes in datapath wiring, only additional wiring, logical gates and muxes are needed.
     \item Can be implemented, but needs change in datapath wiring, and additional arithmetic units are needed (e.g. comparators, adders, shifters etc.).
-    \ item Cannot be implemented.
+    \item Cannot be implemented.
 \end{enumerate}
 
 (Note that the options from 1 to 3 gradually add complexity; thus, selecting 2 implies that 1 is not sufficient. You should select the option that changes the datapath the least (e.g. do not select 3 if 2 is sufficient). You can assume that necessary changes in the control signals will be made if the datapath wiring is changed.)

@@ -10,7 +10,7 @@ $17 - 6 - 2 - 2 = 7$ \\
 \end{solution}
 
 \part
-Let n be your answer in part (a). Suppose that \lstinline$blt$’s branch immediate is in units of instructions (i.e. an immediate of value 1 means branching 1 instruction away). What is the maximum number of bytes a \lstinline$blt$ instruction can jump forwa\lstinline$rd$ from the current \lstinline$pc$ using these assumptions? Write your answer in terms of n.
+Let n be your answer in part (a). Suppose that \lstinline$blt$’s branch immediate is in units of instructions (i.e. an immediate of value 1 means branching 1 instruction away). What is the maximum number of bits a \lstinline$blt$ instruction can jump forwa\lstinline$rd$ from the current \lstinline$pc$ using these assumptions? Write your answer in terms of n.
 \begin{solution}[0.5in]
 $(2^{n - 1} − 1) ∗ 17$ \\
 In 2’s complement, the range of an $n$-bit number is $[−2^{n−1}, 2^{n−1} − 1]$. jumping forwa\lstinline$rd$ means that the offset is positive. With $n$-bit 2’s complement offset, we can jump forwa\lstinline$rd$ $2^{n−1} − 1$ instructions, which is $(2^{n−1} − 1) ∗ 17$ bits since each instruction is 17 bits wide.
