@@ -35,7 +35,7 @@ Ignoring the length of a clock cycle, how long does it take to execute the instr
 	\lstinline$jal ra, 0b1100$
 	\begin{solution}[0.3in]
 		\begin{align*}
-		t_{clk-to-q(PC)} + t_{MEMRead} + max(t_{RegFileRead}, t_{ImmGen}) +\\
+		t_{clk-to-q(PC)} + t_{MEMRead} + t_{ImmGen} +\\
 		 t_{Mux} + t_{ALU} + max((t_{Mux(WBSel)} + t_{RegFileSetup}), (t_{Mux(PCSel)} + t_{RegFileSetup(PC)})) &=\\
 		5 + 150 + 25 + 5 + 100 + 5 + 4 &= 294\text{ns}
 		\end{align*}
