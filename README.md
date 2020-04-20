@@ -15,7 +15,17 @@ The style is provided by `commonheader.sty`.
   ([Solution](https://csmberkeley.github.io/csm-61c/mentor04_sol.pdf))
 * [Mentoring 5](https://csmberkeley.github.io/csm-61c/mentor05.pdf)
   ([Solution](https://csmberkeley.github.io/csm-61c/mentor05_sol.pdf))
-
+* [Mentoring 6](https://csmberkeley.github.io/csm-61c/mentor06.pdf)
+  ([Solution](https://csmberkeley.github.io/csm-61c/mentor06_sol.pdf)) 
+* [Mentoring 7](https://csmberkeley.github.io/csm-61c/mentor07.pdf)
+  ([Solution](https://csmberkeley.github.io/csm-61c/mentor07_sol.pdf)) 
+* [Mentoring 8](https://csmberkeley.github.io/csm-61c/mentor08.pdf)
+  ([Solution](https://csmberkeley.github.io/csm-61c/mentor08_sol.pdf))   
+* [Mentoring 9](https://csmberkeley.github.io/csm-61c/mentor09.pdf)
+  ([Solution](https://csmberkeley.github.io/csm-61c/mentor09_sol.pdf))   
+* [Mentoring 10](https://csmberkeley.github.io/csm-61c/mentor10.pdf)
+  ([Solution](https://csmberkeley.github.io/csm-61c/mentor10_sol.pdf)) 
+  
 ## Making Handouts
 
 To make an individual worksheet, run the following command in the repository's
@@ -47,6 +57,8 @@ If you do not already have LaTeX installed and would prefer the most minimal
 installation necessary, [obtain LaTeX from
 CTAN](https://www.latex-project.org/get/#ctan) and adapt the `.texlive.sh`
 script and `.texlive.profile` configuration for your needs.
+
+For Mac, install Mactex (http://www.tug.org/mactex/).
 
 ### Branch off `master`
 
