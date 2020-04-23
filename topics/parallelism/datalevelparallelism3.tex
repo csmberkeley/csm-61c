@@ -31,7 +31,7 @@ Use SIMD instructions to rewrite the company’s matrix-vector multiplication fu
                         __m128i vec_v = _mm_loadu_si128(_______________________);
                         sum_v = ________________________________________________;
             }
-            int* sum_arr = malloc(_________________);
+            int sum_arr[_];
             _mm_storeu_si128(sum_arr, sum_v);
                   for (int k = _______; _______; _______) { sum_arr += ___________________________; }
                   result[i] = ________________________________________________;
@@ -51,10 +51,10 @@ Use SIMD instructions to rewrite the company’s matrix-vector multiplication fu
             sum_v = _mm_set1_epi32(0)	
             for (int j = 0; j < c/4 * 4; j += 4) {
                         __m128i mat_v = _mm_loadu_si128((__m128i*) (*(mat + i)) + j);
-                    __m128i vec_v = _mm_loadu_si128((__m128i*) vec + j);
+                        __m128i vec_v = _mm_loadu_si128((__m128i*) (vec + j));
                         sum_v = _mm_add_epi32(sum_v, _mm_mullo_epi32(mat_v, vec_v));
             }
-            int* sum_arr = malloc(4 * sizeof(int));
+            int sum_arr[4];
             _mm_storeu_si128(sum_arr, sum_v);
             for (int k = c/4 * 4; k < c; k++) { 
                 sum_arr[0] += mat[i][k] * vec[k]; 

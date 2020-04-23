@@ -7,7 +7,7 @@ selective_square_parallelized(512, ptr, 61);
 \end{verbatim}
 \begin{parts}
 \part
-Assume the machine uses a 1 KiB direct-mapped cache with 256 B blocks. Is the code correct?
+Assume the machine uses a 1 KiB direct-mapped cache with 256 B blocks. Is the code faster?
 
 \begin{solution}[0.5in]
 Yes. The intuition here is that over 512 elements, each thread will be given be given 512 / 8 = 64 ints to process. 64 ints * 4 B = 256 B per thread, which is exactly our block size. There is no problem with false sharing here as each thread will either map to a different index or mismatch in the tag bits.
@@ -15,10 +15,10 @@ META: This will likely increase conflict misses as the threads switch contexts, 
 \end{solution}
 
 \part
-Assume the machine uses a 1 KiB direct-mapped cache with 1024 B blocks. Is the code correct?
+Assume the machine uses a 1 KiB direct-mapped cache with 1024 B blocks. Is the code faster?
 
 \begin{solution}[0.5in]
-Yes. This question follows the same intuition as the previous part, but now two thread’s worth of data fits into a single block.
+No. This question follows the same intuition as the previous part, but now two thread’s worth of data fits into a single block.
 META: Although this looks like (and will) reduce compulsory misses, the cache management will decrease performance to ensure that false sharing does not happen by preventing threads from writing to the same block at the same time.    
 \end{solution}
 

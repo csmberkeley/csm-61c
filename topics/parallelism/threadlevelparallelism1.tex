@@ -14,9 +14,9 @@ static int selective_product_total (int n, int *a, int c) {
 
 \begin{parts}
 \part
-Given sizeof(a*) = sizeof(int)*16, manually distribute the iterations such that there are four contiguous chunks and no false sharing. 
-Assume the total number of threads is a multiple of 4.
-int omp\_get\_num\_threads $\leftarrow$ returns total number of threads in a team
+Given the number of elements in a is a multiple of 16, manually distribute the iterations such that there are four contiguous chunks and no false sharing. 
+Assume the total number of threads is a multiple of 4. \\
+int omp\_get\_num\_threads $\leftarrow$ returns total number of threads in a team \\
 int omp\_get\_thread\_num $\leftarrow$ returns current thread ID number
 
 \begin{verbatim}

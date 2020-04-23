@@ -35,7 +35,7 @@ static void sum_unrolled_SIMD (int *a) {
 
 \begin{solution}[0.5in]
 \begin{verbatim}
-result_v = _mm_add_epi32(result_v, _mm_loadu_si128((__m128*)a + i));
+result_v = _mm_add_epi32(result_v, _mm_loadu_si128((__m128*) (a + i) );
 \end{verbatim}
 \end{solution}
 \end{parts}

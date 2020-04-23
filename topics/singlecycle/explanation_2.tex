@@ -12,7 +12,7 @@ A controller send signals to our circuit, telling which pieces to perform what o
  \hline
  \textbf{Signal:} & \textbf{inst[31:0]} & \textbf{BrEq} & \textbf{BrLT} \\ 
  \hline
- Purpose: & Sends the current instruction to control & (DataA == DataB) ? 1 : 0 & (DataA < DataB) ? 1 : 0 \\ 
+ Purpose: & Sends the current instruction to control & (DataA == DataB) ? 1 : 0 & (DataA $<$ DataB) ? 1 : 0 \\ 
  \hline
 \end{tabular}
 
@@ -26,7 +26,7 @@ A controller send signals to our circuit, telling which pieces to perform what o
  \hline
  ALUSel & What operation to perform. \\
  \hline
- RegWEn & Do we change a register’s value? \\
+ RegWEn & Do we allow the register value to be updated by enabling writes? \\
  \hline
  ImmSel & Format the immediate properly.\\ 
  \hline
