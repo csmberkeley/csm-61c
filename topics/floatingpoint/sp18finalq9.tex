@@ -1,0 +1,44 @@
+\begin{blocksection}
+\question
+
+IEEE 754-2008 introduces half precision, which is a binary floating-point representation that uses 16 bits: 1 sign bit, 5 exponent bits (with a bias of 15) and 11 significand bits. This format uses the same rules for special numbers that IEEE754 uses. Considering this half-precision floating point format, answer the following questions:
+
+\begin{parts}
+\part
+For 16-bit half-precision floating point, how many different valid representations are there for NaN?
+
+\begin{solution}[0.5in]
+$2^{11}-2$
+
+\end{solution}
+
+\part
+What is the smallest non-infinite number it can represent? You can leave your answer as an expression.
+
+\begin{solution}[0.5in]
+bias = $2^{5-1}-1 = 2^4-1 = 15$
+Binary representation is: 0 00000 0000000001
+$= 2^{-14}*2^{-10} = 2^{-24}$
+\end{solution}
+
+\part
+What is the largest non-infinite number it can represent? You can leave your answer as an expression.
+
+\begin{solution}[0.5in]
+Binary representation is: 0 11110 1111111111
+$= 2^{16}-2^5 = 65504$
+\end{solution}
+
+\part
+How many floating point numbers are in the interval [1, 2) (including 1 but excluding 2?
+
+\begin{solution}[0.5in]
+$2^{10}$
+0b0 01111 0000000000 = 1
+0b0 10000 0000000000 = 2
+Keeping the exponent fixed at 01111 and allowing the significand to change, we can reach any number in the range [1, 2). There are $2^{10}$ possible significands.
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}
