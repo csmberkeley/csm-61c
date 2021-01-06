@@ -5,7 +5,7 @@
 $\frac{196}{4} \times 15$  cycles
 \end{solution}
 
-\question Now assume the pipeline has 1 delayed branch slot and standard forwarding hardware. Also, reordering of instructions is allowed to minimize stalls. Write out the reordered sequence of instructions that achieves a minimal number of stalls needed. 
+\question Now assume the pipeline has 1 delayed branch slot and standard forwarding hardware (EX to EX and MEM to EX). Also, reordering of instructions is allowed to minimize stalls. Write out the reordered sequence of instructions that achieves a minimal number of stalls needed. 
 
 \begin{solution}[0.7in]
 \begin{verbatim}
@@ -22,7 +22,7 @@ The branch delay slot cannot be used.
 \question How many cycles does this loop take to fully execute (from the lw to the \texttt{End} label)?
 
 \begin{solution}[0.5in]
-$49 \times 8$ cycles
+$49 \times 9$ cycles
 \end{solution}
 
 \end{blocksection}

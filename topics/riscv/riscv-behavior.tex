@@ -1,6 +1,6 @@
 \begin{blocksection}
 \question
-For parts a and b, answer either Caller, Callee or Neither as applicable. The Caller is the function passing these values to a new call, the Callee is the function being called (ie. if we invoke a function doStuff() from main(), doStuff() is the Callee and main() is the Caller) 
+For parts a and b, answer either Caller, Callee or Neither as applicable. The Caller is the function passing these values to a new call, and the Callee is the function being called. That is, if we invoke a function doStuff() from main(), doStuff() is the Callee and main() is the Caller.
 
 \begin{parts}
 \part
@@ -19,24 +19,31 @@ Whose responsibility is it to save the temporary registers (t0-t6)? What about t
 \end{solution}
 
 \part
-You’re given a new RISC-V instruction set where instructions are 12 bits long instead of 32 bits. Each rs and rd field uses 2 bits. How many registers does this new format support? 
-\begin{solution}[0.5in]
-    In regular RISC-V, we can represent 32 registers because our 5-bits for each rd/rs field allow us $2^{5}$ possibilities. Here, we have only 2 bits for each rd/rs field and so we can represent $2^{2}$ = 4 registers
-\end{solution}
-
-\part
-If our opcode and funct3 are now two bits each, what is the largest immediate our I-Type instruction format can support? How far can we now branch (in bytes)?
+Whose responsibility is it to save the argument registers (a0-a7)? Why?
 
 \begin{solution}[0.5in]
-    For the I-Type: opcode + funct code + 2(reg field) = 2 + 2 + 2(2) = 8 bits already in use. This leaves 4 bits for our immediate with which we can represent from -8 to 7.
-    For the B-type: opcode + funct code + 2(reg field) = 8 bits in use. Then there are 4 bits for our immediate. Recall that this immediate is then multiplied by 2 to determine how many bytes we are branching by, so anywhere from -16 to 14 bytes.
+	It is the caller's responsibility because the callee is typically expected to put its return value(s) in the argument registers.
 \end{solution}
 
-\part
-Draw the format of the immediate instruction in the following box. Label each field and the number of bits each field holds. 
+%\part
+%You’re given a new RISC-V instruction set where instructions are 12 bits long instead of 32 bits. Each rs and rd field uses 2 bits. How many registers does this new format support? 
+%\begin{solution}[0.5in]
+%    In regular RISC-V, we can represent 32 registers because our 5-bits for each rd/rs field allow us $2^{5}$ possibilities. Here, we have only 2 bits for each rd/rs field and so we can represent $2^{2}$ = 4 registers
+%\end{solution}
 
-\begin{solution}[0.5in]
-    Immediate (4)       $\vert$        r1 (2)  $\vert$      funct (2) $\vert$      rd (2) $\vert$     opcode (2)
-\end{solution}
+%\part
+%If our opcode and funct3 are now two bits each, what is the largest immediate our I-Type instruction format can support? How far can we now branch (in bytes)?
+
+%\begin{solution}[0.5in]
+%    For the I-Type: opcode + funct code + 2(reg field) = 2 + 2 + 2(2) = 8 bits already in use. This leaves 4 bits for our immediate with which we can represent from -8 to 7.
+%    For the B-type: opcode + funct code + 2(reg field) = 8 bits in use. Then there are 4 bits for our immediate. Recall that this immediate is then multiplied by 2 to determine how many bytes we are branching by, so anywhere from -16 to 14 bytes.
+%\end{solution}
+
+%\part
+%Draw the format of the immediate instruction in the following box. Label each field and the number of bits each field holds. 
+
+%\begin{solution}[0.5in]
+%    Immediate (4)       $\vert$        r1 (2)  $\vert$      funct (2) $\vert$      rd (2) $\vert$     opcode (2)
+%\end{solution}
 \end{parts}
 \end{blocksection}

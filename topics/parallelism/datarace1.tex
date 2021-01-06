@@ -3,9 +3,6 @@
 Suppose we have int *A that points to the head of an array of length len. 
 Determine which statement (A)-(E) correctly describes the code execution and provide a one or two sentence justification.
 
-\begin{parts}
-
-\part
 Consider the following code:
 \begin{verbatim}
 #pragma omp parallel for
@@ -34,9 +31,5 @@ Further, there can be data race issues. If multiple threads are executed such th
 
 On the slim chance (almost impossible, but possible nonetheless) that the threads are scheduled such that each access occurs sequentially, the output will be correct, so it is only “Sometimes Incorrect”.
 \end{solution}
-
-
-
-\end{parts}
 
 \end{blocksection}

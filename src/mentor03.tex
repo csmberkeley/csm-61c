@@ -1,9 +1,9 @@
-\documentclass[11pt]{exam}
+\documentclass{exam}
 \usepackage{../commonheader}
 
 \discnumber{3}
-\title{RISC-V Instruction Formats}
-\date{February 24, 2019}
+\title{RISC-V CC/Instr. Formats}
+\date{September 28, 2020}
 
 \begin{document}
 \maketitle
@@ -14,24 +14,36 @@
 % \subimport{../topics/riscv/}{substrings2.tex}
 % \end{questions}
 
+\section{Calling Convention}
+\begin{questions}
+\subimport{../topics/riscv/}{riscv-behavior.tex}
+\end{questions}
+%\newpage
+
+\section{RISC-V Functions}
+\begin{questions}
+\subimport{../topics/riscv/}{reverse.tex}
+\subimport{../topics/riscv/}{reverse2.tex}
+\end{questions}
+%\newpage
+
 \section{RISC-y Conversions}
 \begin{questions}
 \subimport{../topics/riscv/}{conversions.tex}
 \end{questions}
-\newpage
+\nopagebreak[0]
 
 \section{Instruction Format Design}
 \begin{questions}
 \subimport{../topics/riscv/}{field.tex}
-\subimport{../topics/riscv/}{field2.tex}
 \end{questions}
-\newpage
+%\newpage
 
 \section{Advanced RISC-V}
 \begin{questions}
 \subimport{../topics/riscv/}{bltu.tex}
 \subimport{../topics/riscv/}{opcode.tex}
 \end{questions}
-\newpage
+%\newpage
 
 \end{document}

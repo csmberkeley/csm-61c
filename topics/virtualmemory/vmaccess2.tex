@@ -1,0 +1,64 @@
+\begin{blocksection}
+\question 
+Walk through the memory accesses provided in the table below, and fill in the table with whether each access hits in the TLB, page table, or neither. Assume the following:
+\begin{itemize}
+\item Physical Page 1 is initially occupied by another process (other physical pages are invalid)
+\item Physical memory has LRU replacement policy
+\item Break ties by choosing the lowest available number
+\end{itemize}
+
+\begin{tabular}{ |l|l|l| } 
+ \hline
+ Memory Access & TLB & Page Table \\ 
+ \hline
+ 0x123 & & \\
+ \hline
+ 0x456 & & \\
+ \hline
+ 0x712 & & \\
+ \hline 
+ 0x400 & & \\
+ \hline
+ 0x321 & & \\
+ \hline
+ 0x1AF & & \\
+ \hline
+ 0x0FE & & \\
+ \hline
+ 0x164 & & \\
+ \hline
+ 0x001 & & \\
+ \hline
+ 0x632 & & \\
+ \hline
+\end{tabular}
+
+\begin{solution}
+\begin{tabular}{ |l|l|l| } 
+ \hline
+ Memory Access & TLB & Page Table \\ 
+ \hline
+ 0x123 & M & M \\
+ \hline 
+ 0x456 & M & M \\
+ \hline
+ 0x712 & M & M \\
+ \hline 
+ 0x400 & H & - \\
+ \hline
+ 0x321 & M & M \\
+ \hline
+ 0x1AF & M & H \\
+ \hline
+ 0x0FE & M & M \\
+ \hline
+ 0x164 & H & - \\
+ \hline
+ 0x001 & H & - \\
+ \hline
+ 0x632 & M & M \\
+ \hline
+\end{tabular}
+\end{solution}
+
+\end{blocksection}

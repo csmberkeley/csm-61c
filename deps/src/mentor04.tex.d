@@ -1,0 +1,3 @@
+../published/disc/mentor04.pdf: src/../topics/call/callinfo.tex src/../topics/sds/basics2.tex src/../topics/sds/explanation.tex src/../topics/call/callmc.tex src/../topics/sds/holdtime.tex src/../topics/sds/su20FinalQ4.tex src/../topics/sds/basics.tex
+
+../published/disc/mentor04_sol.pdf: src/../topics/call/callinfo.tex src/../topics/sds/basics2.tex src/../topics/sds/explanation.tex src/../topics/call/callmc.tex src/../topics/sds/holdtime.tex src/../topics/sds/su20FinalQ4.tex src/../topics/sds/basics.tex

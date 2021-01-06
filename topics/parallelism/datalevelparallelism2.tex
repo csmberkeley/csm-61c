@@ -1,8 +1,6 @@
 \begin{blocksection}
 
 \question
-\begin{parts}
-\part
 Implement the following function using SIMD:
 
 \begin{verbatim}
@@ -24,7 +22,8 @@ Implement the following function using SIMD:
         
         for (int i = 0; i < ___; i += ___) { //Vectorized loop
             _m128i curr_v = m128i_mm_loadu_si128(______________);
-            __m128i tmp = _mm_cmpgt_epi32(____________);
+            __m128i tmp = _mm_cmpgt_epi32(______________);
+            tmp = _mm_and_si128(______________);
             sum_v = _______________________________;
         }
         _mm_storeu_si128(________________________________________);
@@ -52,7 +51,5 @@ Implement the following function using SIMD:
     return result[0] + result[1] + result[2] + result[3];
 \end{verbatim}
 \end{solution}
-
-\end{parts}
     
 \end{blocksection}

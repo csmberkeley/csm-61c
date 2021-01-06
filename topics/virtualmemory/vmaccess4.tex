@@ -1,0 +1,9 @@
+\begin{blocksection}
+\question 
+Say accessing the TLB takes 1ns, accessing main memory takes 50ns, and accessing disk takes 1000ns. Assuming we have no cache, what is the average memory access time?
+
+\begin{solution}
+$AMAT = HT_{TLB} + MR_{TLB}*(HT_{Memory} + MR_{Memory}*(Page Fault Time)) = (1+50) + 0.7*(50 + (6/7)*1000) = 686$ns
+\end{solution}
+
+\end{blocksection}

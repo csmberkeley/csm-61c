@@ -12,8 +12,6 @@ static int selective_product_total (int n, int *a, int c) {
 }
 \end{verbatim}
 
-\begin{parts}
-\part
 Given the number of elements in a is a multiple of 16, manually distribute the iterations such that there are four contiguous chunks and no false sharing. 
 Assume the total number of threads is a multiple of 4. \\
 int omp\_get\_num\_threads $\leftarrow$ returns total number of threads in a team \\
@@ -37,6 +35,5 @@ static int selective_product_parallelized (int n, int *a, int c) {
 if (( i / (n/omp_get_num_threads()) ) == omp_get_thread_num()) {
 \end{verbatim}
 \end{solution}
-\end{parts}
     
 \end{blocksection}

@@ -18,14 +18,13 @@ The FSM needs to remember how many 1’s were input before the current 1. More c
 \item
 How many unique states does the FSM need?
 \begin{solution}
-Building off of part b), we need 4 states in total for the following purposes:
+Building off of part b), we need 3 states in total for the following purposes:
 \begin{itemize}
 \item Start/Reset: A starting point for the machine as well as a reset if we ever see 0
 \item One 1: We’ve seen one 1 so far.
 \item Two 1’s: We’ve seen two 1’s so far. This needs to be distinguishable from only seeing one 1.
-\item Three 1’s: We’ve seen three 1’s so far. This needs to be distinguishable from the other states
 \end{itemize}
-Meta: Note that three consecutive 1’s is indistinguishable from seeing four, five, six, etc. consecutive 1’s.
+Note that three consecutive 1’s is indistinguishable from seeing four, five, six, etc. consecutive 1’s.
 \end{solution}
 \end{parts}
 \end{blocksection}

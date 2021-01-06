@@ -1,0 +1,36 @@
+\begin{blocksection}
+\question 
+Suppose we have a system with the following specs:
+\begin{itemize}
+\item Fully associative TLB with 2 entries and LRU replacement policy
+\item TLB is initially cold
+\item $2^{11}$B virtual memory
+\item 10-bit physical address space
+\item 256B page size
+\end{itemize}
+
+\begin{parts}
+\part
+How many bits are the VPN and PPN?
+
+\begin{solution}[0.5in]
+The offset is 8 bits. This leaves 3 bits for the VPN and 2 bits for the PPN.
+\end{solution}
+
+\part
+How many entries should a single-level page table have?
+
+\begin{solution}[0.5in]
+$2^3 = 8$ entries
+\end{solution}
+
+\part
+How many pages are in physical memory?
+
+\begin{solution}[0.5in]
+$2^2 = 4$ entries
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}

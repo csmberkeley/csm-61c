@@ -23,7 +23,7 @@ Remember: you must flush the TLB on a context switch from one process to another
 50\%. The first access is a[0], which brings in the VPN translation for a[64], the next access. 
 When we switch processes, the TLB will be flushed, so the first two accesses to the array b will follow the pattern miss ­hit. 
 When we switch back to process 0, we access a[128] (miss because TLB empty) and a[192] (hit because brought in by a[128]). 
-The execution of the second two accesses to b are also miss­ hit because the TLB is flushed in between. This pattern continues to give a hit rate of 50%.
+The execution of the second two accesses to b are also miss­ hit because the TLB is flushed in between. This pattern continues to give a hit rate of 50\%.
 \end{solution}
 
 \end{parts}

@@ -14,4 +14,35 @@ Suppose Prof. Wawrzynek decides to make the \lstinline$opcode$ field 6 bits. If 
 The instruction is 17 bit wide, 6 bits are used for \lstinline$opcode$, we have 11 bits left for register indexing. Given we need 3 register fields, we can have $\floor{\frac{11}{3}} = 3$ bits per register field which means we could address 8 registers.
 \end{solution}
 
+Given that the \lstinline$opcode$ field is 6 bits wide and each register field is 2 bits wide in the 17 bit instruction, answer the following questions: 
+
+\question
+Using the assumptions stated in the above description, how many bits are left for the immediate field for the instruction \lstinline$blt$ (Assume it takes \lstinline$opcode$, \lstinline$rs1$, rs2, and \lstinline$imm$ as inputs)?
+\begin{solution}[0.5in]
+$17 - 6 - 2 - 2 = 7$ \\
+\lstinline$blt$ has 1 \lstinline$opcode$ field $(-6)$, 2 register fields $(-2-2)$, we can use the rest $17-6-2-2 = 7$ bits for expressing jump offset.
+\end{solution}
+
+\question
+Let n be your answer in part (a). Suppose that \lstinline$blt$’s branch immediate is in units of instructions (i.e. an immediate of value 1 means branching 1 instruction away). What is the maximum number of bits a \lstinline$blt$ instruction can jump forwa\lstinline$rd$ from the current \lstinline$pc$ using these assumptions? Write your answer in terms of n.
+\begin{solution}[0.5in]
+$(2^{n - 1} − 1) ∗ 17$ \\
+In 2’s complement, the range of an $n$-bit number is $[−2^{n−1}, 2^{n−1} − 1]$. jumping forwa\lstinline$rd$ means that the offset is positive. With $n$-bit 2’s complement offset, we can jump forwa\lstinline$rd$ $2^{n−1} − 1$ instructions, which is $(2^{n−1} − 1) ∗ 17$ bits since each instruction is 17 bits wide.
+\end{solution}
+
+\question
+Using the assumptions stated in the description, what is the most negative immediate that could be used in the \lstinline$addi$ instruction (Assume it takes \lstinline$opcode$, \lstinline$rs1$, \lstinline$rd$, and \lstinline$imm$ as inputs)?
+\begin{solution}[0.5in]
+$-64$ \\
+First, calculate the bit width of the immediate field, which is $17 − 6 − 2 − 2 = 7$ bits. The range of a 7-bit number in 2’s complement is $[−2^{6}, 2^{6} − 1]$ Thus, the most negative immediate is $−2^{6} = −64$.
+\end{solution}
+
+\question
+For LUI, we need \lstinline$opcode$, \lstinline$rd$, and \lstinline$imm$ as inputs. Using the assumptions stated in the description, how many bits can we use for the immediate value?
+\begin{solution}[0.5in]
+$17-6-2 = 9$ \\
+Given the \lstinline$opcode$ is 6 bits wide, register is 2 bits wide, we can use the rest of the bits for immediate. The width of immediate is therefore $17 − 6 − 2 = 9$.
+\end{solution}
+
+
 \end{blocksection}

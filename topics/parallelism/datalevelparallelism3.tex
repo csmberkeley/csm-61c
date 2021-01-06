@@ -1,8 +1,6 @@
 \begin{blocksection}
 
 \question
-\begin{parts}
-\part
 You have just begun your virtual internship at Machine Learning Inc. Your boss (since you can’t bring her coffee physically) wants you to run data of her preferences through the company’s coffee-classifying neural network to decide which flavors she’ll like best. You need to get it done before next morning in order to impress her, but you notice that things are running quite slowly - you dig deeper and find that the code’s matrix multiplications are not optimized for your machine!
 
 Use SIMD instructions to rewrite the company’s matrix-vector multiplication function so that it runs more efficiently on your computer. The matrix has r rows and c columns. You may assume the length of the vector is equal to c.
@@ -33,13 +31,12 @@ Use SIMD instructions to rewrite the company’s matrix-vector multiplication fu
             }
             int sum_arr[_];
             _mm_storeu_si128(sum_arr, sum_v);
-                  for (int k = _______; _______; _______) { sum_arr += ___________________________; }
+                  for (int k = _______; _______; _______) { sum_arr[0] += ___________________________; }
                   result[i] = ________________________________________________;
         }
         return result;
     }
 \end{verbatim}
-\end{parts}
 \end{blocksection}
 
 \begin{solution} [0.5in]

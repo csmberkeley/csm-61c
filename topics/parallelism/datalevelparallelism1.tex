@@ -8,17 +8,14 @@ The following code uses loop unrolling to improve performance:
 static void sum_unrolled (int *a) {
     int sum = 0;
     for (int i = 0; i < 16; i += 4) {
-        sum += (a + i);
-        sum += (a + i + 1);
-        sum += (a + i + 2);
-        sum += (a + i + 3);
+        sum += *(a + i);
+        sum += *(a + i + 1);
+        sum += *(a + i + 2);
+        sum += *(a + i + 3);
     }
 }
 \end{verbatim}
 
-\begin{parts}
-    
-\part
 Implement the following function with a single SIMD instruction:
 \begin{verbatim}
 static void sum_unrolled_SIMD (int *a) {
@@ -38,6 +35,5 @@ static void sum_unrolled_SIMD (int *a) {
 result_v = _mm_add_epi32(result_v, _mm_loadu_si128((__m128*) (a + i) );
 \end{verbatim}
 \end{solution}
-\end{parts}
     
 \end{blocksection}

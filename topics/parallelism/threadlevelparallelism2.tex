@@ -13,8 +13,6 @@ static int selective_square_total (int n, int *a, int c) {
 }   
 \end{verbatim}
 
-\begin{parts}
-\part
 \begin{verbatim}
 // openMP for code
 static int selective_square_parallelized (int n, int *a, int c) {
@@ -40,7 +38,5 @@ static int selective_square_parallelized (int n, int *a, int c) {
 This is a bit of a trick question: openMP takes care of the parallelism for us by using \#pragma omp parallel / \#pragma omp for.
 META: Students might get confused on whether they should chunk or alternate threads, because that’s usually what the lab covers and/or what lecture covers conceptually.
 \end{solution}
-
-\end{parts}
     
 \end{blocksection}
