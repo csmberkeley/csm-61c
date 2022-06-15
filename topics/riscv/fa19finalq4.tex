@@ -1,0 +1,39 @@
+\begin{blocksection}
+\question
+You are given the code below, and told that you can read and write to any word of memory without error. The function mystery lives somewhere in memory, but not at address 0x0. Your system has no caches.
+\begin{verbatim}
+    mystery:
+        la t6, loop3
+    loop: addi x0, x0, 0      #nop
+        lw t5, 0(t6)
+        addi t5, t5, 0x80
+        sw t5, 0(t6)
+        addi a0, a0, -1
+        bnez a0, loop
+        ret
+\end{verbatim}
+
+\begin{parts}
+
+\part
+At a functional level, what does mystery(x) do when x $<$ 10?
+\begin{solution}[0.5in]
+Resets the first x registers.Resets register number 0 through x-1.
+\end{solution}
+
+\part
+One by one, what are the values of a0 that bnez sees with mystery(13) at every iteration? List no more than 13; if it sees fewer than 13, write N/A for the rest
+\begin{solution}[0.5in]
+12, 11, 10, 9, 8, 7, 6, 5, 4, 3, -1, -2, -3
+\end{solution}
+
+\part
+How many times is the bnez instruction seen when mystery(33) is called before it reaches ret (if it ever does)?
+\begin{solution}[0.5in]
+2^{32} + 10
+\end{solution}
+
+\end{parts}
+
+
+\end{blocksection}

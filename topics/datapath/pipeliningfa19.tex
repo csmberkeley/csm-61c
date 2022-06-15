@@ -1,0 +1,68 @@
+\begin{blocksection}
+After solving your datapath bug, you decide to introduce the traditional five-stage pipeline into your processor.
+You find that your unit tests with single commands work for all instructions, and write some test patterns with
+multiple instructions. After running the test suite, the following cases fail. You should assume registers are
+initialized to 0, the error condition is calculated in the fetch stage, and no forwarding is currently implemented.
+
+\textbf{Case 1:} Assume the address of an array with all different values is stored in s0.
+
+
+\textbf{addi t0 x0 1
+\newline
+\hspace{10mm} slli t1 t0 2
+\newline
+\hspace{10mm} add t1 s0 t1
+\newline
+\hspace{10mm} lw t2 0(t1)
+\newline
+}
+
+\newline
+Each time you run this test, there is the same incorrect output for t2. All the commands work individually on
+the single-stage pipeline.
+
+\question 
+What caused the failure? (Select ONE)
+\begin{checkboxes}
+ \choice Control Hazard
+ \choice Structural Hazard
+ \choice Data Hazard
+ \choice None of the Above
+\end{checkboxes}
+
+\begin{solution}[0.5in]
+Data Hazard
+\end{solution}
+
+\question
+How could you fix it? (Select ALL that apply)
+\begin{checkboxes}
+ \choice Insert a nop 3 times if you detect this specific error condition
+ \choice Forward execute to write back if you detect this specific error condition
+ \choice Forward execute to memory if you detect this specific error condition
+ \choice Forward execute to execute if you detect this specific error condition
+ \choice Flush the pipeline if you detect this specific error condition
+\end{checkboxes}
+
+\begin{solution}[0.5in]
+A, D
+\end{solution}
+
+\end{blocksection}
+
+\begin{blocksection}
+
+\begin{solution}[0.5in]
+The issue with the above code is the use of a register (aka we get the value during the decode phase) before
+we have written back the value of the previous instruction. This is a data hazard as the data which we want is
+not restored to the regfile. This means that we would have the current instruction in the execute phase while
+we have the previous in decode. This means that the next cycle, we would have to forward the execute output
+to the execute input to make sure the value is the correct, updated one. Inserting a nop when you realize this
+error happens will allow the system to do the write back. The other forwards in this problem are necessary for
+the given code above. Flushing the pipeline does not work as it means that we will no longer execute the
+instructions which were flushed. This means we would just drop instructions which would not get the correct
+value instead of just waiting till they can get the correct value.
+\end{solution}
+
+
+\end{blocksection}

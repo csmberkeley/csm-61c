@@ -1,0 +1,50 @@
+% \begin{blocksection}
+
+\question 
+Are the following statements about operating systems true or false?
+\begin{parts}
+
+\part
+The OS is responsible for allocating hardware resources (ex: memory, time on the CPU) to processes, allowing multiple processes to run on a single machine with the illusion of having unrestricted access to resources. 
+\begin{solution}[0.5in] 
+True, this is the definition of what an OS does. 
+\end{solution}
+
+\part
+We only switch to kernel/supervisor mode when the running program triggers an exception.
+\begin{solution}[0.5in] 
+False, we switch to the kernel or supervisor mode due to both internal and external events. Exceptions are internal and specific to the running program, like accessing protected memory, but interrupts are external events that require the control to switch to the supervisor.
+\end{solution}
+
+\part
+The operating system is the first program to run after BIOS and the boot loader when the computer turns on.
+\begin{solution}[0.5in] 
+True, the operating system will run only after the machine has booted. 
+\end{solution}
+
+\part
+It is possible to access memory allocated to a user process in both user mode and supervisor mode. 
+\begin{solution}[0.5in] 
+True, the supervisor has more expansive privileges.
+\end{solution}
+
+\part
+Programs save and restore their registers before and after interrupts/exceptions. 
+\begin{solution}[0.5in] 
+False, the trap handler is responsible for saving and restoring the user program’s registers.
+\end{solution}
+
+\part
+When a program triggers an exception, the operating system will kill the running program. 
+\begin{solution}[0.5in] 
+False, some exceptions will return to the program when finished (ex. syscalls).
+\end{solution}
+
+\part
+During a context switch, the caches must be flushed. 
+\begin{solution}[0.5in] 
+True, for security reasons (don’t want a program to see the previously running program’s cache state).
+\end{solution}
+
+\end{parts}
+% \end{blocksection}

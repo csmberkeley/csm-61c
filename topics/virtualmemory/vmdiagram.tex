@@ -1,0 +1,63 @@
+
+
+\begin{blocksection}
+
+Fill in each arrow for the following memory access flow chart
+\\ \\ \\
+\begin{tikzpicture}[node distance=3cm]
+
+\node (tlb) [box] {Check TLB for Translation \\ in: VPN \\ out: PPN};
+\coordinate[below of=tlb] (nice);
+\node (cache) [box, below of=tlb, yshift=-6cm] {Check Cache for Data \\ in: PPN \\ out: data};
+\node (pt) [box, right of=nice, xshift=2cm] {Check Page Table for Translation \\ in: VPN \\ out: PTE};
+\draw [arrow] (tlb) -- (cache);
+\draw [arrow] (tlb) -- (pt);
+
+\coordinate[below of=cache] (belowcache);
+\node (done) [box, below of=cache] {Done! Send data to CPU};
+\node (main) [box, right of=belowcache, xshift=3cm] {Get data from main memory \\ in: PPN \\ out: data};
+\draw [arrow] (cache) -- (done);
+\draw [arrow] (cache) -- (main);
+\draw [arrow] (main) -- (done);
+
+\coordinate[below of=pt] (belowpt);
+\node (pf) [box, right of=belowpt, xshift = 2cm] {Page Fault \\ load page from disc, update page table};
+\node (loadtlb) [box, below of=pt] {Load PTE in TLB};
+\draw [arrow] (pt) -- (loadtlb);
+\draw [arrow] (pt) -- (pf);
+\draw [arrow] (pf) -- (loadtlb);
+\draw [arrow] (loadtlb) -- (cache);
+\end{tikzpicture}
+\end{blocksection}
+
+
+\begin{blocksection}
+\begin{solution}
+\begin{tikzpicture}[node distance=3cm]
+
+\node (tlb) [box] {Check TLB for Translation \\ in: VPN \\ out: PPN};
+\coordinate[below of=tlb] (nice);
+\node (cache) [box, below of=tlb, yshift=-6cm] {Check Cache for Data \\ in: PPN \\ out: data};
+\node (pt) [box, right of=nice, xshift=2cm] {Check Page Table for Translation \\ in: VPN \\ out: PTE};
+\draw [arrow] (tlb) -- node[anchor=east] {TLB hit} (cache);
+\draw [arrow] (tlb) -- node[anchor=west] {TLB miss} (pt);
+
+\coordinate[below of=cache] (belowcache);
+\node (done) [box, below of=cache] {Done! Send data to CPU};
+\node (main) [box, right of=belowcache, xshift=3cm] {Get data from main memory \\ in: PPN \\ out: data};
+\draw [arrow] (cache) -- node[anchor=east] {Cache hit} (done);
+\draw [arrow] (cache) -- node[anchor=west] {Cache miss} (main);
+\draw [arrow] (main) -- node[anchor=south, yshift=-2cm] {Read from main memory} (done);
+
+\coordinate[below of=pt] (belowpt);
+\node (pf) [box, right of=belowpt, xshift = 2cm] {Page Fault \\ load page from disc, update page table};
+\node (loadtlb) [box, below of=pt] {Load PTE in TLB};
+\draw [arrow] (pt) -- node[anchor=east] {Page table hit} (loadtlb);
+\draw [arrow] (pt) -- node[anchor=west] {Page table miss} (pf);
+\draw [arrow] (pf) -- node[anchor=south, yshift=-1.5cm] {New PTE} (loadtlb);
+\draw [arrow] (loadtlb) -- node[anchor=west, yshift=-.5cm] {Request data from memory} (cache);
+
+\end{tikzpicture}
+
+\end{solution}
+\end{blocksection}

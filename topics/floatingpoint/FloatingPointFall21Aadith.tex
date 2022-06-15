@@ -1,0 +1,61 @@
+%need to add solutions for this question
+For the following questions, we will be using the following breakdown for a 32-bit floating point number:
+\newline
+\textbf{1 sign bit}
+\newline
+\textbf{11 bit Exponent}
+\newline
+\textbf{20 bit Mantissa}
+\newline
+
+\newline
+\begin{blocksection}
+\question What is the bias of the exponent?
+\newline \newline 
+\begin{solution}
+\begin{verbatim}
+-(2^11/2 - 1) = -1023
+\end{verbatim}
+\end{solution}
+\question Convert the floating point number 7.875 to hex?
+\newline \newline \newline \newline \newline \newline \newline
+\begin{solution}
+\begin{verbatim}
+7.875 = 4 + 2 + 1 + 0.5 + 0.25 + 0.125
+=> 111.111 
+=> 2^2 * 1.11111
+
+sign = 0 because we are working with a positive number
+exp + bias = 2 => exp - 1023 = 2 => exp = 1025 => 10000000001
+mantissa/significand = 111110000000...0
+
+Putting it all together we have the following 32 bits,
+0 10000000001 11111000000000000000
+which translates to the hex value
+0x401F8000
+\end{verbatim}
+\end{solution}
+\question How many NaNs can we represent?
+\newline \newline \newline \newline \newline
+\begin{solution}
+\begin{verbatim}
+There's 2^{20}−1 possible positive NaNs (we subtract one for infinity)
+And there's 2^{20} - 1 possible negative NaNs (we subtract one for infinity again). 
+Combined, that gives us 2^{21} - 2 possible NaN values
+\end{verbatim}
+\end{solution}
+\question What is the largest positive number we can represent (answer in hex)?
+\newline \newline \newline
+\begin{solution}
+\begin{verbatim}
+0 11111111110 11111111111111111111
+which is
+0x7FEFFFFF
+\end{verbatim}
+\end{solution}
+
+
+
+
+\end{blocksection}
+

@@ -1,0 +1,82 @@
+\question
+\footnotesize
+\textbf{
+You are given an integer array (in a0), the number of elements in the array (in a1), and the label of a function (in a2). Iterate through the array and apply the function to each of the numbers, storing the result back into the array. Fill in the following RISCV function that accomplishes this}
+\begin{verbatim}
+#a0 contains pointer to beginning of integer array
+#a1 is the number of elements in the array
+#a2 contains the address of the function we want to apply
+Iterate_and_apply:
+        addi sp, sp, -16
+        sw ra, 0(sp)
+        sw s0, 4(sp)
+        sw s1, 8(sp)
+        sw s2, 12(sp)
+        mv s0, a0
+        mv s1, a1
+        mv s2, a2
+        xor t0, t0, t0      //what does this set t0 to?
+    Loop:
+        bge __, __, end
+        slli t1, t0, 2
+        add t1, __, t1
+        lw a0, 0(t1)
+        ___ __, __, __      //calling convention
+        ___ __, __(__)
+        jalr __, __, __     //how do we jump to the function
+        ___ __, __(__)
+        ___ __, __, __
+        slli t1, t0, 2
+        add t1, s0, t1
+        _____________        //store new value back into array
+        addi t0, t0, 1
+        _____________
+    End:
+        _______________     //epilogue
+        _______________
+        _______________
+        _______________
+        _______________
+        ret
+\end{verbatim}
+
+\begin{solution}
+\begin{verbatim}
+#a0 contains pointer to beginning of integer array
+#a1 is the number of elements in the array
+#a2 contains the label of the function we want to apply
+Iterate_and_apply:
+        addi sp, sp, -16
+        sw ra, 0(sp)
+        sw s0, 4(sp)
+        sw s1, 8(sp)
+        sw s2, 12(sp)
+        mv s0, a0
+        mv s1, a1
+        mv s2, a2
+        xor t0, t0, t0
+    Loop:
+        bge t0, s1, end
+        slli t1, t0, 2
+        add t1, s0, t1
+        lw a0, 0(t1)
+        addi sp, sp, -4
+        sw t0, 0(sp)
+        jalr ra, s2, 0
+        lw t0, 0(sp)
+        addi sp, sp, 4
+        slli t1, t0, 2
+        add t1, s0, t1
+        sw a0, 0(t1)
+        addi t0, t0, 1
+        j loop
+    End:
+        lw ra, 0(sp)
+        lw s0, 4(sp)
+        lw s1, 8(sp)
+        lw s2, 12(sp)
+        addi sp, sp, 16
+        ret
+\end{verbatim}
+
+\end{solution}

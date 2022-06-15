@@ -1,11 +1,12 @@
 \documentclass[11pt]{exam}
+%\def\discussionsolutions{}
 \usepackage{../commonheader}
 \usepackage{xcolor}
 \usepackage{fancyvrb}
 
 \discnumber{2}
-\title{RISC-V}
-\date{September 23, 2020}
+\title{RISC-V, Calling Conventions}
+\date{Feb. 16-19, 2022}
 
 \begin{document}
 \maketitle
@@ -16,23 +17,37 @@
 \end{questions}
 \newpage
 
-\section{RISC-V to C}
+\section{Calling Convention}
 \begin{questions}
-\subimport{../topics/riscv/}{hardtranslate.tex}
+\subimport{../topics/riscv/}{riscv-behavior.tex}
 \end{questions}
+\newpage
+
+%\section{RISC-V to C}
+%\begin{questions}
+%\subimport{../topics/riscv/}{hardtranslate.tex}
+%\end{questions}
 
 \section{Jumpin' Around}
 \begin{questions}
 \subimport{../topics/riscv}{jumping.tex}
 \end{questions}
+\newpage
 
-\section{More RISC-V}
+\section{Linked List Reversals in RISC-V}
 \begin{questions}
-\subimport{../topics/riscv/}{substrings.tex}
+\subimport{../topics/riscv/}{reverse.tex}
+\subimport{../topics/riscv/}{reverse2.tex}
 \end{questions}
 \newpage
 
-\end{document}
+\section{More RISC-V (Optional)}
+\begin{questions}
+\subimport{../topics/riscv/}{substrings.tex}
+\end{questions}
+
+
+
 
 %\section{A Fib-ulous Question}
 %\begin{questions}
@@ -40,9 +55,5 @@
 %\end{questions}
 %\newpage
 
-%\section{Linked List Reversals in RISC-V}
-%\begin{questions}
-%\subimport{../topics/riscv/}{reverse.tex}
-%\subimport{../topics/riscv/}{reverse2.tex}
-%\end{questions}
-%\newpage
+
+\end{document}

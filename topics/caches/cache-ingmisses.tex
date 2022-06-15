@@ -1,0 +1,54 @@
+\begin{blocksection}
+\question
+The following parts will bolster understanding in the types of cache misses: compulsory, conflict, and capacity.
+​
+
+\begin{parts}
+\part
+T or F: We have an infinite size direct-mapped cache with a block size of 1 word that is initially empty. All resources are 1 word. We attempt to access resource A, which is added to the cache at its respective index. We then try to access resource B, which maps to the same index as resource A. Accessing resource B will result in a conflict miss in our cache.
+
+
+
+
+
+
+
+
+
+
+
+\begin{solution}[0.3in]
+False; Even though B maps to the same index as A, accessing B would still result in a compulsory miss for our cache. This is because it is still the first time we are accessing resource B.
+\end{solution}
+​
+\part
+T or F: We have an infinite size direct-mapped cache with a block size of 1 word that is initially empty. All resources are 1 word. We attempt to access resource A, which is added to the cache at its respective index. We then try to access resource B, which maps to the same index as resource A. We then try to access resource A. Accessing resource A will result in a conflict miss in our cache.
+\begin{solution}[0.3in]
+True; The difference between this part and the previous one is that A was in the cache before, but was evicted due to consecutive resource accesses. 
+\end{solution}
+​
+\part
+T or F: If we had a fully associative LRU cache of the same size as part B, then we would still have a miss on the fully associative cache.
+\begin{solution}[0.3in]
+False; We can determine if a miss is a conflict miss by seeing whether it would result in a hit on a fully associative cache of the same size. Since part B's access was a conflict miss, we would have a hit on the fully associative cache, resulting in false.
+\end{solution}
+​
+\part
+T or F: As an example, consider the same cache and resource accesses as part B, except our cache only has a size of 1 word now. Accessing resource A will result in a conflict miss in our cache.
+\begin{solution}[0.3in]
+False; Even a fully associative cache would result in a miss for accessing A, so we have a capacity miss.
+\end{solution}
+​
+\part
+We have a direct-mapped cache of size 1,000 words with block size 500 words. We have an array of size 10,000 words. We access all of the elements in this array (a[0], a[1], ...) 100 times. What type of miss are the majority of cache misses in this scenario? 
+\begin{solution}[0.3in]
+Capacity miss. Even though we have compulsory misses when first accessing blocks of the array, we do this 100 times, and due to how massive our array is, the majority of our misses as capacity misses.
+\end{solution}
+​
+\part
+All resources are 1 word. We have a fully associative cache with size 3 words. Our block size is 1 word. We perform the following accesses: ABCDABCDABCDABCD. Which eviction policy results in a better hit rate: LRU or MRU. 
+\begin{solution}[0.3in]
+MRU produces a better hit rate under the influence of "sequential flooding."
+\end{solution}
+\end{parts}
+\end{blocksection}

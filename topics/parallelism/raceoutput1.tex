@@ -1,0 +1,28 @@
+\begin{blocksection}
+
+\question
+For the following pieces of code, determine which of the given outputs would be possible during a single execution of the snippet. Assume \texttt{OMP\_NUM\_THREADS=4}.
+
+\begin{verbatim}
+#pragma omp parallel {
+    for (int i = 0; i < 3; i++) {
+        printf("%d", i);
+    }
+}
+\end{verbatim}
+
+Select all of the following outputs that are possible:
+
+Output 1: \texttt{000011112222} \\
+Output 2: \texttt{100001222112} \\
+Output 3: \texttt{000111102222} \\
+Output 4: \texttt{010011201212} \\
+Output 5: \texttt{012012012012} \\
+Output 6: \texttt{010012201212} \\
+
+\begin{solution}[0.5in]
+1, 5, 6 \\
+Justification: Note that before every 2, there must be a corresponding 1, and before every 1 there must be a corresponding 0. Working backwards, we can see that outputs 2 and 3 have a 1 with no corresponding 0 and that output 4 has 5 1s. 
+
+\end{solution}
+\end{blocksection}

@@ -1,0 +1,31 @@
+\begin{blocksection}
+
+\question
+\begin{verbatim}
+int num_threads = 4;
+int chunk_size = len/num_threads;
+
+omp_set_num_threads(num_threads);
+
+#pragma omp parallel
+{
+    int start = len/num_threads * omp_get_thread_num();
+    for (int x = start; x < start + len/num_threads && x < len; x++) {
+        *(A+x) += 1;
+    }
+} 
+\end{verbatim}
+
+Is the code: \\
+A) Always Incorrect \\
+B) Sometimes Incorrect \\ 
+C) Always Correct, Slower than Serial \\
+D) Always Correct, Speed relative to Serial depends on Caching Scheme \\
+E) Always Correct, Faster than Serial \\
+
+\begin{solution}[0.5in]
+E \\
+Justification: The code effectively splits the array into chunks and each thread increments the entries in its chunk, so it runs the increments in parallel and does not have overlap between threads. 
+
+\end{solution}
+\end{blocksection}

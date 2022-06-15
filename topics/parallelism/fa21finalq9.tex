@@ -1,0 +1,76 @@
+% \begin{blocksection}
+
+\question
+Fred’s Factorization Factory has unveiled their latest product: an algorithm that factorizes an array of numbers provided. You want to test their factoring algorithm, so you decide to write the following function:
+\begin{verbatim}
+int testFactor(uint32_t n, uint64_t *a, uint64_t *b, uint64_t *c);
+\end{verbatim}
+\begin{itemize}
+    \item 
+    n: The length of each list of integers. For simplicity, you may assume that n is a multiple of 4.
+    
+    \item
+    a, b, c: Pointers to arrays of 64-bit integers.
+    
+\end{itemize}
+
+\texttt{testFactor} returns 1 if, for all \texttt{i} from \texttt{0} to \texttt{n-1}, \texttt{a[i]*b[i] == c[i]}. Otherwise, it returns 0.
+
+You have access to the following SIMD instructions:
+\begin{itemize}
+    \item 
+    \texttt{\_mm256 vectorLoad(void* ptr)}: Loads four \texttt{uint64\_t} from \texttt{ptr} into a SIMD vector
+    
+    \item
+    \texttt{void vectorStore(void* ptr, \_mm256 mm)}: Stores the four \texttt{uint64\_t} in \texttt{mm} at \texttt{ptr}
+    
+    \item
+    \texttt{\_mm256 vectorMul(\_mm256 a, \_mm256 b)}: Multiplies the values in \texttt{a} and \texttt{b}, and returns the result
+    
+    \item
+    \texttt{\_mm256 vectorSet0()}: Returns a vector containing only 0s.
+    
+    \item
+    \texttt{\_mm256 vectorOr(\_mm256 a, \_mm256 b)}: Computes the bitwise OR of the two vectors, and returns the result.
+    
+    \item
+    \texttt{\_mm256 vectorXor(\_mm256 a, \_mm256 b)}: Computes the bitwise XOR of the two vectors, and returns the result.
+    
+\end{itemize}
+
+\begin{verbatim}
+int testFactor(uint32_t n, uint64_t *a, uint64_t *b, uint64 *c)
+{
+    uint64_t output[4];
+    _mm256 total = _______________;
+    for(int i = 0; i < __________; i+= __________)
+    {
+        _mm256 adata = vectorLoad(a+i);
+        _mm256 bdata = vectorLoad(b+i);
+        _mm256 cdata = vectorLoad(c+i);
+        _mm256 prod = ________________;
+        _mm256 isequal = _____________;
+        ______________________________;
+    }
+    vectorStore(output, total);
+    return ______________________________? 1 : 0;
+}
+\end{verbatim}
+
+\begin{solution}[0.5in]
+Blank 1: \texttt{vectorSet0()} \\
+Blank 2: \texttt{n} \\
+Blank 3: \texttt{4} \\
+Blank 4: \texttt{vectorMul(adata, bdata)} \\
+Blank 5: \texttt{vectorXor(prod, cdata)} \\
+Blank 6: \texttt{total = vectorOr(total, isequal)} \\
+Blank 7: \texttt{(output[0] == 0) \&\& (output[1] == 0) \&\& (output[2] == 0) \&\& (output[3] == 0)}
+
+Other solutions may exist. Note that the solution: \texttt{output[0]+output[1]+output[2]+output[3] == 0} is incorrect, since we could have received outputs that happened to add to 0, even if they aren’t all 0. As an example consider the inputs A = [0, 0, 0, 0], B = [0, 0, 0, 0], C = [1 $<<$ 30, 1 $<<$ 30, 1 $<<$ 30, 1 $<<$ 30].
+
+The main idea of this accumulator is noting that two numbers are equal if and only if their XOR is exactly 0. By ORing next, we ensure that the total values are nonzero if any instance of isequal ended up returning a nonzero value. Thus, we can just check if the output vector is all zero at the end.
+
+In general, bitwise operations tend to be much faster than branch comparators, so it is generally preferable to use bitwise and simple arithmetic operations when possible.
+\end{solution}
+
+% \end{blocksection}

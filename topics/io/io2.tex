@@ -13,7 +13,7 @@ controller overhead $\leq$ 18 – 2.5 – 5 – 10 ms = 0.5 ms\\
 To support interrupts, the CPU should be able to save and restore the current state. Which of the following should be saved before handling interrupts to ensure correct execution? \\
 a. Program Counter 	b. User Registers 	c. TLB 		d. Caches
 \begin{solution}[0.5in] 
-b \\
+a, b \\
 The PC gets saved to track where to return to after handling the interrupt. Similarly, the User Registers save information about the state before the interrupt. These are necessary to ensure correct execution. However, the TLB and Caches are implemented for efficiency, so execution would still be correct without them.
 \end{solution}
 

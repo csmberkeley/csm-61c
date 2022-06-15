@@ -1,0 +1,74 @@
+\documentclass[11pt]{exam}
+\def\discussionsolutions{}
+\usepackage{../commonheader}
+\graphicspath{ {../images/} }
+
+\discnumber{7}
+\title{Caches}
+\date{March 30, 2022}
+
+\begin{document}
+\maketitle
+
+\section{Cache Misses}
+\begin{questions}
+\subimport{../topics/caches/}{cachethemall.tex}
+\end{questions}
+
+
+\section{Break It Down}
+\begin{questions}
+\subimport{../topics/caches/}{breakitdown1.tex}
+\newpage
+\subimport{../topics/caches/}{associativity.tex}
+\subimport{../topics/caches/}{breakitdown2.tex}
+\end{questions}
+
+\newpage
+\section{Single Level Cache}
+\begin{questions}
+\subimport{../topics/caches/}{singleLevelCache.tex}
+\end{questions}
+
+\newpage
+\section{AMAT}
+\begin{questions}
+\subimport{../topics/caches/}{amat1.tex}
+\subimport{../topics/caches/}{amat2.tex}
+\end{questions}
+\newpage
+
+\section{(Challenge Problem) Multilevel Cache}
+\begin{questions}
+\subimport{../topics/caches/}{multilevel1.tex}
+\subimport{../topics/caches/}{multilevel2.tex}
+\subimport{../topics/caches/}{multilevel3.tex}
+\subimport{../topics/caches/}{multilevel4.tex}
+\subimport{../topics/caches/}{multilevel5.tex}
+\subimport{../topics/caches/}{multilevel6.tex}
+\end{questions}
+\newpage
+
+% \section{Virtual Potpourri}
+% \begin{questions}
+% \subimport{../topics/virtualmemory/}{vmpotpourri1.tex}
+% \subimport{../topics/virtualmemory/}{vmpotpourri2.tex}
+% \end{questions}
+% \newpage
+
+% \section{Context Switch!}
+% \begin{questions}
+% \subimport{../topics/virtualmemory/}{ctxswitch1.tex}
+% \subimport{../topics/virtualmemory/}{ctxswitch2.tex}
+% \subimport{../topics/virtualmemory/}{ctxswitch3.tex}
+% \end{questions}
+% \newpage
+
+% \section{VM Copy}
+% \begin{questions}
+% \subimport{../topics/virtualmemory/}{vmcopy1.tex}
+% \subimport{../topics/virtualmemory/}{vmcopy2.tex}
+% \end{questions}
+
+
+\end{document}

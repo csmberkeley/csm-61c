@@ -1,0 +1,61 @@
+\begin{blocksection}
+Observe the following definitions of the Elf struct, Present union, and Santa struct. Assume that structs are word aligned, and a word is 32b.
+
+\begin{verbatim}
+typedef struct Elf {
+    int elf_id;
+    char sector_name[3];
+    char* name;
+    void (*doTask)();
+} Elf;
+
+typedef union Present {
+    char* creator;
+    int creator_id
+    char location[8];
+    byte isCoal;   //bool is 1byte
+} Present;
+
+typedef struct Santa {
+    unsigned int beard_length;
+    short month_num;
+    Elf elf_manager;
+    Present cur_present;
+    Elf* elf_helper;
+    void (*HoHoHo)();
+} Santa;
+
+\end{verbatim}
+
+\question
+On a 32b system, what is the size of the Elf struct? \textbf{Answer}: \rule{1cm}{0.35mm}
+
+\question
+On a 64b system, what is the size of the Elf struct? \textbf{Answer}: \rule{1cm}{0.35mm}
+
+\question
+On a 32b system, what is the size of the Present union? \textbf{Answer}: \rule{1cm}{0.35mm}
+
+\question
+On a 32b system, what is the size of the Santa struct? \textbf{Answer}: \rule{1cm}{0.35mm}
+
+\question
+On a 64b system, what is the size of the Santa struct? \textbf{Answer}: \rule{1cm}{0.35mm}
+
+\begin{solution}
+\question
+On a 32b system, what is the size of the Elf struct? \textbf{Answer}: 16
+
+\question
+On a 64b system, what is the size of the Elf struct? \textbf{Answer}: 24
+
+\question
+On a 32b system, what is the size of the Present union? \textbf{Answer}: 8
+
+\question
+On a 32b system, what is the size of the Santa struct? \textbf{Answer}: 40
+
+\question
+On a 64b system, what is the size of the Santa struct? \textbf{Answer}: 56
+\end{solution}
+\end{blocksection}

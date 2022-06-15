@@ -31,19 +31,24 @@ We have 4 KiB pages, resulting in $\log_2(2^{12}) = 12$ bits for page offset.\\
 \begin{solution}[0.5in]
 Recall that the page table is also stored in memory, so the page table base address register must also span a physical address, aka $\log_{2}(2^{20})$ bits or 20 bits.
 \end{solution}
-
-\part
-Answer True or False to the following questions: \\
-The page table is stored in main memory.\\
-Every virtual page is mapped to a physical page.\\
-The TLB is checked before the page table.\\
-The penalty for a page fault is about the same as the penalty for a cache miss.\\
-A linear page table takes up more memory as the process uses more memory.
-
-\begin{solution}[0.5in]
-T, F, T, F, F
-\end{solution}
-
 \end{parts}
-
 \end{blocksection}
+
+% \begin{blocksection}
+% \question
+% Answer True or False to the following questions: \\
+% \rule{1cm}{0.15mm} The page table is stored in main memory.\\
+% \rule{1cm}{0.15mm} Every virtual page is mapped to a physical page.\\
+% \rule{1cm}{0.15mm} The TLB is checked before the page table.\\
+% \rule{1cm}{0.15mm} The penalty for a page fault is about the same as the penalty for a cache miss.\\
+% \rule{1cm}{0.15mm} A linear page table takes up more memory as the process uses more memory.
+
+% \begin{solution}[0.5in]
+% True - The page table is stored in main memory.\\
+% False - Every virtual page is mapped to a physical page.\\
+% True - The TLB is checked before the page table.\\
+% False - The penalty for a page fault is about the same as the penalty for a cache miss.\\
+% False - A linear page table takes up more memory as the process uses more memory.
+% \end{solution}
+
+% \end{blocksection}

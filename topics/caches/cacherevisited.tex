@@ -1,25 +1,28 @@
 \begin{blocksection}
 \question
 Assume we have a single L1 data cache having the following characteristics: 
-- 4 KiB cache size 
-- 16 byte blocks 
-- Direct Mapped
+\begin{itemize}
+\item4 KiB cache size 
+		 \item 16 byte blocks 
+         \item Direct Mapped
+\end{itemize}
+
 
 Assume the following piece of code is run in a 32-bit address space with \lstinline$sizeof(int) = 4$:
 
 \begin{verbatim}
 #define SIZE 8192   // 2^13
-
 int ARRAY[SIZE]; 
 int main() {
-	ARRAY[0] = ARRAY[4] + ARRAY[8]; // This happens before Loop 1
-	for (int i = 0; i < SIZE - 16; i += 4) {      // Loop 1
-		ARRAY[i] += ARRAY[i + 4] + ARRAY[i + 8] + ARRAY[i + 12];
-	}
-	for (int i = SIZE - 1; i >= 0; i -= 32) {     // Loop 2
-		ARRAY[i] += 10;
-	}
+    ARRAY[0] = ARRAY[4] + ARRAY[8]; // This happens before Loop 1
+	    for (int i = 0; i < SIZE - 16; i += 4) {      // Loop 1
+		        ARRAY[i] += ARRAY[i + 4] + ARRAY[i + 8] + ARRAY[i + 12];
+	    }
+	    for (int i = SIZE - 1; i >= 0; i -= 32) {     // Loop 2
+		        ARRAY[i] += 10;
+	    }
 }
+
 \end{verbatim}
 
 What is the T:I:O breakdown?
@@ -35,5 +38,15 @@ Assume that we start with a cold cache from the start of main(), what data does 
 After this line, the cache contains 3 valid blocks, the first block containing elements at index 0 through 3, the second containing elements at index 4 through 7, and the third containing elements at index 8 through 11.
 The hit rate is 0. Since we start with a cold cache and each cache block can hold 4 integers, all three memory accesses result in compulsory misses. 
 \end{solution}
+
+\question
+Assume we run the program until all iterations of Loop 1 are completed. How many memory accesses are performed per iteration of that loop? What is the hit rate of the line of code in Loop 1?
+
+\begin{solution}
+
+\end{solution}
+
+\question\textbf{}
+Now let's run the entire program. How can we change Loop 2 such tha
 
 \end{blocksection}

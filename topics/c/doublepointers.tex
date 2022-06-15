@@ -1,0 +1,74 @@
+\begin{blocksection}
+\question
+Choose the correct answer to the following multiple choice question. What will be printed?
+
+\begin{verbatim}
+void dosomething(int *p) 
+{ 
+    int q = 10; 
+    p = &q; 
+}     
+    
+int main() 
+{ 
+    int r = 20; 
+    int *p = &r; 
+    dosomething(p); 
+    printf("%d", *p); 
+    return 0; 
+}
+\end{verbatim}
+
+(a) 10 (b) 20 (c) runtime error (d) compiler error
+
+\begin{solution}
+(b). C passes by value. The value we change is the local variable inside function dosomething.
+\end{solution}
+
+\question
+Choose the correct answer to the following multiple choice question. What will be printed?
+
+\begin{verbatim}
+void dosomething(int **p) 
+{ 
+    int q = 10; 
+    *p = &q; 
+}     
+    
+int main() 
+{ 
+    int r = 20; 
+    int *p = &r; 
+    dosomething(p); 
+    printf("%d", *p); 
+    return 0; 
+}
+\end{verbatim}
+
+(a) 10 (b) 20 (c) runtime error (d) compiler error
+
+\begin{solution}
+(a). Now function dosomething modifies the value at address of p, so the value at p is changed to address of q. Dereferencing p will give us the value of q.
+\end{solution}
+
+\question
+Choose the correct answer to the following multiple choice question. What will be printed?
+
+\begin{verbatim}
+int main(){
+    char *states[] = {"Oregon", "CAL", "Texas"};
+    char **i = &states[0];
+    char **j = &states[1];
+    char **k = &states[2];
+    printf("%c%c%c\n", *(*i+1),**(j+1),**k+1);
+    return 0;
+}
+\end{verbatim}
+
+(a) OCT (b) rAe (c) rAU (d) rTU
+
+\begin{solution}
+(d). *(*i+1) is dereferencing the next character in the same element of the list. **(j+1) is dereferencing the next element of the list. **k+1 is the character following the character **k is dereferencing in alphabetical order.
+\end{solution}
+
+\end{blocksection}

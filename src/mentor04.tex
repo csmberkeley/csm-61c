@@ -1,39 +1,63 @@
 \documentclass[11pt]{exam}
+%\def\discussionsolutions{}
 \usepackage{../commonheader}
 \graphicspath{ {../images/} }
 
-\discnumber{4}
-\title{CALL and SDS}
-\date{October 5, 2020}
+\discnumber{5}
+\title{Logic, FSMs, MT Review}
+\date{March 3-5, 2021}
 
 \begin{document}
 \maketitle
 
-\section{CALL}
-\begin{questions}
-\subimport{../topics/call/}{callinfo.tex}
-\subimport{../topics/call/}{callmc.tex}
-\end{questions}
-\newpage
-
-\section{Synchronous Digital Systems}
-\begin{questions}
-\subimport{../topics/sds/}{explanation.tex}
-\subimport{../topics/sds/}{basics.tex}
-\subimport{../topics/sds/}{basics2.tex}
-\end{questions}
-\newpage
-
-\section{SDS With Registers}
+\section{SDS}
 \begin{questions}
 \subimport{../topics/sds/}{holdtime.tex}
 \end{questions}
 \newpage
 
-\section{Logic, SDS (Summer 2020 Final Q4)}
+
+\section{Boolean Logic}
 \begin{questions}
-\subimport{../topics/sds/}{su20FinalQ4.tex}
+\subimport{../topics/logic/}{boolAlgebra1.tex}
 \end{questions}
 \newpage
+
+% \section{Finite State Machines}
+% \begin{questions}
+% \subimport{../topics/fsm/}{basics.tex}
+% \subimport{../topics/fsm/}{basics2.tex}
+% \subimport{../topics/fsm/}{basics3.tex}
+% \end{questions}
+% \newpage
+\section{Wave Form Diagrams}
+\begin{questions}
+\subimport{../topics/sds/}{basics.tex}
+\subimport{../topics/sds/}{basics2.tex}
+\end{questions}
+\newpage
+
+\section{Floating Point Exam Question (Sp18 Final)}
+\begin{questions}
+\subimport{../topics/floatingpoint/}{sp18finalq9.tex}
+\end{questions}
+\newpage
+
+% \section{Single-Cycle Datapath and Control}
+% \begin{questions}
+% \subimport{../topics/singlecycle/}{explanation_1.tex}
+% \subimport{../topics/singlecycle/}{explanation_1_5.tex}
+% \subimport{../topics/singlecycle/}{explanation_2.tex}
+% \end{questions}
+% \newpage
+
+% \section{Game of Signals}
+% \begin{questions}
+% \subimport{../topics/singlecycle/}{control_signals.tex}
+% \subimport{../topics/singlecycle/}{modification_1.tex}
+% \end{questions}
+% \newpage
+
+
 
 \end{document}

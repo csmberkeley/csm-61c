@@ -1,49 +1,36 @@
 \documentclass{exam}
+\def\discussionsolutions{}
 \usepackage{../commonheader}
 
 \discnumber{3}
-\title{RISC-V CC/Instr. Formats}
-\date{September 28, 2020}
+\title{RISC-V, CALL}
+\date{February 23, 2022}
 
 \begin{document}
 \maketitle
-
-% \section{More RISC-V}
-% \begin{questions}
-% \subimport{../topics/riscv/}{substrings.tex}
-% \subimport{../topics/riscv/}{substrings2.tex}
-% \end{questions}
-
-\section{Calling Convention}
-\begin{questions}
-\subimport{../topics/riscv/}{riscv-behavior.tex}
-\end{questions}
-%\newpage
-
-\section{RISC-V Functions}
-\begin{questions}
-\subimport{../topics/riscv/}{reverse.tex}
-\subimport{../topics/riscv/}{reverse2.tex}
-\end{questions}
-%\newpage
 
 \section{RISC-y Conversions}
 \begin{questions}
 \subimport{../topics/riscv/}{conversions.tex}
 \end{questions}
-\nopagebreak[0]
-
-\section{Instruction Format Design}
-\begin{questions}
-\subimport{../topics/riscv/}{field.tex}
-\end{questions}
-%\newpage
+\newpage
 
 \section{Advanced RISC-V}
 \begin{questions}
 \subimport{../topics/riscv/}{bltu.tex}
 \subimport{../topics/riscv/}{opcode.tex}
 \end{questions}
-%\newpage
+
+\section{CALL}
+\begin{questions}
+\subimport{../topics/call/}{callinfo.tex}
+\subimport{../topics/call/}{callmc.tex}
+%\subimport{../topics/call/}{callfa21aad.tex}
+\end{questions}
+
+% \section{lol idk}
+% \begin{questions}
+% \subimport{../topics/riscv/}{basics.tex}
+% \end{questions}
 
 \end{document}

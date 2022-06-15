@@ -1,49 +1,53 @@
 \documentclass[11pt]{exam}
+%\def\discussionsolutions{}
 \usepackage{../commonheader}
 \graphicspath{ {../images/} }
 
-\discnumber{9}
-\title{Virtual Memory}
-\date{November 9, 2020}
+\discnumber{8}
+\title{Data Level Parallelism, Thread Level Parallelism}
+\date{April 6-8, 2022}
 
 \begin{document}
 \maketitle
 
-\section{VM Warm Up}
+% \section{SU20 Final - ECC/RAID}
+% \begin{questions}
+% \subimport{../topics/dependability/}{su20raidecc.tex}
+% \end{questions}
+% \newpage
+\section{Data Level Parallelism}
 \begin{questions}
-\subimport{../topics/virtualmemory/}{vmwarmup.tex}
+\subimport{../topics/parallelism/}{datalevelparallelism1.tex}
+\subimport{../topics/parallelism/}{datalevelparallelism2.tex}
+\subimport{../topics/parallelism/}{datalevelparallelism3.tex}
+\end{questions}
+
+\section{Thread Level Parallelism}
+\begin{questions}
+\subimport{../topics/parallelism/}{threadlevelparallelism1.tex}
+\subimport{../topics/parallelism/}{threadlevelparallelism2.tex}
+\subimport{../topics/parallelism/}{threadlevelparallelism3.tex}
 \end{questions}
 \newpage
 
-\section{Virtual Potpourri}
+\section{Data Race!}
 \begin{questions}
-\subimport{../topics/virtualmemory/}{vmpotpourri1.tex}
-\subimport{../topics/virtualmemory/}{vmpotpourri2.tex}
+\subimport{../topics/parallelism/}{datarace1.tex}
+\subimport{../topics/parallelism/}{datarace2.tex}
+\subimport{../topics/parallelism/}{datarace3.tex}
+\subimport{../topics/parallelism/}{datarace4.tex}
+\subimport{../topics/parallelism/}{datarace5.tex}
 \end{questions}
 \newpage
 
-\section{VM Access Walkthrough}
+\section{Out of Order}
 \begin{questions}
-\subimport{../topics/virtualmemory/}{vmaccess1.tex}
-\subimport{../topics/virtualmemory/}{vmaccess2.tex}
-\subimport{../topics/virtualmemory/}{vmaccess3.tex}
-\subimport{../topics/virtualmemory/}{vmaccess4.tex}
+\subimport{../topics/parallelism/}{raceoutput1.tex}
+\subimport{../topics/parallelism/}{raceoutput2.tex}
+\subimport{../topics/parallelism/}{raceoutput3.tex}
+\subimport{../topics/parallelism/}{raceoutput4.tex}
 \end{questions}
 \newpage
-
-\section{Context Switch!}
-\begin{questions}
-\subimport{../topics/virtualmemory/}{ctxswitch1.tex}
-\subimport{../topics/virtualmemory/}{ctxswitch2.tex}
-\subimport{../topics/virtualmemory/}{ctxswitch3.tex}
-\end{questions}
-\newpage
-
-%\section{VM Copy}
-%\begin{questions}
-%\subimport{../topics/virtualmemory/}{vmcopy1.tex}
-%\subimport{../topics/virtualmemory/}{vmcopy2.tex}
-%\end{questions}
 
 
 \end{document}

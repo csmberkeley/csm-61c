@@ -1,0 +1,58 @@
+\documentclass[11pt]{exam}
+%\def\discussionsolutions{}
+\usepackage{graphicx}
+\usepackage{../commonheader}
+\usepackage{pifont}
+\graphicspath{ {../images/} }
+
+
+\discnumber{4}
+\title{CSM Midterm Review}
+\date{October 6, 2021}
+
+\begin{document}
+\maketitle
+
+\section{Why so C-rious...?}
+\begin{questions}
+\subimport{../topics/c/}{Cprint.tex}
+\end{questions}
+\pagebreak
+
+\section{Tis' the C-son to be Jolly!}
+\begin{questions}
+\subimport{../topics/c/}{CstructunionQAadith.tex}
+\end{questions}
+\pagebreak
+
+% \section{These are a few of my favorite strings}
+% \begin{questions}
+% \subimport{../topics/c/}{CcodingAAdith.tex}
+% \end{questions}
+% \pagebreak
+
+\section{Cause I'll be switchin them \ding{163}Mantissas\ding{163} for you \ding{161}}
+\begin{questions}
+\subimport{../topics/floatingpoint/}{FloatingPointFall21Aadith.tex}
+\end{questions}
+\pagebreak
+
+\section{Shift to the left! Shift to the right! XOR! XOR! (C)ha (C)ha real smooth!}
+\begin{questions}
+\subimport{../topics/riscv/}{fa21aadriscvcoding.tex}
+\end{questions}
+\pagebreak
+
+\section{CALLiflower Potpourri}
+\begin{questions}
+\subimport{../topics/call/}{callfa21aad.tex}
+\end{questions}
+\pagebreak
+
+\section{Felix Unger (Fa19 Final)}
+\begin{questions}
+\subimport{../topics/riscv/}{felixunger_risc_mt.tex}
+\end{questions}
+\newpage
+
+\end{document}

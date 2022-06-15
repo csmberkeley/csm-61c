@@ -1,0 +1,82 @@
+\begin{blocksection}
+\question You are given the code above, and told that you can read and write to any word of memory without error.
+The function mystery lives somewhere in memory, but not at address 0x0. Your system has no caches.
+
+\begin{verbatim}
+1. mystery:
+2.     la t6, loop
+3. loop: addi x0, x0, 0   ##nop
+4.     lw t5, 0(t6)
+5.     addi t5, t5, 0x80
+6.     sw t5, 0(t6)
+7.     addi a0, a0, -1
+8.     bnez a0, loop
+9.     ret
+
+\end{verbatim}
+
+\end{blocksection}
+
+\begin{blocksection}
+
+\begin{solution}[0.5in]
+What this function does (courtesy of Albert Zhan on piazza with minor edits):
+
+1. mystery(x) entry point - where a0 = x, this is the label to jump to mystery.
+
+2. la t6, loop - t6 register now stores the address of the "loop" (in this case, it points to an instruction in the text section of memory)
+
+3. addi x0 x0 0 - instruction is executed. Note that addi instruction looks like 
+\begin{verbatim}
+_ _ _ _ _ _ _ _ _ _ _ _ + _ _ _ _ _ + 000 + _ _ _ _ _ + 0010011
+\end{verbatim}
+which are imm[11:0], rs1, and rd
+
+4. lw t5, 0(t6) - loads the 32 bits of instruction into t5 register
+
+5. addi t5, t5, 0x80 - adds 0000 0000 0000 0000 0000 0000 0100 0000 to the instruction at "loop" -> counting the bits, it adds 1 to rd (so the instruction on the first iteration becomes "addi x1, x0, 0")
+
+6. sw t5, 0(t6) - stores the updated instruction into memory, so it modifies the instruction at "loop" -- self modifying the code.
+
+7. addi a0, a0, -1 - decreases x by 1
+
+8. bnez a0, loop - if $a0 == 0$, continue. Otherwise, go back to the instruction at "loop"
+
+9. ret - jump to ra...
+
+So it modifies the registers by modifying the code at "loop", which in turn modifies the registers x0, x1, etc.
+\end{solution}
+\end{blocksection}
+
+\begin{blocksection}
+
+
+\begin{parts}
+
+\part
+At a functional level, in seven words or fewer, what does mystery(x) do when $x < 10$?
+\begin{solution}[0.5in]
+Resets the first x registers.
+\end{solution}
+
+\part
+One by one, what are the values of a0 that bnez sees with mystery(13) at every iteration? We’ve
+done the first few for you. List no more than 13; if it sees fewer than 13, write N/A for the rest.
+
+\begin{verbatim}
+12, 11, __, __, __, __, __, __, __, __, __, __, __
+\end{verbatim}
+
+\begin{solution}[0.5in]
+12, 11, 10, 9, 8, 7, 6, 5, 4, 3, -1, -2, -3
+
+We’re merrily rolling along, resetting all the registers, when we reset x10 = a0! But then “addi a0,a0,-1” makes it -1 so it actually never hits the stopping “branch equal to zero” case then! So the bnez sees -1, then -2, then -3 as the resetter continues along its merry way.
+\end{solution}
+
+\end{parts}
+\end{blocksection}
+
+
+
+
+

@@ -1,32 +1,70 @@
 \documentclass[11pt]{exam}
-\usepackage{graphicx}
+\def\discussionsolutions{}
 \usepackage{../commonheader}
 \graphicspath{ {../images/} }
 
-\discnumber{7}
-\title{Control and Pipelines}
-\date{October 26, 2020}
+\discnumber{9}
+\title{OS/Parallelism/VM}
+\date{April 13-15, 2022}
 
 \begin{document}
 \maketitle
 
-\section{Sequential vs. Pipelined}
+\section{OS Trivia}
+\subimport{../topics/os/}{ostrivia.tex}
+\newpage
+
+\section{Out of Order}
 \begin{questions}
-\subimport{../topics/datapath/}{pipelining.tex}
-\subimport{../topics/datapath/}{pipelining2.tex}
+\subimport{../topics/parallelism/}{raceoutput1.tex}
+\subimport{../topics/parallelism/}{raceoutput2.tex}
 \end{questions}
 \newpage
 
-\section{More Pipelines (Spring 2016 MT2 Q4)}
+\section{Memory Access Flowchart}
+\subimport{../topics/virtualmemory}{vmdiagram.tex}
+\newpage
+
+\section{VM Warm Up}
 \begin{questions}
-\subimport{../topics/datapath/}{pipelining_hard.tex}
-\subimport{../topics/datapath/}{pipelining_hard2.tex}
+\subimport{../topics/virtualmemory/}{vmwarmup.tex}
 \end{questions}
 \newpage
 
-\section{Pipelining Hazards}
+% \section{Virtual Potpourri}
+% \begin{questions}
+% \subimport{../topics/virtualmemory/}{vmpotpourri2.tex}
+% \end{questions}
+% \newpage
+
+\section{VM Accesses}
 \begin{questions}
-\subimport{../topics/datapath/}{hazards.tex}
+\subimport{../topics/virtualmemory/}{vmaccess1.tex}
+\subimport{../topics/virtualmemory/}{vmaccess2.tex}
 \end{questions}
+\newpage
+
+% \section{Context Switch!}
+% \begin{questions}
+% \subimport{../topics/virtualmemory/}{ctxswitch1.tex}
+% \subimport{../topics/virtualmemory/}{ctxswitch2.tex}
+% \subimport{../topics/virtualmemory/}{ctxswitch3.tex}
+% \end{questions}
+% \newpage
+
+% \section{VM Copy}
+% \begin{questions}
+% \subimport{../topics/virtualmemory/}{vmcopy1.tex}
+% \subimport{../topics/virtualmemory/}{vmcopy2.tex}
+% \end{questions}
+% \newpage
+
+% \section{VM and Caching}
+% \begin{questions}
+% \subimport{../topics/virtualmemory/}{vmcache1.tex}
+% \subimport{../topics/virtualmemory/}{vmcache2.tex}
+% \subimport{../topics/virtualmemory/}{vmcache3.tex}
+% \end{questions}
+
 
 \end{document}

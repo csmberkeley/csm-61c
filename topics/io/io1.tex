@@ -7,19 +7,19 @@ Assume a polling iteration takes 60 cycles. If the processor detects that a byte
 \part
 How many cycles does it take for the I/O device to supply 1 byte of data? 
 \begin{solution}[0.5in] 
-20000
+1 GHz * 0.02 ms * $10^{-3}$ s/ms = 20000 cycles
 \end{solution}
 
 \part
 How many polling iterations does it take to read 1 byte of data? (round up to an integer)
 \begin{solution}[0.5in] 
-334
+20,000 cycles / 60 cycles/iteration = 334 iterations
 \end{solution}
 
 \part
 How many cycles does it take to read the 1000 bytes of data?
 \begin{solution}[0.5in] 
-20,040,000
+334 iterations/byte * 1000 bytes * 60 cycles/iteration = 20,040,000 cycles
 \end{solution}
 \end{parts}
 
@@ -27,7 +27,8 @@ How many cycles does it take to read the 1000 bytes of data?
 If instead, the processor is interrupted when a byte is ready, and the processor spends the time between interrupts on another task, how many cycles of this other task can the processor complete while the I/O communication is taking place? The overhead for handling an interrupt is 2000 cycles. 
 
 \begin{solution}[0.5in]
-18,000,000
+It takes 20,000 cycles to supply 1 byte of data (from part a). 2000 of these cycles are spent handling the interrupt, leaving us 18,000 free cycles. \\
+18,000 free cycles/byte * 1,000 bytes = 18,000,000 cycles
 \end{solution}
 
 \question

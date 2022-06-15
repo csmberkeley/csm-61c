@@ -1,0 +1,76 @@
+\begin{blocksection}
+\question
+Given a string that is null terminated return True if the given substring (this is also null-terminated) is present in the overall string and False otherwise
+
+\begin{verbatim}
+bool isSubstring(char* substr, char *str) {
+
+    int len_substr = _________;
+    int len_str = ___________;
+    if (________________) {   //check if substr is longer than str
+        return false;
+    }   
+    
+    int str_cur_index = 0;
+    int substr_cur_index = 0;
+
+    while (str_cur_index < len_str) {
+        if (_____________________________________) {
+            ______________++;
+            if (____________________) {
+                return true;
+            }
+
+        }
+        else {
+            if (sub_str_cur_index == 0) {
+                    _____________++;
+            }
+            else {
+                    ____________ = 0;
+            }
+        }
+    }
+
+    return __________;
+}
+
+
+\end{verbatim}
+\end{blocksection}
+\begin{solution}
+\newpage
+\begin{verbatim}
+bool isSubstring(char* substr, char *str) {
+
+    int len_substr = strlen(str);
+    int len_str = strlen(substr);
+    if (len_substr > len_str) {   //check if substr is longer than str
+        Return false;
+    }   
+    
+    int str_cur_index = 0;
+    int substr_cur_index = 0;
+
+    while (str_cur_index < len_str) {
+        if (str[str_cur_index] == substr[substr_cur_index]) {
+            substr_cur_index++;
+            str_cur_index++;
+            if (substr_cur_index == len_substr) {
+                return true;
+            
+        }
+        else {
+            if (sub_str_cur_index == 0) {
+                    str_cur_index++;
+            }
+            else {
+                    substr_cur_index = 0;
+            }
+        }
+    }
+
+    return false;
+}
+\end{verbatim}
+\end{solution}

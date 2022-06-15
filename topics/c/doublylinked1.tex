@@ -1,0 +1,19 @@
+\begin{blocksection}
+\question
+Fill out the declaration of a doubly linked linked-list node below.
+
+\begin{verbatim}
+typedef struct node {
+    int value;
+    ____________ prev; // pointer to the previous element
+    ____________ next; // pointer to the next element 
+} dll_node;
+\end{verbatim}
+
+\begin{solution}
+\lstinline$struct node* prev;$ \\
+\lstinline$struct node* next;$
+
+Remember the pointer to the next node in a linked list is one pointing to another node, so the type of next is a pointer to the same type as the first linked list node. The same applies for prev.
+\end{solution}
+\end{blocksection}

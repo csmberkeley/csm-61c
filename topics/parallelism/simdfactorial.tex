@@ -1,0 +1,77 @@
+\begin{blocksection}
+\question
+Optimize the following C code for factorial by using SIMD instructions.
+
+\begin{verbatim}
+double factorial(int n) {
+    double f = 1.0;
+    for (int i = 1 ; i <= n; i++) {
+        f *= (double) i;
+    }
+    return f; 
+}
+\end{verbatim}
+
+You will find the following SIMD instructions very useful.
+\begin{verbatim}
+// returns vector(s[0], s[1], s[2], s[3])
+__m256d _mm256_loadu_pd(double *s);
+// stores s[i] = v_i where i = 0, 1, 2, 3
+void _mm256_store_pd(double *s, __m256d v);
+// returns vector which is the element-wise product of a and b
+__m256d _mm256_mul_pd(__m256d a, __m256d b);
+\end{verbatim}
+
+We provide the following skeleton code. Please fill in the blanks.
+
+\begin{verbatim}
+double factorial(int k) {
+    int i, j;
+    double f_init[] = {____, ____, ____, ____};
+    double f_res[4];
+    double f = 1.0;
+    __m256d f_vec = ____________________________________________________________
+    for (i = 1; i <= _________________________; _____________________________) {
+        double l[] = {
+        (double) _________________________, (double) __________________________,
+        (double) _________________________, (double) __________________________};
+        __m256d data = __________________________________________________________
+        _________________________________________________________________________   
+    }
+    // reduce vector to array
+    _mm256_store_pd(__________________________________________);
+    // reduce array to value
+    for (j = 0; j < 4; j++) {
+        f = _____________________________________________________________________;
+    }
+    // handle tail case
+    for ( ; i <= n; i++) {
+        _______________________________
+    }
+    return f; 
+}
+\end{verbatim}
+
+\end{blocksection}
+
+\begin{solution}
+\begin{verbatim}
+    double f_init[] = {1.0, 1.0, 1.0, 1.0};
+    __m256d f_vec = _mm256_loadu_pd(f_init);
+    for (i = 1; i <= (n/4)*4; n += 4) {
+        double l[] = {
+        (double) i, (double) i+1,
+        (double) i+2, (double) i+3};
+        __m256d data = _mm256_loadu_pd(l);
+        f_vec = _mm256_mul_pd(f_vec, data);   
+    }
+    _mm256_store_pd(f_res, f_vec);
+    for (j = 0; j < 4; j++) {
+        f = f * f_res[j];
+    }
+    for ( ; i <= n; i++) {
+        f *= (double) i;
+    }
+\end{verbatim}
+\end{solution}
+

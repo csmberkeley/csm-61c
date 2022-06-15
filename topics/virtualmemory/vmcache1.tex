@@ -1,0 +1,22 @@
+\begin{blocksection}
+\question 
+Assume we have a 1-core machine with a single level, direct-mapped cache design of size 64 KiB ($2^{16}$), with each cache block of size 256 bytes ($2^8$), and two threads of programs to be run: program A and program B. Each program has been assigned with 4 GiB ($2^{32}$) virtual memory size, and the machine has a total physical memory size of 16 MiB ($2^{24}$). Our page size is 4KiB ($2^{12}$).
+
+\begin{parts}
+\part
+What is the tag, index, and offset bits of this cache design?
+
+\begin{solution}[0.5in]
+tag: 8 index: 8 offset: 8
+\end{solution}
+
+\part
+How many PPN and VPN bits does this memory design have?
+
+\begin{solution}[0.5in]
+PPN: 12 VPN: 20
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}

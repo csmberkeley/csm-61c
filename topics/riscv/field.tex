@@ -37,12 +37,12 @@ $-64$ \\
 First, calculate the bit width of the immediate field, which is $17 − 6 − 2 − 2 = 7$ bits. The range of a 7-bit number in 2’s complement is $[−2^{6}, 2^{6} − 1]$ Thus, the most negative immediate is $−2^{6} = −64$.
 \end{solution}
 
-\question
-For LUI, we need \lstinline$opcode$, \lstinline$rd$, and \lstinline$imm$ as inputs. Using the assumptions stated in the description, how many bits can we use for the immediate value?
-\begin{solution}[0.5in]
-$17-6-2 = 9$ \\
-Given the \lstinline$opcode$ is 6 bits wide, register is 2 bits wide, we can use the rest of the bits for immediate. The width of immediate is therefore $17 − 6 − 2 = 9$.
-\end{solution}
+%\question
+%For LUI, we need \lstinline$opcode$, \lstinline$rd$, and \lstinline$imm$ as inputs. Using the assumptions stated in the description, how many bits can we use for the immediate value?
+%\begin{solution}[0.5in]
+%$17-6-2 = 9$ \\
+%Given the \lstinline$opcode$ is 6 bits wide, register is 2 bits wide, we can use the rest of the bits for immediate. The width of immediate is therefore $17 − 6 − 2 = 9$.
+%\end{solution}
 
 
 \end{blocksection}

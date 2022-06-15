@@ -1,0 +1,55 @@
+\begin{blocksection}
+\question
+You are given a RISCV machine with a single level of 1 KiB direct-mapped cache with 256B cache blocks. It has 8 MiB of physical address space. Assume a LRU replacement policy.
+
+The function \lstinline$foo()$ is ran on the system with a cold cache and as the only process. Assume sizeOf(long) = 8: 
+
+\begin{verbatim}
+#define ARRAY_LEN 2048 
+void foo (long* arr) {
+    for ( int i = 0; i < ARRAY_LEN; i += 1 ) 
+        {
+            arr[i] += 1
+        } 
+}
+\end{verbatim}
+
+% \newpage
+
+\begin{parts}
+\part
+What is the hit rate of this cache after running foo?
+\begin{solution}[0.7in]
+98.4375\% (0.984375)
+
+We have a 1 KiB Direct-Mapped cache with 256B blocks. $256/8$ = each block can hold 32 longs. For each block, we have 1 miss that will pull the block into our cache followed by 63 cache hits (Note: Remember that += is TWO memory accesses).
+
+With 1 cache miss in every 64 memory accesses, we have a MISS rate of 1/64 = 1.56\%.
+
+Our HIT rate is 1 - (Miss Rate) = 1 - .0156 = 0.984375 (98.4375\%)
+\end{solution}
+
+\part
+Given the cache hit time is 2 cycles, and the main memory hit time is 100 cycles, find the number of cycles spent accessing values in foo.
+
+\begin{solution}[0.7in]
+14,592
+
+From the previous question, we determined that the program has 1 cache miss in every 64 memory accesses.
+For each new block, we check the cache for the first element (2), go into Main Memory to retrieve our new block for the cache (100) and the subsequent 63 accesses only require looking in the cache (2). For a single block of 32 longs, we spend 2 + 100 + (2*63) = 228 cycles accessing values. 
+
+The array has 2048 elements, so this processes is repeated 64 times (2048/32 = 64) so 228*64 = 14,592 total cycles spent accessing memory.
+\end{solution}
+
+\part
+How would changing the block size to 128B affect our hit rate?
+
+\begin{solution}[0.7in]
+Halving the Block size would mean that the number of longs we can store in a block gets halved from 32 to 16. With our new smaller block size, 1 cache miss pulls in 16 new longs, allowing 31 cache hits. 
+Our new hit rate becomes 31/32 = 96.875\%
+\end{solution}
+
+
+\end{parts}
+
+\end{blocksection}

@@ -1,0 +1,66 @@
+\begin{blocksection}
+\question 
+Now assume a context switch occurred and the cpu now runs the second program. Assume that the second program has run before, so after the context switch the cpu now holds the following TLB, with some uninformative columns omitted:
+\begin{center}
+\begin{tabular}{ |c|c|c| }
+ \hline
+ valid & tag & PPN \\
+ \hline
+ 1 & 0xFFFFF & 0x001 \\ 
+ \hline
+ 1 & 0x12345 & 0x000 \\ 
+ \hline
+ 0 & 0xFFFFE & 0x000 \\ 
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{parts}
+\part
+0xFFFFF123
+
+\begin{solution}[0.5in]
+TLB hit \\
+Physical address: 0x001123 \\
+Compulsory miss
+\end{solution}
+
+\part
+0x12345123
+
+\begin{solution}[0.5in]
+TLB hit \\
+Physical address: 0x000123 \\
+Compulsory miss
+\end{solution}
+
+\part
+0xFFFFE123
+
+\begin{solution}[0.5in]
+TLB miss \\
+Physical address: 0x002123 \\
+Compulsory miss
+\end{solution}
+
+\part
+0xFFFFF000
+
+\begin{solution}[0.5in]
+TLB hit \\
+Physical address: 0x001000 \\
+Compulsory miss
+\end{solution}
+
+\part
+0xFFFFF1FF
+
+\begin{solution}[0.5in]
+TLB hit \\
+Physical address: 0x0011FF \\
+Cache hit
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}

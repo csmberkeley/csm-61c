@@ -28,7 +28,7 @@ int is_substr(char* s1, char* s2) {
 Fill in the following RISC-V code based on the given C code:
 
 \begin{verbatim}
-1. is_substr:
+1.  is_substr:
 2.      mv s1, a0
 3.      mv s2, a1
 4.      jal ra, strlen
@@ -36,7 +36,7 @@ Fill in the following RISC-V code based on the given C code:
 6.      mv a0, s2
 7.      jal ra, strlen
 8.      sub s3, s3, a0
-9. Outer_Loop:
+9.  Outer_Loop:
 10.     ______ ______, ______, False
 11.     add t0, x0, x0
 12. Inner_Loop:
@@ -62,17 +62,23 @@ Fill in the following RISC-V code based on the given C code:
 32. End: ______
 \end{verbatim}
 
+\end{blocksection}
+
+\begin{blocksection}
 \begin{solution}
+
+We shall first establish the relationship between the registers used and the symbols in the C code: s1 corresponds to s1, s2 to s2, s3 to offset starting from line 8, t0 to i, t1 to s1[i + offset], and t2 to s2[i]. We then complete the translation.
+
 \begin{verbatim}
-10.     blt s3, x0, False
-16.     add t2 s2 t0
-17.     lbu t2 0(t2)
-18.     bne t1, t2, Update Offset
-21.     lbu t2 0(t2)
-22.     beq t2, x0, True
-26.     jal x0 Outer_Loop
-28.     xor a0, a0, a0
-32. End: ret
+10.    blt s3, x0, False         # Break if offset < 0
+16.    add t2 s2 t0              # Access s2[i]
+17.    lbu t2 0(t2)              # Access s2[i]
+18.    bne t1, t2, Update_Offset # Break if s1[i + offset] != s2[i]
+21.    lbu t2 0(t2)              # Access s2[i]
+22.    beq t2, x0, True          # Return 1 if s2[i] == 0
+26.    jal x0 Outer_Loop         # Continue looping
+28.    xor a0, a0, a0            # Set a0 = 0 for return
+32. End: ret                     # Return
 \end{verbatim}
 \end{solution}
 

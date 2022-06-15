@@ -9,7 +9,7 @@ $\frac{196}{4} \times 15$  cycles
 
 \begin{solution}[0.7in]
 \begin{verbatim}
-lw 	   t1 0(t2)
+lw 	   t1, 0(t2)
 srl    t1, t1, 16
 sw     t1, 0(t2)
 addi   t2, t2, -4

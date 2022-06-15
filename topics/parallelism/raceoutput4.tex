@@ -1,0 +1,27 @@
+\begin{blocksection}
+
+\question
+\begin{verbatim}
+omp_set_num_threads(4);
+#pragma omp parallel for {
+    for (int i = 0; i < 8; i++) {
+        printf("%d ", i);
+    }
+}
+\end{verbatim}
+
+Select all of the following outputs that are possible:
+
+Output 1: \texttt{0 1 2 3 4 5 6 7 } \\
+Output 2: \texttt{1 3 5 7 0 2 4 6} \\
+Output 3: \texttt{4 5 0 1 2 3 6 7} \\
+Output 4: \texttt{2 4 3 5 0 1 6 7} \\
+Output 5: \texttt{5 6 0 1 2 3 4 7} \\
+
+Note: pragma omp parallel for uses chunking
+\begin{solution}[0.5in]
+1, 3, 4 \\
+Justification: Notice that we set the number of threads to 4 and we have a loop that iterates over 8 elements. OpenMP assigns for loop iterations in chunks, so our first thread is assigned $i=0,1$, the second $i=2,3$, the third $i=4,5$, and the fourth $i=6,7$. Thus, only outputs where 0 comes before 1, 2 comes before 3, and so on are valid.
+
+\end{solution}
+\end{blocksection}

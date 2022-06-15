@@ -1,0 +1,55 @@
+\begin{blocksection}
+\question
+Assume we are working in a 32-bit physical address space. We have two possible data caches: cache X is a direct-mapped cache, while cache Y is 2-way associative with LRU replacement policy. Both are 4 KiB caches with 512 B blocks and use write-back and write-allocate policies. 
+
+Use the code below to answer part b and c.
+
+\begin{verbatim}
+int DOUBLE_ARRAY_SIZE = 2 * 1024; double_arr[DOUBLE_ARRAY_SIZE]; 
+for (int i = 0; i < DOUBLE_ARRAY_SIZE; i++) /* loop 1 */        
+    double_arr[i] = i; 
+for (int i =0;i < DOUBLE_ARRAY_SIZE; i += 8) /* loop 2 */       
+    double_arr[i] *= double_arr[0];
+\end{verbatim}
+
+\begin{parts}
+
+\part
+Calculate the number of bits used for Tag, Index and Offset for cache X and Y.
+\begin{solution}[0.5in]
+Cache X: 20 tag, 3 index, 9 offset 
+Cache Y: 21 tag, 2 index, 9 offset
+\end{solution}
+
+\part
+What is the hit rate for each cache if we run only loop 1? (hint: they’re both the same). What types of misses do we get?
+\begin{solution}[0.5in]
+Both have a hit rate of 63/64. Compulsory
+\end{solution}
+
+\part
+What is the hit rate of each cache when you execute loop 2? Assume that you have executed loop 1. Assume the worst case ordering of accesses within a single iteration of the loop if multiple orders are possible. You may leave your answer as an expression involving products and sums of fractions.
+\begin{solution}[0.5in]
+Cache X has a hit rate of 29/32 * 23/24 + 3/32 * 7/24.
+Cache Y has a hit rate of 23/24.
+\end{solution}
+
+\part
+Compute the AMAT for the following system with 3 levels of caches. (You should not need any information from the previous parts of this problem.) Give your answer as a decimal value.
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+\hline
+L1 Cache & L2 Cache & L3 Cache & Main Memory \\ 
+\hline
+Hit time: 1 ns & Hit time: 5 ns & Hit time: 15 ns & Hit time: 500 ns \\ 
+Global miss rate: 50\% & Local miss rate: 20\% & Local miss rate: 1\% & \\
+\hline
+\end{tabular}
+\end{center}
+\begin{solution}
+1 + .5*(5 + .20*(15 + .01*(500))) = 5.5 ns
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}

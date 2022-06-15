@@ -4,25 +4,12 @@
 Simplify the above boolean expression.
 \begin{solution}[0.7in]
 
-\begin{equation}
-\begin{split}
-A\bar{B}C + A\bar{B}\bar{C} + \bar{A}\bar{B}C &= \bar{B}(AC + A\bar{C} + \bar{A}C) \\
-&= \bar{B}(A\bar{C} + C(A + \bar{A})) \\
-&= \bar{B}(A\bar{C} + C) \\
-&= \bar{B}(A + C)
-\end{split}
-\end{equation}
-
-See discussion 6, Q2.1 for one example of how to prove the final step. Alternatively:
-
-\begin{equation}
 \begin{split}
 A\bar{B}C + A\bar{B}\bar{C} + \bar{A}\bar{B}C &= \bar{B}(AC + A\bar{C} + \bar{A}C) \\
 &= \bar{B}(AC + A\bar{C} + AC + \bar{A}C) \\
 &= \bar{B}(A(C + \bar{C}) + C(A + \bar{A})) \\
 &= \bar{B}(A + C)
 \end{split}
-\end{equation}
 
 \end{solution}
 

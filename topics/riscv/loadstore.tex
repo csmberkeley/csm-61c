@@ -1,49 +1,56 @@
 \begin{blocksection}
 \question
-For each line of RISC-V code, answer what will be the value saved into the registers involved or
-the effect on memory.
-Assume that x8 contains a valid address in memory, such that Mem[R[x8]] = 0x00000180.
+For each line of RISC-V instruction, answer what will be the value saved into the corresponding registers or memory addresses. Assume that x8 contains a valid memory address, and at that address stores the word Mem[Reg[x8]] = 0x00000180. The instructions are executed in that order.
 
 \begin{parts}
 \part
+\begin{verbatim}
 lw x9, 0(x8)
+\end{verbatim}
 What value does x9 now store?
 
 \begin{solution}[0.5in]
-0x00000180
+As we load the word at address Reg[x8] into register x9, we have Reg[x9] = 0x00000180.
 \end{solution}
 
 \part
-lb x10, 1(x8) 
-What value does x10 store? 
+\begin{verbatim}
+lb x10, 1(x8)
+\end{verbatim}
+What value does x10 now store? 
 
 \begin{solution}[0.5in]
-0x00000001
+Since RISC-V is little endian, the byte at address Reg[x8] + 1 would be the second least significant byte in the word at address Reg[x8] 0x01, and we sign-extend this number to get Reg[x10] = 0x00000001.
 \end{solution}
 
 \part
-lb x11, 0(x8) 
-What value does x11 store? 
+\begin{verbatim}
+lb x11, 0(x8)    
+\end{verbatim}
+What value does x11 now store? 
 
 \begin{solution}[0.5in]
-0xFFFFFF80
+Again, since RISC-V is little endian, the byte at address Reg[x8] would be the least significant byte in the word at address Reg[x8] 0x80, and we sign extend this number to get Reg[x11] = 0xFFFFFF80.
 \end{solution}
 
 \part
-sb x11, 3(x8) 
-What’s the effect on Mem[R[x8]]? 
+\begin{verbatim}
+sb x11, 3(x8)
+\end{verbatim}
+What is the value of Mem[Reg[x8]]? 
 
 \begin{solution}[0.5in]
-Mem[R[x8]] = 0x80000180
+We just take the least significant byte of Reg[x11] 0x80 and write it to the memory address Reg[x8] + 3. Since RISC-V is little endian, we have Mem[R[x8]] = 0x80000180.
 \end{solution}
 
 \part
-lbu x12, 0(x8) 
-What value does x12 store? 
+\begin{verbatim}
+lbu x12, 0(x8)
+\end{verbatim}
+What value does x12 now store? 
 
 \begin{solution}[0.5in]
-0x00000080
+Still, the byte at address Reg[x8] would be 0x80, but this time we need not sign extend, as this is an unsigned operation, and so Reg[x12] = 0x00000080.
 \end{solution}
 \end{parts}
-
 \end{blocksection}

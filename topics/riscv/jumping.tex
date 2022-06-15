@@ -1,5 +1,6 @@
 \begin{blocksection}
-\question Consider the following RISC-V code:
+\question 
+Consider the following RISC-V code:
 
 \begin{tabular}{l r l}
 0x00000000:		&Anakin:	&add x0, x0, x0 \\
@@ -18,8 +19,9 @@
 0x00000034:		&Exit:		&add x0, x0, x0 \\
 \end{tabular}
 
-Write out each instruction in the order it's executed, and the contents of the registers below at each step. Assume the registers are all zeroed out at first.
+Write out each instruction in the order it's executed, and the contents of the registers below at each step. Assume that all the registers are zeroed out at first.
 
+\begin{center}
 \begin{tabular}{ |l|l|l| } 
  \hline
  pc & ra & t0 \\ 
@@ -47,35 +49,46 @@ Write out each instruction in the order it's executed, and the contents of the r
  & & \\
  \hline
 \end{tabular}
+\end{center}
+\end{blocksection}
 
+\begin{blocksection}
 \begin{solution}[0.5in]
-\begin{tabular}{ |l|l|l|l|l|l|l|l|l|l|l| } 
+\begin{center}
+\begin{tabular}{ |l|l|l|l| } 
  \hline
- pc & ra & t0 \\ 
+ Instr. being executed & pc & ra & t0  \\ 
  \hline
- 0x00000000 & 0x00000000 & 0x00000000 \\
+ add x0, x0, x0 & 0x00000000 & 0x00000000 & 0x00000000   \\
  \hline
- 0x00000004 & 0x00000000 & 0x00000000 \\
+ jal ra, TryIt  & 0x00000004 & 0x00000000 & 0x00000000 \\
  \hline 
- 0x00000020 & 0x00000008 & 0x00000000 \\
+ add t0, t0, t0 & 0x00000020 & 0x00000008 & 0x00000000  \\
  \hline
- 0x00000024 & 0x00000008 & 0x00000000 \\
+ jr ra & 0x00000024 & 0x00000008 & 0x00000000\\
  \hline 
- 0x00000008 & 0x00000008 & 0x00000000 \\
+ addi t0, t0, 16 & 0x00000008 & 0x00000008 & 0x00000000 \\
  \hline
- 0x0000000C & 0x00000008 & 0x00000010 \\
+ bne t0, x0, Power & 0x0000000C & 0x00000008 & 0x00000010  \\
  \hline
- 0x0000002C & 0x00000008 & 0x00000010 \\
+ jalr ra, t0, 0 & 0x0000002C & 0x00000008 & 0x00000010 \\
  \hline
- 0x00000010 & 0x00000030 & 0x00000010 \\
+ j HighGround & 0x00000010 & 0x00000030 & 0x00000010 \\
  \hline
- 0x00000018 & 0x00000030 & 0x00000010 \\
+ addi t0, t0, 32 & 0x00000018 & 0x00000030 & 0x00000010 \\
  \hline
- 0x0000001C & 0x00000030 & 0x00000030 \\
+ jal t0, Exit & 0x0000001C & 0x00000030 & 0x00000030 \\
  \hline
- 0x00000034 & 0x00000030 & 0x00000020 \\
+ add x0, x0, x0 & 0x00000034 & 0x00000030 & 0x00000020 \\
  \hline
 \end{tabular}
+\end{center}
+
+We proceed through the program as normal until we reach address 0x00000004, which instructs us to jump to the label TryIt (at address 0x00000020) saving the value of the next instruction in ra. 
+At address 0x00000024, we are instructed to jump to the address stored in the ra register (0x00000008). We now set the value of the t0 register to 0x00000010, and since 16 != 0, we jump to the Power label (0x0000002C). 
+Here we come across a jalr instruction, which tells us to jump to the address in t0 (0x00000010), saving the current PC + 4 in ra (0x00000030). 
+Our next instruction is a simple jump, so we set the value in the pc register to the address of label HighGround (0x00000018). Next, we add 32 to our value in t0, so it becomes 0x00000030. 
+Lastly, we jump to the label Exit, replacing the value in t0 with PC + 4 (0x00000020).
 \end{solution}
 
 \end{blocksection}

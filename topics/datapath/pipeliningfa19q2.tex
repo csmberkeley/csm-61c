@@ -1,0 +1,59 @@
+\begin{blocksection}
+\textbf{Case 2:} After fixing that hazard, the following case fails:
+
+\textbf{addi s0 x0 4
+\newline
+\hspace{10mm} slli t1 s0 2
+\newline
+\hspace{10mm} bge s0 x0 greater
+\newline
+\hspace{10mm} xori t1 t1 -1
+\newline
+\hspace{10mm} addi t1 t1 1
+\newline
+\hspace{10mm} greater:
+\newline
+\hspace{10mm} mul t0 t1 s0
+\newline
+}
+\newline
+When this test case is run, t0 contains 0xFFFFFFC0, which is not what it should have been.
+
+\question 
+What caused the failure? (Select ONE)
+\begin{checkboxes}
+ \choice Control Hazard
+ \choice Structural Hazard
+ \choice Data Hazard
+ \choice None of the Above
+\end{checkboxes}
+
+\begin{solution}[0.5in]
+Control Hazard
+\end{solution}
+
+\question
+How could you fix it? (Select ALL that apply)
+\begin{checkboxes}
+ \choice Insert a nop 3 times if you detect this specific error condition
+ \choice Forward execute to write back if you detect this specific error condition
+ \choice Forward execute to memory if you detect this specific error condition
+ \choice Forward execute to execute if you detect this specific error condition
+ \choice Flush the pipeline if you detect this specific error condition
+\end{checkboxes}
+
+\begin{solution}[0.5in]
+A, E
+\end{solution}
+
+\begin{solution}[0.5in]
+The issue with the code above is we do not clear/flush the instructions if the branch determines it is taken.
+Remember that we are running on a five stage pipeline CPU which just assumes PC + 4 unless an instruction
+says otherwise. This means that we will not determine if the branch is taken until the branch is in the execute
+phase. This means that we will have the next two instructions already in the pipeline (one in instruction fetch,
+the other in instruction decode). So we have a Control Hazard as we are not executing the correct instructions.
+Some ways how to fix it: insert nops if you detect a branch instruction in the instruction fetch stage OR flush
+the pipeline if the branch is in the opposite direction of what was predicted. Forwarding data in this case will not
+help at all.
+\end{solution}
+\end{blocksection}

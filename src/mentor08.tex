@@ -1,42 +1,48 @@
 \documentclass[11pt]{exam}
+\def\discussionsolutions{}
 \usepackage{../commonheader}
-
-\discnumber{8}
-\title{Intro to Caching}
-\date{November 2, 2020}
-
+\graphicspath{ {../images/} }
+​
+\discnumber{10}
+\title{I/O, VM}
+\date{April 20-22, 2022}
+​
 \begin{document}
 \maketitle
-
-\section{Gotta Cache 'Em All}
+​
+\section{Some Miscellaneous Quest(IO)ns}
 \begin{questions}
-\subimport{../topics/caches/}{cachethemall.tex}
+\subimport{../topics/io/}{io1.tex}
+\subimport{../topics/io/}{io2.tex}
 \end{questions}
 \newpage
 
-\section{Break It Down Now Y'All}
+\section{Context Switch!}
 \begin{questions}
-\subimport{../topics/caches/}{breakitdown1.tex}
-\subimport{../topics/caches/}{breakitdown2.tex}
+\subimport{../topics/virtualmemory/}{ctxswitch1.tex}
+\subimport{../topics/virtualmemory/}{ctxswitch2.tex}
+\subimport{../topics/virtualmemory/}{ctxswitch3.tex}
 \end{questions}
 \newpage
 
-\section{Multilevel \$}
+\section{VM and Caching}
 \begin{questions}
-\subimport{../topics/caches/}{multilevel1.tex}
-\subimport{../topics/caches/}{multilevel2.tex}
-\subimport{../topics/caches/}{multilevel3.tex}
-\subimport{../topics/caches/}{multilevel4.tex}
-\subimport{../topics/caches/}{multilevel5.tex}
-\subimport{../topics/caches/}{multilevel6.tex}
+\subimport{../topics/virtualmemory/}{vmcache1.tex}
+\subimport{../topics/virtualmemory/}{vmcache2.tex}
+\subimport{../topics/virtualmemory/}{vmcache3.tex}
 \end{questions}
-\newpage
 
-\section{AMAT}
-\begin{questions}
-\subimport{../topics/caches/}{amat1.tex}
-\subimport{../topics/caches/}{amat2.tex}
-\end{questions}
-\newpage
+% \section{OS Trivia}
+% \begin{questions}
+% \subimport{../topics/os/}{ostrivia.tex}
+% \end{questions}
+% \newpage
+
+% \section{VM Copy (From last week)}
+% \begin{questions}
+% \subimport{../topics/virtualmemory/}{vmcopy1.tex}
+% \subimport{../topics/virtualmemory/}{vmcopy2.tex}
+% \end{questions}
+
 
 \end{document}

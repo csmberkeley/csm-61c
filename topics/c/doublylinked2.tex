@@ -1,0 +1,52 @@
+\begin{blocksection}
+\question
+Let's convert an array into a linked list. Fill in the missing code.
+
+\begin{verbatim}
+dll_node* to_list(int* arr, int size) {
+    if (size == 0) {
+        return NULL;
+    }
+    dll_node *head = _________________;
+    head->value = arr[0];
+    head->prev = NULL;
+    dll_node *last = NULL;
+    dll_node *curr = ____;
+    for (int i = 1; i < size; i++) {
+        last = _________;
+        curr = _________________;
+        curr->value = _________;
+        curr->prev = _________;
+        last->next = _________;
+    }
+    curr->next = NULL;
+    return head;
+}
+\end{verbatim}
+\end{blocksection}
+\begin{blocksection}
+\begin{solution}
+\begin{verbatim}
+dll_node* to_list(int* arr, int size) {
+    if (size == 0) {
+        return NULL;
+    }
+    dll_node *head = malloc(sizeof(dll_node));
+    head->value = arr[0];
+    head->prev = NULL;
+    dll_node *last = NULL;
+    dll_node *curr = head;
+    for (int i = 1; i < size; i++) {
+        last = curr;
+        curr = malloc(sizeof(dll_node));
+        curr->value = arr[i];
+        curr->prev = last;
+        last->next = curr;
+    }
+    curr->next = NULL;
+    return head;
+}
+\end{verbatim}
+Converting the array to a linked list requires creating a new node for every array element, which we do inside a for loop. We have to assign each list node's value based on the given array. We also have to update the node's next and prev pointers, so we need two pointers (one for the most recently created node, and one for the node right before it).
+\end{solution}
+\end{blocksection}

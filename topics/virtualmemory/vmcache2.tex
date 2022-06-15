@@ -1,0 +1,42 @@
+\begin{blocksection}
+\question 
+With this machine, we now first run program1, which accesses the memory address in the following way:
+
+For each access, translate the address into the physical memory address accessed, assuming that the pages are assigned ordinally, and the first 2 page numbers are already assigned, so you start with the third page. Then, answer whether it is a cache hit, a compulsory miss, a conflict miss, or a capacity miss.
+
+\begin{parts}
+\part
+0xFFFFF123
+
+\begin{solution}[0.5in]
+Physical address: 0x002123 \\
+Compulsory miss
+\end{solution}
+
+\part
+0xFFFFE123
+
+\begin{solution}[0.5in]
+Physical address: 0x003123 \\
+Compulsory miss
+\end{solution}
+
+\part
+0xFFFFF000
+
+\begin{solution}[0.5in]
+Physical address: 0x002000 \\
+Compulsory miss
+\end{solution}
+
+\part
+0xFFFFF1FF
+
+\begin{solution}[0.5in]
+Physical address: 0x0021FF \\
+Cache hit
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}

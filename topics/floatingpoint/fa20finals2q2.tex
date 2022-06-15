@@ -1,0 +1,26 @@
+\begin{blocksection}
+\question
+
+Consider a 33-bit floating point number with the following components: 1 sign bit, 13 exponent bits, and 19 mantissa/significand bits structured otherwise in IEEE754 Floating Point standard format. All other properties of IEEE754 apply (bias, denormalised numbers, $\infty$, NaNs, etc…). The bias is the usual $−(2^{E - 1} − 1)$, which here would be $−4095$.
+
+\begin{parts}
+
+\part
+What is the median of the positive non-NaN floats? (including +0, denorms, and $\infty$, which is an odd number of numbers) Write your answer as a decimal number, like 7.65.
+\begin{solution}[0.5in]
+1.5
+
+One useful thing to note is that floating point numbers maintain the order of sign-magnitude numbers; for example, 0x00000000 $<$ 0x00000001 $<$ 0x00000002 $<$ 0x0FFFFFFF $<$ 0x10000000 $<$ 0x10000001, if we interpret the hexadecimal as an IEEE standard floating point number. We can thus find the median by looking at the bit patterns, finding the median of a sign-magnitude number, and converting that to floating point. The smallest number is 0x000000000, and the largest number is 0x0FFF80000 ($+\infty$). The median of these two numbers (treating them as sign-magnitude numbers) is (0x000000000+0x0FFF80000)/2 = 0x07FFC000, which we convert to floating point as 1.5.
+\end{solution}
+
+\part
+Of all the numbers you can represent with this floating-point format, what is the largest odd number?
+\begin{solution}[0.5in]
+$2^{20} - 1$
+
+An odd number has a “1” in the ones place, so we need the ones place within our mantissa. The largest number we can get that way would be if the last bit in our mantissa was the ones place, and every other bit in the mantissa was a one. This number is $2^{20} - 1$. We verify that we can have an exponent of +19, so this is possible.
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}

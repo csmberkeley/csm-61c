@@ -1,0 +1,39 @@
+\begin{blocksection}
+
+\question 
+Are the following statements about operating systems true or false?
+\begin{parts}
+
+\part
+The OS is considered more trusted than the user level.
+\begin{solution}[0.5in] 
+True, the OS is generally considered to be the most secure level of a system. The user is considered to be the least.
+\end{solution}
+
+\part
+The role of the OS is to load, run, manage, and combine multiple programs optimally.
+\begin{solution}[0.5in] 
+False, the OS will load, run and manage user programs, but it does not combine programs. The OS \textbf{segregates} user programs; this is to enforce protection barriers and ensures no program is aware of anything but itself.
+\end{solution}
+
+\part
+The user can request the OS to do certain operations through syscalls.
+\begin{solution}[0.5in] 
+True, the user can never directly access the OS’s domain; however system calls, or syscalls, act as vesicles or tunnels through which safe accesses from user to OS domain can be achieved.
+\end{solution}
+
+\part
+The OS has access to the same physical memory space as the user does.
+\begin{solution}[0.5in] 
+True, the OS does not map to the same physical addresses the userspace does but virtualisation allows it to “use” the same virtual memory.
+\end{solution}
+
+\part
+OSes are not responsible for protecting different processes as it’s part of the process’s job to know what is accessible and what is not.
+\begin{solution}[0.5in] 
+False, one of the OS’s major jobs is to help enforce protection, not only between itself and userspace but between different processes happening in userspace. This ensures that any damage done accidentally or through malicious users and/or programs is contained and does not affect the entire system. The process itself should never have knowledge beyond its virtualisation schema
+\end{solution}
+
+\end{parts}
+
+\end{blocksection}

@@ -1,42 +1,70 @@
-\begin{blocksection}
 \question
 For each sequence of memory accesses below, determine whether each memory access is a hit, compulsory miss, conflict miss, or capacity miss. Assume each cache has 4 KiB of memory split into 256 B blocks, and that the reads occurred in order.
 
-\begin{parts}
-\part
+\begin{blocksection}
 Cache Type: Direct-Mapped:
-Reads:\\
+\\
 \lstinline$0xABCD$\\
 \lstinline$0xABEF$\\
+\lstinline$0xABFF$\\
+\lstinline$0xBBEE$\\
+\lstinline$0xABCD$\\
+\lstinline$0xBBFF$\\
 
 \begin{solution}[0.7in]
 \lstinline$0xABCD$: Compulsory Miss\\
 \lstinline$0xABEF$: Hit\\
+\lstinline$0xABFF$: Hit\\
+\lstinline$0xBBEE$: Compulsory Miss\\
+\lstinline$0xABCD$: Conflict Miss\\
+\lstinline$0xBBFF$: Conflict Miss\\
 \end{solution}
+\end{blocksection}
 
-\part
+\begin{blocksection}
 Cache Type: 4-way Set-Associative:
-Reads:
+\\
 \lstinline$0xABCD$\\
-\lstinline$0xBBCD$
+\lstinline$0xBBCD$\\
+\lstinline$0xCBCD$\\
+\lstinline$0xDBCD$\\
+\lstinline$0xBBCD$\\
+\lstinline$0xCBCD$\\
+\lstinline$0xAFCD$\\
+\lstinline$0xBFCD$\\
 
 \begin{solution}[0.7in]
 \lstinline$0xABCD$: Compulsory Miss\\
 \lstinline$0xBBCD$: Compulsory Miss\\
-META: Students might be confused why the second miss is not a conflict miss. Because the cache is 4-way set associative, loading an item which maps to the same set as 0xABCD doesn't conflict with the previous memory block.
+\lstinline$0xCBCD$: Compulsory Miss\\
+\lstinline$0xDBCD$: Compulsory Miss\\
+\lstinline$0xBBCD$: Hit\\
+\lstinline$0xCBCD$: Hit\\
+\lstinline$0xAFCD$: Compulsory Miss\\
+\lstinline$0xBFCD$: Compulsory Miss\\
 \end{solution}
+\end{blocksection}
 
-\part
+\begin{blocksection}
 Cache Type: Fully Associative
-Reads:\\
+\\
 \lstinline$0xAABB$\\
 \lstinline$0xBBCC$\\
+\lstinline$0xAACC$\\
+\lstinline$0xBBBB$\\
+\lstinline$0xCCDD$:\\
 
 \begin{solution}[0.7in]
 \lstinline$0xAABB$: Compulsory Miss\\
 \lstinline$0xBBCC$: Compulsory Miss\\
+\lstinline$0xAACC$: Hit\\
+\lstinline$0xBBBB$: Hit\\
+\lstinline$0xCCDD$: Compulsory Miss\\
 \end{solution}
-
-
-\end{parts}
+\end{blocksection}
+\begin{blocksection}
+Can Fully Associative Caches have conflict misses?
+\begin{solution}[0.7in]
+No, they can only have compulsory and capacity misses.
+\end{solution}
 \end{blocksection}

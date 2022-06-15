@@ -1,0 +1,26 @@
+\begin{blocksection}
+
+\question
+\begin{verbatim}
+#pragma omp parallel for {
+    for (int i = 0; i < 4; i++) {
+        printf("%d", i);
+    }
+}
+\end{verbatim}
+
+Select all of the following outputs that are possible:
+
+Output 1: \texttt{3210} \\
+Output 2: \texttt{0000111122223333} \\
+Output 3: \texttt{0231} \\
+Output 4: \texttt{0012} \\
+Output 5: \texttt{0011001122332233} \\
+Output 6: \texttt{0110001122332233} \\
+
+\begin{solution}[0.5in]
+1, 3 \\
+Justification: When we use the \texttt{for} pragma, each thread runs an iteration of the for loop. Thus, each number is printed once, although they may run out of order.
+
+\end{solution}
+\end{blocksection}

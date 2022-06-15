@@ -1,0 +1,190 @@
+\question You are given the following code below. For each question, put what the C code would print.
+
+\begin{blocksection}
+
+\begin{verbatim}
+
+void foo(int a) {
+    a = 61;
+}
+
+int main() {
+   int y = 20;
+   foo(y);
+   printf("%d", y);
+   return 0;
+}
+
+
+\end{verbatim}
+
+\end{blocksection}
+\textbf{Answer}: \rule{1cm}{0.25mm}
+
+
+\question What would the following print?
+
+\begin{blocksection}
+
+\begin{verbatim}
+
+void foo(int *a) {
+    *a = 61;
+}
+
+int main() {
+   int y = 20;
+   foo(&y);
+   printf("%d", y);
+   return 0;
+}
+
+\end{verbatim}
+
+\end{blocksection}
+\textbf{Answer}: \rule{1cm}{0.25mm}
+
+\pagebreak
+\question What would the following print?
+
+\begin{blocksection}
+
+\begin{verbatim}
+
+void foo(char *a) {
+    a = "61c";
+}
+
+int main() {
+   char* y = "51c";
+   foo(y);
+   printf("%s", y);
+   return 0;
+}
+
+\end{verbatim}
+
+\end{blocksection}
+\textbf{Answer}: \rule{1cm}{0.25mm}
+
+
+\question What would the following print?
+
+\begin{blocksection}
+
+\begin{verbatim}
+
+void foo(char *a) {
+    *a = '6';
+}
+
+int main() {
+   char *y = calloc(4, sizeof(char));
+   strcpy(y, "51c");
+   foo(y);
+   printf("%s", y);
+   return 0;
+}
+
+\end{verbatim}
+
+\end{blocksection}
+\textbf{Answer}: \rule{1cm}{0.25mm}
+
+\begin{solution}
+\begin{blocksection}
+
+\begin{verbatim}
+
+void foo(int a) {
+    a = 61;
+}
+
+int main() {
+   int y = 20;
+   foo(y);
+   printf("%d", y);
+   return 0;
+}
+
+
+\end{verbatim}
+
+\end{blocksection}
+\textbf{Answer}: 20
+
+
+\question What would the following print?
+
+\begin{blocksection}
+
+\begin{verbatim}
+
+void foo(int *a) {
+    *a = 61;
+}
+
+int main() {
+   int y = 20;
+   foo(&y);
+   printf("%d", y);
+   return 0;
+}
+
+\end{verbatim}
+
+\end{blocksection}
+\textbf{Answer}: 61
+
+\pagebreak
+\question What would the following print?
+
+\begin{blocksection}
+
+\begin{verbatim}
+
+void foo(char *a) {
+    a = "61c";
+}
+
+int main() {
+   char* y = "51c";
+   foo(y);
+   printf("%s", y);
+   return 0;
+}
+
+\end{verbatim}
+
+\end{blocksection}
+\textbf{Answer}: 51c
+
+
+\question What would the following print?
+
+\begin{blocksection}
+
+\begin{verbatim}
+
+void foo(char *a) {
+    *a = '6';
+}
+
+int main() {
+   char *y = calloc(4, sizeof(char));
+   strcpy(y, "51c");
+   foo(y);
+   printf("%s", y);
+   return 0;
+}
+
+\end{verbatim}
+
+\end{blocksection}
+\textbf{Answer}: 61c
+\end{solution}
+
+
+
+
+

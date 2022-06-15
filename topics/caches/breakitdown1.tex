@@ -2,6 +2,24 @@
 \question
 Calculate the number of bits used for the T/I/O for each cache specification below. Assume we are using a 16-bit system.
 
+For reference, here are the formulas and explanations for what T/I/O represent
+
+\textbf{\underline{Tag}}: The t most significant bits of the cache address and is used to check if the address is already contained in the cache 
+\[
+t = \# \: of \: bits \: for \: address - i - o
+\]
+\textbf{\underline{Index}}: The i middle bits of the cache address (between the Tag and Offset bits). The index bits are used to determine which cache line an address falls into.
+
+\[
+i = \log _{2} (\frac{cache size}{block size \times associativity})
+\]
+
+\textbf{\underline{Offset}}: The o least significant bits of the cache address. The offset bits are used to determine which byte inside a cache block we are accessing (the byte "offset" within a cache block)
+
+\[
+o = \log _{2} (block size)
+\]
+
 \begin{parts}
 \part
 4 KiB cache, 256 B block size, direct mapped

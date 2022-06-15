@@ -1,35 +1,51 @@
 \documentclass[11pt]{exam}
+%\def\discussionsolutions{}
 \usepackage{../commonheader}
 \graphicspath{ {../images/} }
-​
-\discnumber{10}
-\title{Parallelism}
-\date{November 16, 2020}
-​
+
+\discnumber{11}
+\title{Final Review}
+\date{April 27-29, 2022}
+
 \begin{document}
 \maketitle
-​
-\section{Data Level Parallelism}
+
+\section{Time for Timing (Su20 Final Q4)}
 \begin{questions}
-\subimport{../topics/parallelism/}{datalevelparallelism1.tex}
-\subimport{../topics/parallelism/}{datalevelparallelism2.tex}
-\subimport{../topics/parallelism/}{datalevelparallelism3.tex}
+\subimport{../topics/sds/}{su20FinalQ4.tex}
 \end{questions}
 \newpage
 
-\section{Thread Level Parallelism}
+\section{Cash (Su15 Midterm 2 Q5)}
 \begin{questions}
-\subimport{../topics/parallelism/}{threadlevelparallelism1.tex}
-\subimport{../topics/parallelism/}{threadlevelparallelism2.tex}
-\subimport{../topics/parallelism/}{threadlevelparallelism3.tex}
+\subimport{../topics/caches/}{su15mt2q5.tex}
+\end{questions}
+\newpage 
+
+\section{Virtual Memory (Su20 Final Q1)}
+\begin{questions}
+\subimport{../topics/virtualmemory/}{su20finalq1.tex}
+\end{questions}
+\newpage 
+
+\section{Potpourri (Su20 Final Q9, Fa20 Final S3Q3)}
+\begin{questions}
+\subimport{../topics/dependability/}{su20raidecc.tex}
+\subimport{../topics/os/}{osfa20.tex}
 \end{questions}
 \newpage
 
-\section{Data Race!}
+\section{Testception 2, 3, 4, AND 5! Now simulcasting! (Fa21 Final Q9)}
 \begin{questions}
-\subimport{../topics/parallelism/}{datarace1.tex}
-\subimport{../topics/parallelism/}{datarace2.tex}
+\subimport{../topics/parallelism/}{fa21finalq9.tex}
 \end{questions}
 \newpage
+
+\section{Floating Point (Fa20 Final S2Q2)}
+\begin{questions}
+\subimport{../topics/floatingpoint/}{fa20finals2q2.tex}
+\end{questions}
+\newpage 
+
 
 \end{document}

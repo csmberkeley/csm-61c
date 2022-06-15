@@ -1,0 +1,59 @@
+\begin{blocksection}
+We are working with a system with a 4 GiB physical memory, and 16 MiB virtual memory, and a page size of 4 KiB. For each PTE, we choose to store 12 bits of metadata (dirty bit, permissions).
+
+\question
+For this part, assume we are working with a single level page table.
+\begin{parts}
+
+\part
+How many bits are in the page offset?
+\begin{solution}[0.5in]
+$\text{log}_2(\text{size of page}) = \text{log}_2(2^{12}) = 12$
+\end{solution}
+
+\part
+How many bits are in the PPN?
+\begin{solution}[0.5in]
+$\text{log}_2(\text{size of PM}) - \text{offset bits} = \text{log}_2(2^{32}) - 12 = 20$
+\end{solution}
+
+\part
+How many bits are in the VPN?
+\begin{solution}[0.5in]
+$\text{log}_2(\text{size of VM}) - \text{offset bits} = \text{log}_2(2^{24}) - 12 = 12$
+\end{solution}
+
+\part
+How many bits are in a PTE?
+\begin{solution}[0.5in]
+\# PPN bits + # metadata bits = 20 + 12 = 32
+\end{solution}
+
+\end{parts}
+
+\question
+For the rest of the problem, we will be working with a 2-level, hierarchical page table with no TLBs. Assume the VPN bits are split evenly between levels, so every PT at every level has the same number of PTEs.
+
+For each page table level, calculate the number of PTEs in total, across all possible page tables in that level.
+\begin{parts}
+
+\part
+L1 Number of PTEs
+\begin{solution}[0.5in]
+\# L1 PTs * \# of PTEs in L1 PT = 1 * $2^6$ = 64
+\end{solution}
+
+\part
+L2 Number of PTEs
+\begin{solution}[0.5in]
+\# L2 PTs * size of L2 PT = $2^6$ * $2^6$ = $2^{12}$ = 4096
+\end{solution}
+
+\end{parts}
+
+Let’s say the computer just started up, meaning that the page table has yet to allocate any pages in the physical memory. We then store 8 contiguous bytes to memory. In the worst case, how many page tables will we use?
+\begin{solution}[0.5in]
+The 8 contiguous bytes could span 2 pages in the worst case. This means we would need to allocate space for two L2 pages tables in addition to one L1 page table = 3 total PTs.
+\end{solution}
+
+\end{blocksection}

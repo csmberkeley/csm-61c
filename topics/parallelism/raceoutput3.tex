@@ -1,0 +1,28 @@
+\begin{blocksection}
+
+\question
+\begin{verbatim}
+int a = 0;
+#pragma omp parallel for {
+    for (int i = 0; i < 4; i++) {
+        a += 1;
+        printf("%d", a);
+    }
+}
+\end{verbatim}
+
+Select all of the following outputs that are possible:
+
+Output 1: \texttt{0234} \\
+Output 2: \texttt{1234} \\
+Output 3: \texttt{1112} \\
+Output 4: \texttt{0123} \\
+Output 5: \texttt{1144} \\
+Output 6: \texttt{1111} \\
+
+\begin{solution}[0.5in]
+2, 3, 5, 6\\
+Justification: Any output consisting of some collection of 1s, 2s, 3s, and 4s is valid since the print statements may run at any time after the increment and the increments may affect the results of other increments depending on when they read/write the data.
+
+\end{solution}
+\end{blocksection}

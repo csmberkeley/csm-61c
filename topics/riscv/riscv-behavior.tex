@@ -1,30 +1,96 @@
 \begin{blocksection}
 \question
-For parts a and b, answer either Caller, Callee or Neither as applicable. The Caller is the function passing these values to a new call, and the Callee is the function being called. That is, if we invoke a function doStuff() from main(), doStuff() is the Callee and main() is the Caller.
+Answer either Caller, Callee or Neither as applicable. The Caller is the function passing these values to a new call, and the Callee is the function being called. That is, if we invoke a function doStuff() from main(), doStuff() is the Callee and main() is the Caller. If you are stuck, the RISC-V green sheet might be a great resource.
 
 \begin{parts}
 \part
-Whose responsibility is it to save the return address (ra) in a function call?
+Whose responsibility is it to save the return address (\lstinline$ra$) in a function call?
 
 \begin{solution}[0.5in]
-    Caller
+Register \lstinline$ra$ is a caller-saved register.
 \end{solution}
 
 \part
-Whose responsibility is it to save the temporary registers (t0-t6)? What about the saved registers (s0-s11)?
+Whose responsibility is it to save the temporary registers (\lstinline$t0$-\lstinline$t6$)? What about the saved registers (\lstinline$s0$-\lstinline$s11$)?
 
 \begin{solution}[0.5in]
-    Temp: Caller
-    Saved: Callee
+Temporary registers are caller-saved, whereas saved registers are callee-saved.
 \end{solution}
 
 \part
-Whose responsibility is it to save the argument registers (a0-a7)? Why?
+Whose responsibility is it to save the argument registers (\lstinline$a0$-\lstinline$a7$)? Why?
 
 \begin{solution}[0.5in]
-	It is the caller's responsibility because the callee is typically expected to put its return value(s) in the argument registers.
+Argument registers are caller-saved because the callee is typically expected to put its return value(s) in the argument registers.
 \end{solution}
 
+\end{parts}
+\end{blocksection}
+
+\begin{blocksection}
+
+\question 
+Look at the code segment below and identify if each function has a caller-saved register error, callee-saved register error or no error. The actual function of the code is not important. 
+
+\begin{verbatim}
+give_you_up:	addi t0, x0, 69
+				slli t0, t0, 2
+				add  a1, x0, t0
+				addi sp, sp, -4
+				sw t0, 0(sp)
+				jal let_you_down
+				lw t0, 0(sp)
+				addi sp, sp, 4
+				sw a0 0(t0)
+				ecall #exit the program
+				
+let_you_down:	addi sp, sp, -4
+				sw ra, 0(sp)
+				addi t7, a1, 420
+				jal desert_you
+				add a0, a0, t7
+				lw ra, 0(sp)
+				addi sp, sp, 4
+				ret
+				
+desert_you:		addi sp, sp -12
+				sw s0, 0(sp)
+				sw t0, 4(sp)
+				sw ra, 8(sp)
+				mv s0, a1
+				srai s0, s0, 2
+				addi t0, s0, 64
+				lw t0, 0(t0)
+				mv a0, t0
+				lw s0, 0(sp)
+				lw t0, 4(sp)
+				lw ra, 8(sp)
+				ret 
+\end{verbatim}
+
+\end{blocksection}
+\begin{blocksection}
+
+\begin{parts}
+\part
+What calling convention errors are present in \lstinline$give_you_up$?
+\begin{solution}[0.5in]
+No error. The function correctly saves the t0 register before calling \lstinline$let_you_down$. There is no need to save the save and return registers since the program exits instead of returning to another function. 
+\end{solution}
+
+\part
+What calling convention errors are present in \lstinline$let_you_down$?
+\begin{solution}[0.5in]
+Caller-saved register error. Note that this function is both a caller and a callee. The callee saved registers are safe, but the \lstinline$t7$ register, which is a caller saved register, has not been saved before \lstinline$desert_you$ is called.
+\end{solution}
+
+\part
+What calling convention errors are present in \lstinline$desert_you$?
+\begin{solution}[0.5in]
+Callee-saved register error. \lstinline$t0$ is a caller saved register, so it does not need to be saved. Additionally, the stack pointer is never incremented by 12 bytes before the function returns. 
+\end{solution}
+
+%lol the comments are getting FATTER with every semester 
 %\part
 %You’re given a new RISC-V instruction set where instructions are 12 bits long instead of 32 bits. Each rs and rd field uses 2 bits. How many registers does this new format support? 
 %\begin{solution}[0.5in]
